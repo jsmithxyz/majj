@@ -1,18 +1,22 @@
 // goes in /src
 
 import React from "react";
-import NoMatch from "./pages/NoMatch";
+// import BtnNavBar from "./components/BtnNavBar/BtnNavBar.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import MainNav from "./components/MainNav/MainNav.js";
+import "./App.css";
+import CreateProfile from "./components/CreateProfile/CreateProfile.js";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <MainNav />
+        {/* <BtnNavBar /> */}
+        <CreateProfile />
         <Switch>
           <Route exact path="/" />
-          <Route path="*" component={NoMatch} />
         </Switch>
       </div>
     </Router>
