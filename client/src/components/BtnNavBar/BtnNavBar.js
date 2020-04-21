@@ -12,20 +12,20 @@ function BtnNavBar() {
 
   return (
     <>
-      <Nav className="justify-content-center majjnav">
+      <Nav className='justify-content-center majjnav'>
         <Nav.Item>
-          <Button style={style} className="nav-btns">
-            <i class="fas fa-star fa-2x"></i>
+          <Button style={style} className='nav-btns'>
+            <i className='fas fa-star fa-2x'></i>
           </Button>
         </Nav.Item>
         <Nav.Item>
-          <Button style={style} className="nav-btns next" size="lg">
-            <i class="fas fa-long-arrow-alt-right fa-3x"></i>
+          <Button style={style} className='nav-btns next' size='lg'>
+            <i className='fas fa-long-arrow-alt-right fa-3x'></i>
           </Button>
         </Nav.Item>
         <Nav.Item>
-          <Button style={style} className="nav-btns">
-            <i class="fas fa-user-circle fa-2x"></i>
+          <Button style={style} className='nav-btns'>
+            <i className='fas fa-user-circle fa-2x'></i>
           </Button>
         </Nav.Item>
       </Nav>
