@@ -1,5 +1,3 @@
-// goes in /src
-
 import React from "react";
 import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
