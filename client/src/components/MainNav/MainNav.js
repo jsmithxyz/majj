@@ -27,6 +27,7 @@ function MainNav() {
               className="rotate yellowgem"
             />
             majj
+            <div className="slogan-mainnav">mining for gems on the web</div>
           </div>
           <div className="col-md-4 text-center">
             <Button style={style} className="nav-btns">

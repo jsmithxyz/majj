@@ -11,11 +11,11 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <CreateProfile />
           <Switch>
-            <Route exact path='/' component={Mine} />
+            <Route exact path="/" component={Mine} />
             {/* <Route path='*' component={NoMatch} /> */}
           </Switch>
+          <CreateProfile />
         </div>
       </Router>
     );
