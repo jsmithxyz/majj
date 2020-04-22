@@ -8,6 +8,9 @@ import CreateProfile from "./components/CreateProfile/CreateProfile.js";
 // import NoMatch from "./pages/NoMatch";
 import API from "./utils/API";
 
+import IFrame from "./components/Iframe/Iframe";
+
+
 class App extends React.Component {
   //this state will obviously change, just have it like this for now to make sure the API works
   state = {
@@ -40,9 +43,12 @@ class App extends React.Component {
         <div>
           <MainNav />
           <BtnNavBar />
+
+          <IFrame />
           <CreateProfile />
           <Switch>
-            <Route exact path='/' />
+            <Route exact path="/" />
+
             {/* <Route path='*' component={NoMatch} /> */}
           </Switch>
         </div>
