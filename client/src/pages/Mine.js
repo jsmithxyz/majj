@@ -9,10 +9,9 @@ function Mine() {
   const [queue, setQueue] = useState([]);
   const [topics, setTopics] = useState(["spiders", "guitar", "cactus"]);
 
-  // only called upon initial render of page
-  useEffect(() => {
-    loadQueue();
-  }, []);
+  // useEffect(() => {
+  //   loadQueue();
+  // }, []);
 
   function loadQueue() {
     //sets empty array to drop results in
@@ -26,14 +25,16 @@ function Mine() {
           // so this would be dispatch({type: 'CREATE_QUEUE', payload: res});
         });
         //sets the 'queue' state with the resultsArray from the api call
-        this.setQueue({ queue: resultsArray });
+        setQueue({ queue: resultsArray });
       })
       .catch((err) => console.log(err));
   }
 
-  // function nextGem() {
-  //   // pop the queue array, update state
-  // }
+  function nextGem() {
+    // pop the queue array, update state
+    const newQueue = queue.shift();
+    setQueue({ queue: newQueue });
+  }
 
   // function saveGem() {
   //   // adds current gem to DB
