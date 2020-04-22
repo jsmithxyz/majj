@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+  //thinking of this as createQueue() to match the action type
   getData: function (query) {
     //for now, just hardcoded for it to return 50 results
     let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${query}&count=50&sortby=dat`;
@@ -18,4 +19,6 @@ export default {
       return res;
     });
   },
+
+  
 };
