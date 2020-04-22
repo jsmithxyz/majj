@@ -15,7 +15,9 @@ function Mine() {
   }, []);
 
   function loadQueue() {
+    //sets empty array to drop results in
     let resultsArray = [];
+    //calls api with topics, returns filled resultsArray
     API.getQueue(topics)
       .then((res) => {
         res.data.value.map((result) => {
@@ -23,6 +25,7 @@ function Mine() {
           return resultsArray;
           // so this would be dispatch({type: 'CREATE_QUEUE', payload: res});
         });
+        //sets the 'queue' state with the resultsArray from the api call
         this.setQueue({ queue: resultsArray });
       })
       .catch((err) => console.log(err));

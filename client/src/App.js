@@ -4,11 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainNav from "./components/MainNav/MainNav.js";
 import "./App.css";
-
 import CreateProfile from "./components/CreateProfile/CreateProfile.js";
 // import NoMatch from "./pages/NoMatch";
 import Mine from "./pages/Mine";
-import API from "./utils/API";
 
 import IFrame from "./components/Iframe/Iframe";
 
