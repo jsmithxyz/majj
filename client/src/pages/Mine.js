@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
-
+import sampleQueue from "../utils/sample-queue";
 import IFrame from "../components/Iframe/Iframe";
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 function Mine() {
-  const [queue, setQueue] = useState([]);
-  const [topics, setTopics] = useState(["spiders", "guitar", "cactus"]);
+  const [queue, setQueue] = useState(sampleQueue);
+  const [topics, setTopics] = useState(["puppies", "guitar"]);
 
-  // only called upon initial render of page
   // useEffect(() => {
   //   loadQueue();
   // }, []);
@@ -48,7 +47,7 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <IFrame />
+      <IFrame queue={queue} />
     </div>
   );
 }
