@@ -5,10 +5,13 @@ import "./App.css";
 // import NoMatch from "./pages/NoMatch";
 import API from "./utils/API";
 
+
 // components
 import MainNav from "./components/MainNav/MainNav.js";
 // import CreateProfile from "./components/CreateProfile/CreateProfile.js";
 // import UserProfile from "./components/UserProfile/UserProfile.js";
+
+import IFrame from "./components/Iframe/Iframe";
 
 class App extends React.Component {
   //this state will obviously change, just have it like this for now to make sure the API works
@@ -41,10 +44,19 @@ class App extends React.Component {
       <Router>
         <div>
           <MainNav />
+      <CreateProfile>
+
           {/* <CreateProfile /> */}
           {/* <UserProfile /> */}
           <Switch>
             <Route exact path="/" />
+          <BtnNavBar />
+
+          <IFrame />
+          <CreateProfile />
+          <Switch>
+            <Route exact path="/" />
+
             {/* <Route path='*' component={NoMatch} /> */}
           </Switch>
         </div>
