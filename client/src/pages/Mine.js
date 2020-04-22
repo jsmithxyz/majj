@@ -10,9 +10,9 @@ function Mine() {
   const [topics, setTopics] = useState(["spiders", "guitar", "cactus"]);
 
   // only called upon initial render of page
-  useEffect(() => {
-    loadQueue();
-  }, []);
+  // useEffect(() => {
+  //   loadQueue();
+  // }, []);
 
   function loadQueue() {
     //sets empty array to drop results in

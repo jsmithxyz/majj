@@ -17,11 +17,12 @@
 
 .nav-btns {
   box-shadow: 1px 2px 4px #00000080;
+  margin: 20px 10px;
 }
 
 .nav-btns.next {
-  padding-right: 20px !important;
-  padding-left: 20px !important;
+  padding-right: 50px !important;
+  padding-left: 50px !important;
 }
 
 .nav-btns:hover {

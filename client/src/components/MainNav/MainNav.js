@@ -28,12 +28,12 @@ function MainNav() {
             />
             majj
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 text-center">
             <Button style={style} className="nav-btns">
               <img
                 src={gemfolder}
-                height="50px"
-                width="50px"
+                height="30px"
+                width="30px"
                 alt="gem folder"
               />
             </Button>
@@ -41,13 +41,10 @@ function MainNav() {
               <img src={axe} height="50px" width="50px" alt="axe" />
             </Button>
             <Button style={style} className="nav-btns">
-              <img src={mdyellowgem} height="50px" width="50px" alt="gem" />
+              <img src={mdyellowgem} height="30px" width="30px" alt="gem" />
             </Button>
           </div>
-          <div className="col-md-4 text-right rightbtns">
-            <Button style={style} className="nav-btns">
-              <i className="fas fa-user-circle fa-2x"></i>
-            </Button>
+          <div className="col-md-4 text-right signout">
             <Button style={style} className="nav-btns">
               <i className="fas fa-sign-out-alt fa-2x"></i>
             </Button>
