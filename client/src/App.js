@@ -31,6 +31,7 @@ class App extends React.Component {
         res.data.value.map((result) => {
           resultsArray.push(result);
           return resultsArray;
+            // so this would be dispatch({type: 'CREATE_QUEUE', payload: res});
         });
         this.setState({ results: resultsArray });
       })
