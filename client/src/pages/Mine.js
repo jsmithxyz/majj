@@ -9,6 +9,7 @@ function Mine() {
   const [queue, setQueue] = useState([]);
   const [topics, setTopics] = useState(["spiders", "guitar", "cactus"]);
 
+  // only called upon initial render of page
   // useEffect(() => {
   //   loadQueue();
   // }, []);
