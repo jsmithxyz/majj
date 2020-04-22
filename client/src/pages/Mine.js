@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
-import BtnNavBar from "../components/BtnNavBar/BtnNavBar";
+
 import IFrame from "../components/Iframe/Iframe";
 // import { Link } from "react-router-dom"; //TBD do we need?
 
@@ -46,7 +46,6 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <BtnNavBar />
       <IFrame />
     </div>
   );
