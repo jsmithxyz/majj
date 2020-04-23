@@ -12,7 +12,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Mine} />
+            <Route exact path='/' component={Mine} />
             {/* <Route path='*' component={NoMatch} /> */}
           </Switch>
           <CreateProfile />

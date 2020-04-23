@@ -2,39 +2,31 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
 import sampleQueue from "../utils/sample-queue";
-import IFrame from "../components/Iframe/Iframe";
+import Gems from "../components/Gems/Gems";
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 function Mine() {
   const [queue, setQueue] = useState(sampleQueue);
-  const [topics, setTopics] = useState(["puppies", "guitar"]);
+  const [topics, setTopics] = useState(["jeff lemire"]);
 
   // useEffect(() => {
   //   loadQueue();
   // }, []);
 
   function loadQueue() {
-    //sets empty array to drop results in
-    let resultsArray = [];
-    //calls api with topics, returns filled resultsArray
+    //calls api with topics, setsQueue to res.data.value
     API.getQueue(topics)
       .then((res) => {
-        res.data.value.map((result) => {
-          resultsArray.push(result);
-          return resultsArray;
-          // so this would be dispatch({type: 'CREATE_QUEUE', payload: res});
-        });
-        //sets the 'queue' state with the resultsArray from the api call
-        setQueue({ queue: resultsArray });
+        setQueue({ queue: res.data.value });
       })
       .catch((err) => console.log(err));
   }
 
-  function nextGem() {
-    // pop the queue array, update state
-    const newQueue = queue.shift();
-    setQueue({ queue: newQueue });
-  }
+  // function nextGem() {
+  //   // pop the queue array, update state
+  //   const newQueue = queue.shift();
+  //   setQueue({ queue: newQueue });
+  // }
 
   // function saveGem() {
   //   // adds current gem to DB
@@ -47,7 +39,9 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <IFrame queue={queue} />
+      {Object.keys(queue).map((key) => (
+        <Gems key={key} details={queue[key]} />
+      ))}
     </div>
   );
 }
