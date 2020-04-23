@@ -7,7 +7,7 @@ function Mine() {
 
   // only called upon initial render of page
   useEffect(() => {
-    loadQueue()
+    loadQueue() // loadQueue should call the users saved DB queue
   }, [])
 
   // your basic call to Bing to get the queue

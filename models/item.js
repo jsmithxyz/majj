@@ -4,11 +4,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const gemSchema = new Schema({
+const itemSchema = new Schema({
   title: { type: String, required: true },
   url: { type: String, required: true }
 });
 
-const Gem = mongoose.model("Gem", gemSchema);
+const Item = mongoose.model("Item", itemSchema);
 
-module.exports = Gem;
+module.exports = Item;
