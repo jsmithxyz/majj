@@ -1,0 +1,58 @@
+.section {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  color: black;
+}
+.mosaic {
+  margin-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.tile:hover {
+  opacity: 0.5;
+}
+
+.picture {
+  align-self: center;
+  margin-top: 20px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+.title {
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+.card {
+  height: 450px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  border-color: purple;
+}
+
+a {
+  color: purple;
+}
+button {
+  color: purple;
+  border: white;
+}
+button:hover {
+  background: gold;
+}
+
+.icons {
+  text-align: center;
+}
+
+.name {
+  text-align: center;
+}
+
+.date {
+  text-align: center;
+}
