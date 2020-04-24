@@ -3,6 +3,7 @@ import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
 import sampleQueue from "../utils/sample-queue";
 import Gems from "../components/Gems/Gems";
+import LeftNav from "../components/LeftNav/LeftNav"
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 function Mine() {
@@ -39,6 +40,7 @@ function Mine() {
   return (
     <div>
       <MainNav />
+      <LeftNav />
       {Object.keys(queue).map((key) => (
         <Gems key={key} details={queue[key]} />
       ))}

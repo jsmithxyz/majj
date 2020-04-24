@@ -7,22 +7,25 @@ import "./App.css";
 // import NoMatch from "./pages/NoMatch";
 import LeftNav from "./components/LeftNav/LeftNav";
 import Mine from "./pages/Mine";
+import { StoreProvider } from "../src/utils/GlobalState"
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path='/' component={Mine} />
-            {/* <Route path='*' component={NoMatch} /> */}
-          </Switch>
-          {/* <CreateProfile /> */}
-          {/* <UserSignIn /> */}
+      <StoreProvider>
+        <Router>
+          <div>
+            <Switch>
+              <Route exact path='/' component={Mine} />
+              {/* <Route path='*' component={NoMatch} /> */}
+            </Switch>
+            {/* <CreateProfile /> */}
+            {/* <UserSignIn /> */}
 
-          <LeftNav />
-        </div>
-      </Router>
+            <LeftNav />
+          </div>
+        </Router>
+      </StoreProvider>
     );
   }
 }

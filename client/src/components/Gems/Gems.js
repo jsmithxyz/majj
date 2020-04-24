@@ -1,9 +1,44 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
+import { useStoreContext } from "../../utils/GlobalState"
+import { ADD_TO_QUEUE, PASS } from "../../utils/actions";
 import { Row, Col, Card } from "react-bootstrap";
 import "./Gems.css";
 import Moment from "react-moment";
 
-function Gems(props) {
+function Gems(props) {  
+  const [state, dispatch] = useStoreContext();
+  // const id = "dummyID"; // temporary to allow compile
+
+  const handleAddToQueue = event => {
+    event.preventDefault();
+    const { id } = event.target;
+    // console.log("woof")
+    dispatch({ 
+      type: ADD_TO_QUEUE,
+      _id: id 
+    });
+
+  };
+
+  const handlePass = event => {
+    event.preventDefault();
+    const { id } = event.target;
+    // console.log("woof")
+    dispatch({ 
+      type: PASS,
+      _id: id
+    });
+
+  };
+
+  const handleOpen = event => {
+    event.preventDefault();
+    const { id } = event.target;
+    // console.log("woof")
+    // open in new tab
+
+  };
+
   return (
     <Fragment>
       <div className='section '>
@@ -14,7 +49,7 @@ function Gems(props) {
                 <img
                   className='picture'
                   alt='thumbnail, where art thou?'
-                  src=''
+                  src={result.image?.thumbnail.contentUrl || " "}
                   height='150'
                   width='150'
                 />
@@ -31,13 +66,13 @@ function Gems(props) {
 
                   <Card.Text className='icons'>
                     <button>
-                      <i class='far fa-gem'></i>
+                      <i className='far fa-gem' onClick={handleAddToQueue}></i>
                     </button>
                     <button>
-                      <i class='far fa-eye'></i>
+                      <i className='far fa-eye' onClick={handleOpen}></i>
                     </button>
                     <button>
-                      <i class='far fa-trash-alt'></i>
+                      <i className='far fa-trash-alt' onClick={handlePass}></i>
                     </button>
                   </Card.Text>
                 </Card.Body>
