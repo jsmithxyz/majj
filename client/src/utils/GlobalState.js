@@ -1,22 +1,35 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
-  TBD
+  ADD_TO_QUEUE,
+  PASS,
+  NEW_FILTER
 } from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
+
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case TBD:
+    case ADD_TO_QUEUE:
+      // console.log("woof from within globalState")
+      return {
+        ...state,
+        // queue: [action.item, ...state.queue],
+        TBD: "to be determined"
+      };
+    case PASS:
+      // console.log("woof from within globalState")
       return {
         ...state,
         TBD: "to be determined"
       };
-    case TBD:
+    case NEW_FILTER:
+      // console.log("woof from within globalState")
       return {
         ...state,
-        TBD: "to be determined"
+        filter: [action.filter]
       };
 
     default:
@@ -34,6 +47,7 @@ const StoreProvider = ({ value = [], ...props }) => {
 };
 
 const useStoreContext = () => {
+  // debugger
   return useContext(StoreContext);
 };
 

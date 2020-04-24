@@ -6,9 +6,25 @@ import yellowgem from "../../img/yellowgem.png";
 
 function UserSignIn() {
   const [show, setShow] = useState(false);
+  const [formObject, setFormObject] = useState({})
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value })
+  };
+
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject.username && formObject.password) {
+      // some user login action here
+
+    }
+  };
 
   let style = {
     backgroundColor: "#461767",
@@ -39,20 +55,36 @@ function UserSignIn() {
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="username" placeholder="Enter Username" />
+              <Form.Control
+                onChange={handleInputChange}
+                name="username"
+                type="username"
+                placeholder="Enter Username" />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                onChange={handleInputChange}
+                name="password"
+                type="password"
+                placeholder="Password" />
             </Form.Group>
           </Form>
           Never been here before? Click Sign Up to get started!
         </Modal.Body>
         <Modal.Footer>
-          <Button className="mod-btn" style={style} onClick={handleClose}>
+          <Button className="mod-btn" style={style}
+            onClick={
+              handleClose,
+              handleFormSubmit
+            }>
             Login
           </Button>
-          <Button className="mod-btn" style={style} onClick={handleClose}>
+          <Button className="mod-btn" style={style}
+            onClick={
+              handleClose,
+              handleFormSubmit
+            }>
             SignUp
           </Button>
         </Modal.Footer>

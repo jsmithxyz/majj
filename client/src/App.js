@@ -4,18 +4,25 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // import NoMatch from "./pages/NoMatch";
 import Mine from "./pages/Mine";
+import { StoreProvider } from "../src/utils/GlobalState"
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/" component={Mine} />
-            {/* <Route path='*' component={NoMatch} /> */}
-          </Switch>
-        </div>
-      </Router>
+      <StoreProvider>
+        <Router>
+          <div>
+            <Switch>
+              <Route exact path='/' component={Mine} />
+              {/* <Route path='*' component={NoMatch} /> */}
+            </Switch>
+            {/* <CreateProfile /> */}
+            {/* <UserSignIn /> */}
+
+            <LeftNav />
+          </div>
+        </Router>
+      </StoreProvider>
     );
   }
 }

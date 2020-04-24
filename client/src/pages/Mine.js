@@ -4,6 +4,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleQueue from "../utils/sample-queue";
 import Gems from "../components/Gems/Gems";
+import LeftNav from "../components/LeftNav/LeftNav"
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 function Mine() {
