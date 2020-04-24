@@ -32,22 +32,23 @@ function Gems(props) {
                   <Moment fromNow>{result.datePublished}</Moment>
                 </Card.Text>
 
-                <Card.Text className="icons">
-                  <button>
-                    <i class="far fa-gem"></i>
-                  </button>
-                  <button>
-                    <i class="far fa-eye"></i>
-                  </button>
-                  <button>
-                    <i class="far fa-trash-alt"></i>
-                  </button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+                  <Card.Text className='icons'>
+                    <button>
+                      <i class='far fa-gem'></i>
+                    </button>
+                    <button>
+                      <i class='far fa-eye'></i>
+                    </button>
+                    <button>
+                      <i class='far fa-trash-alt'></i>
+                    </button>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
     </Fragment>
   );
 }
