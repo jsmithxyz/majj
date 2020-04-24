@@ -7,28 +7,30 @@ function Gems(props) {
   console.log(props.details);
   return (
     <Fragment>
-      <div className='section '>
-        <Row className='mosaic '>
-          {props.details.map((result) => (
-            <Col xs={12} md={5} lg={4}>
-              <Card className='card' style={{ width: "18rem" }}>
-                <img
-                  className='picture'
-                  alt='thumbnail, where art thou?'
-                  src={result.image?.thumbnail.contentUrl || ""}
-                  height='150'
-                  width='150'
-                />
-                <Card.Body>
-                  <Card.Title className='title'>
-                    <a href={result.url}>{result.name}</a>
-                  </Card.Title>
-                  <Card.Text className='name'>
-                    {result.provider["0"]["name"]}{" "}
-                  </Card.Text>
-                  <Card.Text className='date'>
-                    <Moment fromNow>{result.datePublished}</Moment>
-                  </Card.Text>
+      <Row className="mosaic ">
+        {props.details.map((result) => (
+          <Col xs={12} md={5} lg={4}>
+            <Card className="card" style={{ width: "18rem" }}>
+              <img
+                className="picture"
+                alt="thumbnail, where art thou?"
+                src={
+                  result.image?.thumbnail.contentUrl ||
+                  "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
+                }
+                height="150"
+                width="150"
+              />
+              <Card.Body>
+                <Card.Title className="title">
+                  <a href={result.url}>{result.name}</a>
+                </Card.Title>
+                <Card.Text className="name">
+                  {result.provider["0"]["name"]}{" "}
+                </Card.Text>
+                <Card.Text className="date">
+                  <Moment fromNow>{result.datePublished}</Moment>
+                </Card.Text>
 
                 <Card.Text className="icons">
                   <button>

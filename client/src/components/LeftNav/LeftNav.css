@@ -3,6 +3,16 @@
   margin-left: 5px;
 }
 
+.apply-btn {
+  box-shadow: 1px 2px 4px #00000080;
+  margin: 20px 10px;
+}
+
+.apply-btn:hover {
+  background-color: #f0b429 !important;
+  color: #fff3c4 !important;
+}
+
 .choices-col {
   margin-right: 10px;
 }
