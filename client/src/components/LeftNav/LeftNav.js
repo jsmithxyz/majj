@@ -12,14 +12,18 @@ function LeftNav() {
     const { name, value } = event.target;
     event.preventDefault();
     setFilterObject({ ...filterObject, [name]: value })
+  }
+
+  const handleApplyFilter = (event) => {
+    event.preventDefault();
     dispatch({ 
       type: NEW_FILTER,
       filter: filterObject
     });
-    let { filter } = state;
-    console.log(filter)
-  }
 
+    let { filter } = state;
+    // console.log(filter)
+  }
 
   /* This defines the actual bar going down the screen */
   let StyledSideNav = {
@@ -130,7 +134,11 @@ function LeftNav() {
           </div>
         ))}
         <br />
-        <Button className="apply-btn" style={style}>
+        <Button 
+        className="apply-btn" 
+        style={style}
+        onClick={handleApplyFilter}
+        >
           Apply
         </Button>
       </Form>

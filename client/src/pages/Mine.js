@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component, componentDidUpdate } from "react";
+import { useStoreContext } from "../utils/GlobalState"
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleQueue from "../utils/sample-queue";
 import Gems from "../components/Gems/Gems";
-import LeftNav from "../components/LeftNav/LeftNav"
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 function Mine() {
+  const [state, dispatch] = useStoreContext();
+
   const [queue, setQueue] = useState(sampleQueue);
-  const [topics, setTopics] = useState(["sports"]);
+  // const [topics, setTopics] = useState(["sports"]);
+  const { filter } = state;
 
   useEffect(() => {
     loadQueue();
-  }, []);
+  }, [filter]);
+
+
 
   function loadQueue() {
     //calls api with topics, setsQueue to res.data.value
-    API.getQueue(topics)
+    API.getQueue(filter)
       .then((res) => {
         setQueue({ queue: res.data.value });
       })
