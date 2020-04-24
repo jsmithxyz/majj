@@ -47,7 +47,7 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <IFrame queue={queue} />
+      {/* <IFrame queue={queue} /> */}
     </div>
   );
 }

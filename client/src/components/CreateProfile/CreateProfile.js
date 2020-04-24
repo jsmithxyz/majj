@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./CreateProfile.css";
 import { Modal, Button, Row, Col, Form } from "react-bootstrap";
-// import yellowgem from "../../img/yellowgem.png";
 
 function CreateProfile() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
