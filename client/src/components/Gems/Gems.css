@@ -1,14 +1,8 @@
-.section {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
-  color: black;
-}
-.mosaic {
-  margin-top: 5px;
-  padding-right: 10px;
+.mosaic.row {
+  margin-top: 0px;
   padding-left: 10px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .tile:hover {
@@ -20,29 +14,36 @@
   margin-top: 20px;
   box-shadow: 3px 3px 5px 6px #ccc;
 }
+
 .title {
   font-size: 17px;
   font-weight: bold;
   text-align: center;
 }
 .card {
+  color: black;
   height: 450px;
-  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 4px 4px 4px 4px #00000080;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 3px;
-  border-color: purple;
+  border-color: #034169;
 }
 
 a {
-  color: purple;
+  color: #8002a3;
 }
+a:hover {
+  text-decoration: none;
+  color: #056766;
+}
+
 button {
-  color: purple;
+  color: #8002a3;
   border: white;
 }
 button:hover {
-  background: gold;
+  background: #f6b137;
 }
 
 .icons {

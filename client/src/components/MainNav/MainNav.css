@@ -2,6 +2,7 @@
   background-color: #056766;
   font-family: "luckiest guy", sans-serif;
   box-shadow: 4px 4px 4px 4px #00000080;
+  overflow: hidden;
 }
 
 .majj-text {

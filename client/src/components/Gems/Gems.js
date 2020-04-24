@@ -10,7 +10,7 @@ function Gems(props) {
       <div className='section '>
         <Row className='mosaic '>
           {props.details.map((result) => (
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={12} md={5} lg={4}>
               <Card className='card' style={{ width: "18rem" }}>
                 <img
                   className='picture'
