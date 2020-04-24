@@ -19,7 +19,6 @@ class App extends React.Component {
             {/* <CreateProfile /> */}
             {/* <UserSignIn /> */}
 
-            <LeftNav />
           </div>
         </Router>
       </StoreProvider>
