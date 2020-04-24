@@ -4,6 +4,7 @@ import "./Gems.css";
 import Moment from "react-moment";
 
 function Gems(props) {
+  console.log(props.details);
   return (
     <Fragment>
       <div className='section '>
@@ -14,7 +15,7 @@ function Gems(props) {
                 <img
                   className='picture'
                   alt='thumbnail, where art thou?'
-                  src=''
+                  src={result.image?.thumbnail.contentUrl || ""}
                   height='150'
                   width='150'
                 />
