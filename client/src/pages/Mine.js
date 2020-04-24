@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
+import LeftNav from "../components/LeftNav/LeftNav";
 import sampleQueue from "../utils/sample-queue";
 import Gems from "../components/Gems/Gems";
 import LeftNav from "../components/LeftNav/LeftNav"
@@ -8,11 +9,11 @@ import LeftNav from "../components/LeftNav/LeftNav"
 
 function Mine() {
   const [queue, setQueue] = useState(sampleQueue);
-  const [topics, setTopics] = useState(["jeff lemire"]);
+  const [topics, setTopics] = useState(["sports"]);
 
-  // useEffect(() => {
-  //   loadQueue();
-  // }, []);
+  useEffect(() => {
+    loadQueue();
+  }, []);
 
   function loadQueue() {
     //calls api with topics, setsQueue to res.data.value
@@ -37,13 +38,20 @@ function Mine() {
   //   // goes to profile page? not sure if it belongs in this page
   // }
 
+  let flexbox = {
+    display: "flex",
+    flexDirection: "row",
+  };
+
   return (
     <div>
       <MainNav />
-      <LeftNav />
-      {Object.keys(queue).map((key) => (
-        <Gems key={key} details={queue[key]} />
-      ))}
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(queue).map((key) => (
+          <Gems key={key} details={queue[key]} />
+        ))}
+      </div>
     </div>
   );
 }

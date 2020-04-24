@@ -23,18 +23,26 @@ function LeftNav() {
 
   /* This defines the actual bar going down the screen */
   let StyledSideNav = {
-    position: "fixed",
-    height: "100%",
-    width: "350px",
     zIndex: "1",
     backgroundColor: "#034169",
-    overflowX: "hidden",
+    overflow: "hidden",
+    height: "100vh",
     paddingTop: "10px",
     boxShadow: "4px 4px 4px 4px #00000080",
+    position: "sticky",
+    margin: "0px",
+    marginRight: "20px",
+  };
+
+  let style = {
+    backgroundColor: "#461767",
+    color: "#675682",
+    border: "0px",
+    borderRadius: "10px",
   };
 
   return (
-    <Container style={StyledSideNav}>
+    <Col xs={12} md={4} lg={3} style={StyledSideNav}>
       <div className="create-heading">choose your topics below:</div>
       <Form>
         {["radio"].map((type) => (
@@ -122,8 +130,11 @@ function LeftNav() {
           </div>
         ))}
         <br />
+        <Button className="apply-btn" style={style}>
+          Apply
+        </Button>
       </Form>
-    </Container>
+    </Col>
   );
 }
 
