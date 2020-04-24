@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Form } from "react-bootstrap";
+import { Col, Row, Form, Button } from "react-bootstrap";
 import "./LeftNav.css";
 
 function LeftNav() {
@@ -12,6 +12,13 @@ function LeftNav() {
     position: "sticky",
     margin: "0px",
     marginRight: "20px",
+  };
+
+  let style = {
+    backgroundColor: "#461767",
+    color: "#675682",
+    border: "0px",
+    borderRadius: "10px",
   };
 
   return (
@@ -75,6 +82,9 @@ function LeftNav() {
           </div>
         ))}
         <br />
+        <Button className="apply-btn" style={style}>
+          Apply
+        </Button>
       </Form>
     </Col>
   );

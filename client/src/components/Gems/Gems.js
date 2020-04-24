@@ -13,7 +13,10 @@ function Gems(props) {
               <img
                 className="picture"
                 alt="thumbnail, where art thou?"
-                src=""
+                src={
+                  result.image?.thumbnail.contentUrl ||
+                  "https://i.ibb.co/Zmqyyr1/no-image-icon.png"
+                }
                 height="150"
                 width="150"
               />
