@@ -12,33 +12,33 @@ const userSeed = [
   {
     username: "default",
     password: "noUser",
-    types: ["all"],
-    topics: ["all"]
+    queue: ["all"],
+    filter: ["all"]
   },
   {
     username: "James",
     password: "james",
-    types: [],
-    topics: []
+    queue: [],
+    filter: []
   }, {
     username: "Alyssa",
     password: "alyssa",
-    types: [],
-    topics: []
+    queue: [],
+    filter: []
   }, {
     username: "Jordan",
     password: "jordan",
-    types: [],
-    topics: []
+    queue: [],
+    filter: []
   }, {
     username: "Max",
     password: "max",
-    types: [],
-    topics: []
+    queue: [],
+    filter: []
   }
 ];
 
-const savedMajjSeed = [
+const savedItemSeed = [
   {
     title: "",
     url: ""
@@ -65,9 +65,9 @@ db.User
     process.exit(1);
   });
 
-db.savedMajj
+db.savedItem
   .remove({})
-  .then(() => db.savedMajj.collection.insertMany(savedMajjSeed))
+  .then(() => db.savedItem.collection.insertMany(savedItemSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

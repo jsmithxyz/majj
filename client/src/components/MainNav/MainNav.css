@@ -1,5 +1,5 @@
 .majj {
-  background-color: #075c56;
+  background-color: #056766;
   font-family: "luckiest guy", sans-serif;
   box-shadow: 4px 4px 4px 4px #00000080;
 }
@@ -7,33 +7,15 @@
 .majj-text {
   color: white;
   letter-spacing: 3px;
-  margin-top: 20px;
+  padding-top: 20px;
   font-size: 70px;
   text-shadow: 1px 1px 2px black, 0 0 25px goldenrod, 0 0 25px #dd9932;
-}
-
-.yellowgem {
-  perspective: 800px;
 }
 
 .slogan-mainnav {
   font-size: 20px;
   letter-spacing: 2px;
   font-family: "Special Elite", cursive;
-}
-.nav-btns {
-  box-shadow: 1px 2px 4px #00000080;
-  margin: 30px 10px;
-}
-
-.nav-btns.next {
-  padding-right: 50px !important;
-  padding-left: 50px !important;
-}
-
-.nav-btns:hover {
-  background-color: #f0b429 !important;
-  color: #fff3c4 !important;
 }
 
 .rotate {

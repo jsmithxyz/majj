@@ -2,4 +2,6 @@ body,
 html {
   font-family: "Special Elite", cursive;
   color: white;
+  background-image: url("./img/gembackground.jpg");
+  background-size: 350px;
 }
