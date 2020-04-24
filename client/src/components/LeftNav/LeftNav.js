@@ -7,6 +7,7 @@ function LeftNav() {
     zIndex: "1",
     backgroundColor: "#034169",
     overflow: "hidden",
+    height: "100vh",
     paddingTop: "10px",
     boxShadow: "4px 4px 4px 4px #00000080",
     position: "sticky",
