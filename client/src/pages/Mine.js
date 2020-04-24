@@ -8,11 +8,11 @@ import Gems from "../components/Gems/Gems";
 
 function Mine() {
   const [queue, setQueue] = useState(sampleQueue);
-  const [topics, setTopics] = useState(["jeff lemire"]);
+  const [topics, setTopics] = useState(["sports"]);
 
-  // useEffect(() => {
-  //   loadQueue();
-  // }, []);
+  useEffect(() => {
+    loadQueue();
+  }, []);
 
   function loadQueue() {
     //calls api with topics, setsQueue to res.data.value
