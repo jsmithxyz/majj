@@ -1,22 +1,21 @@
 import React from "react";
-import { Container, Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, Form } from "react-bootstrap";
 import "./LeftNav.css";
 
 function LeftNav() {
-  /* This defines the actual bar going down the screen */
   let StyledSideNav = {
-    position: "fixed",
-    height: "100%",
-    width: "350px",
     zIndex: "1",
     backgroundColor: "#034169",
-    overflowX: "hidden",
+    overflow: "hidden",
     paddingTop: "10px",
     boxShadow: "4px 4px 4px 4px #00000080",
+    position: "sticky",
+    margin: "0px",
+    marginRight: "20px",
   };
 
   return (
-    <Container style={StyledSideNav}>
+    <Col xs={12} md={4} lg={3} style={StyledSideNav}>
       <div className="create-heading">choose your topics below:</div>
       <Form>
         {["radio"].map((type) => (
@@ -77,7 +76,7 @@ function LeftNav() {
         ))}
         <br />
       </Form>
-    </Container>
+    </Col>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
+import LeftNav from "../components/LeftNav/LeftNav";
 import sampleQueue from "../utils/sample-queue";
 import Gems from "../components/Gems/Gems";
 // import { Link } from "react-router-dom"; //TBD do we need?
@@ -36,12 +37,20 @@ function Mine() {
   //   // goes to profile page? not sure if it belongs in this page
   // }
 
+  let flexbox = {
+    display: "flex",
+    flexDirection: "row",
+  };
+
   return (
     <div>
       <MainNav />
-      {Object.keys(queue).map((key) => (
-        <Gems key={key} details={queue[key]} />
-      ))}
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(queue).map((key) => (
+          <Gems key={key} details={queue[key]} />
+        ))}
+      </div>
     </div>
   );
 }

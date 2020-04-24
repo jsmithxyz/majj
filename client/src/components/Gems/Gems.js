@@ -10,7 +10,7 @@ function Gems(props) {
       <div className='section '>
         <Row className='mosaic '>
           {props.details.map((result) => (
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={12} md={5} lg={4}>
               <Card className='card' style={{ width: "18rem" }}>
                 <img
                   className='picture'
@@ -30,23 +30,22 @@ function Gems(props) {
                     <Moment fromNow>{result.datePublished}</Moment>
                   </Card.Text>
 
-                  <Card.Text className='icons'>
-                    <button>
-                      <i class='far fa-gem'></i>
-                    </button>
-                    <button>
-                      <i class='far fa-eye'></i>
-                    </button>
-                    <button>
-                      <i class='far fa-trash-alt'></i>
-                    </button>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
+                <Card.Text className="icons">
+                  <button>
+                    <i class="far fa-gem"></i>
+                  </button>
+                  <button>
+                    <i class="far fa-eye"></i>
+                  </button>
+                  <button>
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </Fragment>
   );
 }
