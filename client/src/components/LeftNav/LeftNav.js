@@ -49,7 +49,7 @@ function LeftNav() {
     <Col xs={3} md={4} lg={3} style={StyledSideNav}>
       <div className="create-heading">choose your topics below:</div>
       <Form>
-        {["radio"].map((type) => (
+        {["checkbox"].map((type) => (
           <div key={`default-${type}`} className="mb-3 choices">
             <Row className="rad-row">
               <Col md={4} className="choices-col">
