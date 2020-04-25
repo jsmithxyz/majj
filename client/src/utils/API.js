@@ -5,8 +5,8 @@ export default {
   //thinking of this as createQueue() to match the action type
   getQueue: function (filter) {
     //for now, just hardcoded for it to return 50 results
-    console.log(`filter:`)
-    console.log(filter)
+    console.log(`filter:`);
+    console.log(filter);
     if (filter) {
       Object.keys(filter[0]).map((key) => {
         // console.log(key);
@@ -24,10 +24,10 @@ export default {
         return axios(config).then((res) => {
           return res;
         });
-      })
+      });
     } else {
-      let topics = "weed"
-      let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${topics}&count=2&sortby=dat`;
+      let topics = "animals";
+      let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${topics}&count=3&sortby=dat`;
 
       let config = {
         method: "get",

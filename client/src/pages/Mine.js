@@ -1,5 +1,10 @@
-import React, { useState, useEffect, Component, componentDidUpdate } from "react";
-import { useStoreContext } from "../utils/GlobalState"
+import React, {
+  useState,
+  useEffect,
+  Component,
+  componentDidUpdate,
+} from "react";
+import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
@@ -17,8 +22,6 @@ function Mine() {
   useEffect(() => {
     loadQueue();
   }, [filter]);
-
-
 
   function loadQueue() {
     //calls api with topics, setsQueue to res.data.value
