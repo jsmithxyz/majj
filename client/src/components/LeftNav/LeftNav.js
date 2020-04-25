@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import { Container, Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, Form, Button } from "react-bootstrap";
 import "./LeftNav.css";
-import { useStoreContext } from "../../utils/GlobalState"
-import { NEW_FILTER } from "../../utils/actions"
+import { useStoreContext } from "../../utils/GlobalState";
+import { NEW_FILTER } from "../../utils/actions";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const [filterObject, setFilterObject] = useState({})
+  const [filterObject, setFilterObject] = useState({});
 
   const handleRadioChange = (event) => {
     const { name, value } = event.target;
     event.preventDefault();
-    setFilterObject({ ...filterObject, [name]: value })
-  }
+    setFilterObject({ ...filterObject, [name]: value });
+  };
 
   const handleApplyFilter = (event) => {
     event.preventDefault();
-    dispatch({ 
+    dispatch({
       type: NEW_FILTER,
-      filter: filterObject
+      filter: filterObject,
     });
 
     let { filter } = state;
     // console.log(filter)
-  }
+  };
 
   /* This defines the actual bar going down the screen */
   let StyledSideNav = {
@@ -46,19 +46,19 @@ function LeftNav() {
   };
 
   return (
-    <Col xs={12} md={4} lg={3} style={StyledSideNav}>
+    <Col xs={3} md={4} lg={3} style={StyledSideNav}>
       <div className="create-heading">choose your topics below:</div>
       <Form>
-        {["radio"].map((type) => (
+        {["checkbox"].map((type) => (
           <div key={`default-${type}`} className="mb-3 choices">
             <Row className="rad-row">
               <Col md={4} className="choices-col">
-                <Form.Check 
-                label="Sports"
-                name="Sports"  
-                type={type} 
-                id={`default-${type}`} 
-                onChange={handleRadioChange}
+                <Form.Check
+                  label="Sports"
+                  name="Sports"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
                 />
               </Col>
               <Col md={4} className="choices-col">
@@ -73,12 +73,12 @@ function LeftNav() {
             </Row>
             <Row className="rad-row">
               <Col md={4} className="choices-col">
-                <Form.Check 
-                label="Art" 
-                name="Art"
-                type={type} 
-                id={`default-${type}`} 
-                onChange={handleRadioChange}
+                <Form.Check
+                  label="Art"
+                  name="Art"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
                 />
               </Col>
               <Col md={4} className="choices-col">
@@ -122,23 +122,19 @@ function LeftNav() {
                 />
               </Col>
               <Col md={4} className="choices-col">
-                <Form.Check 
-                label="Music" 
-                name="Music"
-                type={type} 
-                id={`default-${type}`} 
-                onChange={handleRadioChange}
+                <Form.Check
+                  label="Music"
+                  name="Music"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
                 />
               </Col>
             </Row>
           </div>
         ))}
         <br />
-        <Button 
-        className="apply-btn" 
-        style={style}
-        onClick={handleApplyFilter}
-        >
+        <Button className="apply-btn" style={style} onClick={handleApplyFilter}>
           Apply
         </Button>
       </Form>
