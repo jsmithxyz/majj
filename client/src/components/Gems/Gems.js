@@ -50,7 +50,7 @@ function Gems() {
     // console.log(items[0])
     return (
       <Fragment>
-        <Row className='mosaic '>
+        <Row className='mosaic'>
           {items[0].map((result, index) => (
             <Col key={`col${index}`} cxs={12} md={5} lg={4}>
               <Card
@@ -107,7 +107,7 @@ function Gems() {
       <Fragment>
         <Row className='mosaic '>
           {tempItems.value.map((result, index) => (
-            <Col key={`col${index}`} cxs={12} md={5} lg={4}>
+            <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
                 className='card'
                 key={`gem${index}`}
@@ -156,7 +156,6 @@ function Gems() {
       </Fragment>
     );
   }
-
 }
 
 export default Gems;

@@ -11,6 +11,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
+import UserSignIn from "../components/UserSignIn/UserSignIn";
 // import { Link } from "react-router-dom"; //TBD do we need?
 
 // queue = user's list of saved items (DB)

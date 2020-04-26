@@ -3,12 +3,14 @@
   margin-left: 5px;
 }
 
-.apply-btn {
+.apply-btn,
+.sign-out {
   box-shadow: 1px 2px 4px #00000080;
   margin: 20px 10px;
 }
 
-.apply-btn:hover {
+.apply-btn:hover,
+.sign-out:hover {
   background-color: #f0b429 !important;
   color: #fff3c4 !important;
 }

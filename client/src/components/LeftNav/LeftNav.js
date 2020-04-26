@@ -3,6 +3,7 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import "./LeftNav.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { NEW_FILTER } from "../../utils/actions";
+import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
@@ -54,6 +55,10 @@ function LeftNav() {
 
   return (
     <Col xs={3} md={4} lg={3} style={StyledSideNav}>
+      <UserSignIn />
+      <Button className="sign-out" style={style}>
+        <i class="fas fa-sign-out-alt fa-2x"></i>
+      </Button>
       <div className="create-heading">choose your topics below:</div>
       <Form>
         {["checkbox"].map((type) => (
