@@ -7,13 +7,20 @@ import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const [filterObject, setFilterObject] = useState({});
+  const [filterObject, setFilterObject] = useState({})
+  const { filter } = state;
+
+  // const [tempFilter, setTempFilter] = useState({ Animals: "on" })
+  // dispatch({ 
+  //   type: NEW_FILTER,
+  //   filter: tempFilter
+  // });
 
   const handleRadioChange = (event) => {
     const { name, value } = event.target;
-    event.preventDefault();
-    setFilterObject({ ...filterObject, [name]: value });
-  };
+    setFilterObject({ ...filterObject, [name]: value })
+  }
+
 
   const handleApplyFilter = (event) => {
     event.preventDefault();
@@ -22,7 +29,7 @@ function LeftNav() {
       filter: filterObject,
     });
 
-    let { filter } = state;
+    // let { filter } = state;
     // console.log(filter)
   };
 

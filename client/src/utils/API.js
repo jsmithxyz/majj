@@ -2,15 +2,11 @@ import axios from "axios";
 import React from "react";
 
 export default {
-  //thinking of this as createQueue() to match the action type
-  getQueue: function (filter) {
-    //for now, just hardcoded for it to return 50 results
-    console.log(`filter:`);
-    console.log(filter);
+  //thinking of this as createItems() to match the action type
+  getItems: async function (filter) {
     if (filter) {
-      Object.keys(filter[0]).map((key) => {
-        // console.log(key);
-        let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=2&sortby=dat`;
+      let resArr = await Object.keys(filter[0]).map( async (key) => {
+        let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
 
         let config = {
           method: "get",
@@ -19,15 +15,17 @@ export default {
             "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
           },
         };
-
-        //returns full response, so we can whittle it down as we like
-        return axios(config).then((res) => {
-          return res;
-        });
-      });
+        let axiosReturn = await axios(config);
+        return axiosReturn;  
+      })
+      console.log("if return of API.getItems() call : w/filter")
+      console.log(resArr[0])
+      return resArr;
     } else {
-      let topics = "animals";
-      let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${topics}&count=3&sortby=dat`;
+      let resArr = []
+      let topics = "kitten"
+      let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${topics}&count=9&sortby=dat`;
+
 
       let config = {
         method: "get",
@@ -37,10 +35,11 @@ export default {
         },
       };
       return axios(config).then((res) => {
-        return res;
+        resArr.push(res)
+        console.log("else return of API.getItems() call : hardcoded")
+        console.log(resArr)
+        return resArr;
       });
     }
-
-    //returns full response, so we can whittle it down as we like
-  },
-};
+  }
+}
