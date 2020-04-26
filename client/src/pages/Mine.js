@@ -52,7 +52,7 @@ function Mine() {
       items: items
     });
   }
-
+}
 
   // knuth shuffle
   function shuffle(array) {
@@ -94,7 +94,33 @@ function Mine() {
       </div>
     );
   }
+}
 
+//would like to dry this up
+if (items) {
+  return (
+    <div>
+      <MainNav />
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(items).map((key) => (
+          <Gems key={key} details={items[key]} />
+        ))}
+      </div>
+    </div>
+  );
+} else {
+  return (
+    <div>
+      <MainNav />
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(tempItems).map((key) => (
+          <Gems key={key} details={tempItems[key]} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 
