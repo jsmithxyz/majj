@@ -44,12 +44,14 @@ function Gems() {
   };
 
   useEffect(() => {
-    console.log(items);
+    // console.log("useEffect() on [items] in Gems")
+    // console.log(items);
   }, [items]);
 
 
   if (items) {
-    console.log(items[0])
+    // console.log("if(items) path of Gems return")
+    // console.log(items[0])
     return (
       <Fragment>
         <Row className='mosaic '>
@@ -103,7 +105,8 @@ function Gems() {
       </Fragment>
     );
   } else {
-    console.log(tempItems.value)
+    // console.log("else path of Gems return, logging tempItems.value")
+    // console.log(tempItems.value)
     return (
       <Fragment>
         <Row className='mosaic '>

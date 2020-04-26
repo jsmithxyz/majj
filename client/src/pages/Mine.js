@@ -41,7 +41,8 @@ function Mine() {
           items.push(newsObject)
         })
       });
-      console.log(items)
+      // console.log("if(filter) path of loadItems()")
+      // console.log(items)
       dispatch({
         type: NEW_ITEMS,
         items: items
@@ -55,7 +56,8 @@ function Mine() {
           items.push(newsObject)
         })
       });
-      console.log(items)
+      // console.log("else statement in loadItems(), so no filter")
+      // console.log(items)
       dispatch({
         type: NEW_ITEMS,
         items: items
