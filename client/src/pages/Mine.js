@@ -33,69 +33,67 @@ function Mine() {
   }, [filter]);
 
   async function loadItems() {
+    let arr = []
     if (filter) {
-      const arr = await API.getItems(filter)
-      const items = []
-      await arr.forEach(async element => {
-        var topic = await element;
-        topic.data.value.forEach(newsObject => {
-          items.push(newsObject)
-        })
-      });
-      // console.log("if(filter) path of loadItems()")
-      console.log(items)
-      dispatch({
-        type: NEW_ITEMS,
-        items: items
-      });
-      //i know this super WET, will condense once debugged
+      arr = await API.getItems(filter)
     } else {
-      const arr = await API.getItems()
-      const items = []
-      await arr.forEach(async element => {
-        var topic = await element;
-        topic.data.value.forEach(newsObject => {
-          items.push(newsObject)
-        })
-      });
-      // console.log("else statement in loadItems(), so no filter")
-      // console.log(items)
-      dispatch({
-        type: NEW_ITEMS,
-        items: items
-      });
+      arr = await API.getItems();
     }
-  }
-
-  //would like to dry this up
-  if (items) {
-    return (
-      <div>
-        <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
-          <LeftNav />
-          {Object.keys(items).map((key) => (
-            <Gems key={key} details={items[key]} />
-          ))}
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
-          <LeftNav />
-          {Object.keys(tempItems).map((key) => (
-            <Gems key={key} details={tempItems[key]} />
-          ))}
-        </div>
-      </div>
-    );
-
+    const items = []
+    arr.map(async element => {
+      var topic = element;
+      topic.data.value.forEach(newsObject => {
+        items.push(newsObject)
+      })
+    });
+    shuffle(items);
+    dispatch({
+      type: NEW_ITEMS,
+      items: items
+    });
   }
 }
 
+// knuth shuffle
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+
+//would like to dry this up
+if (items) {
+  return (
+    <div>
+      <MainNav />
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(items).map((key) => (
+          <Gems key={key} details={items[key]} />
+        ))}
+      </div>
+    </div>
+  );
+} else {
+  return (
+    <div>
+      <MainNav />
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+        {Object.keys(tempItems).map((key) => (
+          <Gems key={key} details={tempItems[key]} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 
 
