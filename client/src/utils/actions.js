@@ -14,4 +14,7 @@ export const ADD_TO_QUEUE = "ADD_TO_QUEUE"; // add item to queue
 export const PASS = "PASS"; // get rid of item from presentation, 
 export const NEW_FILTER = "NEW_FILTER"; // changes filter settings, will re call
 
+// family of ITEM actions (bing API)
+export const NEW_ITEMS = "NEW_ITEMS"
+
 export const TBD = "TBD"
