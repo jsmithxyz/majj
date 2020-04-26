@@ -26,6 +26,7 @@ export default {
       let topics = "kitten"
       let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${topics}&count=9&sortby=dat`;
 
+
       let config = {
         method: "get",
         url: queryURL,

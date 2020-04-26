@@ -13,25 +13,22 @@ function Gems() {
 
   // const id = "dummyID"; // temporary to allow compile
 
-  const handleAddToQueue = event => {
+  const handleAddToQueue = (event) => {
     event.preventDefault();
     const { id } = event.target;
     dispatch({ 
       type: ADD_TO_QUEUE,
-      _id: id 
+      _id: id,
     });
-
   };
 
   const handlePass = event => {
     event.preventDefault();
     const { id } = event.target;
-    // console.log(id)
     dispatch({ 
       type: PASS,
-      _id: id
+      _id: id,
     });
-
   };
 
   //probably don't need
@@ -40,7 +37,6 @@ function Gems() {
     const { id } = event.target;
     // console.log("woof")
     // open in new tab
-
   };
 
   useEffect(() => {
@@ -160,6 +156,7 @@ function Gems() {
       </Fragment>
     );
   }
+
 }
 
 export default Gems;

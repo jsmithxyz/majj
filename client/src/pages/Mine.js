@@ -1,5 +1,10 @@
-import React, { useState, useEffect, Component, componentDidUpdate } from "react";
-import { useStoreContext } from "../utils/GlobalState"
+import React, {
+  useState,
+  useEffect,
+  Component,
+  componentDidUpdate,
+} from "react";
+import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { NEW_ITEMS } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
@@ -86,6 +91,7 @@ function Mine() {
         </div>
       </div>
     );
+
   }
 }
 

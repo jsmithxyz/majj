@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.448ea188.chunk.css",
+    "main.js": "/static/js/main.4dde9412.chunk.js",
+    "main.js.map": "/static/js/main.4dde9412.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.327cd89c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.327cd89c.js.map",
+    "static/css/2.69121389.chunk.css": "/static/css/2.69121389.chunk.css",
+    "static/js/2.c41292b5.chunk.js": "/static/js/2.c41292b5.chunk.js",
+    "static/js/2.c41292b5.chunk.js.map": "/static/js/2.c41292b5.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f9f401db1147f1e547d33e0713c389e5.js": "/precache-manifest.f9f401db1147f1e547d33e0713c389e5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.69121389.chunk.css.map": "/static/css/2.69121389.chunk.css.map",
+    "static/css/main.448ea188.chunk.css.map": "/static/css/main.448ea188.chunk.css.map",
+    "static/js/2.c41292b5.chunk.js.LICENSE.txt": "/static/js/2.c41292b5.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/gembackground.3104f138.jpg",
+    "static/media/yellowgem.png": "/static/media/yellowgem.e7c75d0c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.327cd89c.js",
+    "static/css/2.69121389.chunk.css",
+    "static/js/2.c41292b5.chunk.js",
+    "static/css/main.448ea188.chunk.css",
+    "static/js/main.4dde9412.chunk.js"
+  ]
+}
