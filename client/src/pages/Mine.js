@@ -15,7 +15,6 @@ function Mine() {
   const [state, dispatch] = useStoreContext();
   const { filter, queue, items } = state;
 
-  const [stateItems, setStateItems] = useState(items);
   const [tempItems, setTempItems] = useState(sampleItems);
 
   let flexbox = {
@@ -26,10 +25,6 @@ function Mine() {
   useEffect(() => {
     loadItems();
   }, [filter]);
-
-  // useEffect(() => {
-  // }, [items])
-
 
   async function loadItems() {
     if (filter) {
@@ -42,11 +37,12 @@ function Mine() {
         })
       });
       // console.log("if(filter) path of loadItems()")
-      // console.log(items)
+      console.log(items)
       dispatch({
         type: NEW_ITEMS,
         items: items
       });
+      //i know this super WET, will condense once debugged
     } else {
       const arr = await API.getItems()
       const items = []

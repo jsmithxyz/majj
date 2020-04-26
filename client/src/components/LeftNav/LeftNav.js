@@ -17,7 +17,7 @@ function LeftNav() {
 
   const handleRadioChange = (event) => {
     const { name, value } = event.target;
-    event.preventDefault();
+    // event.preventDefault();
     setFilterObject({ ...filterObject, [name]: value })
   }
 
