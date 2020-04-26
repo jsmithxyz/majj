@@ -54,19 +54,47 @@ function Mine() {
   }
 }
 
-// knuth shuffle
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+  // knuth shuffle
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
-  return array;
-}
 
+
+  //would like to dry this up
+  if (items) {
+    return (
+      <div>
+        <MainNav />
+        <div className="flexbox-containter" style={flexbox}>
+          <LeftNav />
+          {Object.keys(items).map((key) => (
+            <Gems key={key} details={items[key]} />
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <MainNav />
+        <div className="flexbox-containter" style={flexbox}>
+          <LeftNav />
+          {Object.keys(tempItems).map((key) => (
+            <Gems key={key} details={tempItems[key]} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
 
 //would like to dry this up
 if (items) {
