@@ -49,7 +49,7 @@ function Gems(props) {
 
   return (
     <Fragment>
-      <Row className="mosaic ">
+      <Row className="mosaic">
         {props.details.map((result, index) => (
           <Col key={`col${index}`} xs={12} md={5} lg={4}>
             <Card
