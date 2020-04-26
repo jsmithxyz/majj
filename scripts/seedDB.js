@@ -3,76 +3,74 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/reactreadinglist"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj");
 
 const userSeed = [
   {
     username: "default",
     password: "noUser",
     queue: ["all"],
-    filter: ["all"]
+    filter: ["all"],
   },
   {
     username: "James",
     password: "james",
     queue: [],
-    filter: []
-  }, {
+    filter: [],
+  },
+  {
     username: "Alyssa",
     password: "alyssa",
     queue: [],
-    filter: []
-  }, {
+    filter: [],
+  },
+  {
     username: "Jordan",
     password: "jordan",
     queue: [],
-    filter: []
-  }, {
+    filter: [],
+  },
+  {
     username: "Max",
     password: "max",
     queue: [],
-    filter: []
-  }
+    filter: [],
+  },
 ];
 
 const savedItemSeed = [
   {
     title: "",
-    url: ""
+    url: "",
   },
   {
     title: "",
-    url: ""
+    url: "",
   },
   {
     title: "",
-    url: ""
+    url: "",
   },
 ];
 
-db.User
-  .remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
+db.User.collection
+  .insertMany(userSeed)
+  .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
     process.exit(1);
   });
 
-db.savedItem
-  .remove({})
-  .then(() => db.savedItem.collection.insertMany(savedItemSeed))
-  .then(data => {
+db.Item.collection
+  .insertMany(savedItemSeed)
+  .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
     process.exit(1);
   });
