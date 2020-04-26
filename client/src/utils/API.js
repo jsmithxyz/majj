@@ -5,7 +5,7 @@ export default {
   //thinking of this as createItems() to match the action type
   getItems: async function (filter) {
     if (filter) {
-      let resArr = await Object.keys(filter[0]).map( async (key) => {
+      let resArr = await Promise.all(Object.keys(filter[0]).map(async (key) => {
         let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
 
         let config = {
@@ -16,10 +16,9 @@ export default {
           },
         };
         let axiosReturn = await axios(config);
-        return axiosReturn;  
+        return axiosReturn;
       })
-      console.log("if return of API.getItems() call : w/filter")
-      console.log(resArr[0])
+      )
       return resArr;
     } else {
       let resArr = []
@@ -35,8 +34,6 @@ export default {
       };
       return axios(config).then((res) => {
         resArr.push(res)
-        console.log("else return of API.getItems() call : hardcoded")
-        console.log(resArr)
         return resArr;
       });
     }
