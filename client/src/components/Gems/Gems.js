@@ -13,25 +13,22 @@ function Gems() {
 
   // const id = "dummyID"; // temporary to allow compile
 
-  const handleAddToQueue = event => {
+  const handleAddToQueue = (event) => {
     event.preventDefault();
     const { id } = event.target;
     dispatch({ 
       type: ADD_TO_QUEUE,
-      _id: id 
+      _id: id,
     });
-
   };
 
   const handlePass = event => {
     event.preventDefault();
     const { id } = event.target;
-    // console.log(id)
     dispatch({ 
       type: PASS,
-      _id: id
+      _id: id,
     });
-
   };
 
   //probably don't need
@@ -40,7 +37,6 @@ function Gems() {
     const { id } = event.target;
     // console.log("woof")
     // open in new tab
-
   };
 
   useEffect(() => {
@@ -54,7 +50,7 @@ function Gems() {
     // console.log(items[0])
     return (
       <Fragment>
-        <Row className='mosaic '>
+        <Row className='mosaic'>
           {items[0].map((result, index) => (
             <Col key={`col${index}`} cxs={12} md={5} lg={4}>
               <Card
@@ -111,7 +107,7 @@ function Gems() {
       <Fragment>
         <Row className='mosaic '>
           {tempItems.value.map((result, index) => (
-            <Col key={`col${index}`} cxs={12} md={5} lg={4}>
+            <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
                 className='card'
                 key={`gem${index}`}

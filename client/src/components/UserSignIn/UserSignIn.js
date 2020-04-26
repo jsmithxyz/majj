@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import "./UserSignIn.css";
 import { Modal, Button, Form } from "react-bootstrap";
-import mdyellowgem from "../../img/mdyellowgem.png";
 import yellowgem from "../../img/yellowgem.png";
 
 function UserSignIn() {
   const [show, setShow] = useState(false);
-  const [formObject, setFormObject] = useState({})
+  const [formObject, setFormObject] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value })
-  };
+    setFormObject({ ...formObject, [name]: value });
+  }
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
@@ -22,9 +21,8 @@ function UserSignIn() {
     event.preventDefault();
     if (formObject.username && formObject.password) {
       // some user login action here
-
     }
-  };
+  }
 
   let style = {
     backgroundColor: "#461767",
@@ -36,7 +34,7 @@ function UserSignIn() {
   return (
     <>
       <Button className="mod-btn" style={style} onClick={handleShow}>
-        <img src={mdyellowgem} height="30px" width="30px" alt="gem" />
+        <i class="fas fa-user fa-2x"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -59,7 +57,8 @@ function UserSignIn() {
                 onChange={handleInputChange}
                 name="username"
                 type="username"
-                placeholder="Enter Username" />
+                placeholder="Enter Username"
+              />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -67,24 +66,25 @@ function UserSignIn() {
                 onChange={handleInputChange}
                 name="password"
                 type="password"
-                placeholder="Password" />
+                placeholder="Password"
+              />
             </Form.Group>
           </Form>
           Never been here before? Click Sign Up to get started!
         </Modal.Body>
         <Modal.Footer>
-          <Button className="mod-btn" style={style}
-            onClick={
-              handleClose,
-              handleFormSubmit
-            }>
+          <Button
+            className="mod-btn"
+            style={style}
+            onClick={(handleClose, handleFormSubmit)}
+          >
             Login
           </Button>
-          <Button className="mod-btn" style={style}
-            onClick={
-              handleClose,
-              handleFormSubmit
-            }>
+          <Button
+            className="mod-btn"
+            style={style}
+            onClick={(handleClose, handleFormSubmit)}
+          >
             SignUp
           </Button>
         </Modal.Footer>

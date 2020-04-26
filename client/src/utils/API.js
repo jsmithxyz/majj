@@ -6,6 +6,7 @@ export default {
   getItems: async function (filter) {
     if (filter) {
       let resArr = await Promise.all(Object.keys(filter[0]).map(async (key) => {
+
         let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
 
         let config = {
