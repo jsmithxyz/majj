@@ -33,30 +33,31 @@ function Mine() {
   }, [filter]);
 
   async function loadItems() {
-    let arr = []
+    let arr = [];
     if (filter) {
-      arr = await API.getItems(filter)
+      arr = await API.getItems(filter);
     } else {
       arr = await API.getItems();
     }
-    const items = []
-    arr.map(async element => {
+    const items = [];
+    arr.map(async (element) => {
       var topic = element;
-      topic.data.value.forEach(newsObject => {
-        items.push(newsObject)
-      })
+      topic.data.value.forEach((newsObject) => {
+        items.push(newsObject);
+      });
     });
     shuffle(items);
     dispatch({
       type: NEW_ITEMS,
-      items: items
+      items: items,
     });
   }
 
-
   // knuth shuffle
   function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -67,13 +68,12 @@ function Mine() {
     return array;
   }
 
-
   //would like to dry this up
   if (items) {
     return (
       <div>
         <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
+        <div className='flexbox-containter' style={flexbox}>
           <LeftNav />
           {Object.keys(items).map((key) => (
             <Gems key={key} details={items[key]} />
@@ -85,7 +85,7 @@ function Mine() {
     return (
       <div>
         <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
+        <div className='flexbox-containter' style={flexbox}>
           <LeftNav />
           {Object.keys(tempItems).map((key) => (
             <Gems key={key} details={tempItems[key]} />
@@ -94,11 +94,7 @@ function Mine() {
       </div>
     );
   }
-
 }
-
-
-
 
 
 export default Mine;

@@ -10,17 +10,23 @@ const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
+  let { items } = state;
+  let { id } = action;
+  console.log(action);
+  console.log(id)
   switch (action.type) {
     case ADD_TO_QUEUE:
+      items[0].splice(id, 1)
       return {
         ...state,
         // queue: [action.item, ...state.queue],
-        // items: items.splice(action.id, 1),
+        items: items,
       };
     case PASS:
+      items[0].splice(id, 1)
       return {
         ...state,
-        // items: items.splice(action.id, 1),
+        items: items,
       };
     case NEW_FILTER:
       return {
