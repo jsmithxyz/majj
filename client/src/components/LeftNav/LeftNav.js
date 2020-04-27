@@ -7,13 +7,13 @@ import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const [filterObject, setFilterObject] = useState({})
+  const [filterObject, setFilterObject] = useState({});
   const { filter } = state;
 
   const handleRadioChange = (event) => {
     const { name, value } = event.target;
-    setFilterObject({ ...filterObject, [name]: value })
-  }
+    setFilterObject({ ...filterObject, [name]: value });
+  };
 
   const handleApplyFilter = (event) => {
     event.preventDefault();
@@ -31,7 +31,7 @@ function LeftNav() {
     height: "100vh",
     paddingTop: "10px",
     boxShadow: "4px 4px 4px 4px #00000080",
-    position: "sticky",
+    position: "fixed",
     margin: "0px",
     marginRight: "20px",
   };
@@ -44,7 +44,7 @@ function LeftNav() {
   };
 
   return (
-    <Col xs={3} md={4} lg={3} style={StyledSideNav}>
+    <Col xs={4} md={4} lg={3} style={StyledSideNav}>
       <UserSignIn />
       <Button className="sign-out" style={style}>
         <i class="fas fa-sign-out-alt fa-2x"></i>

@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
-import { useStoreContext } from "../../utils/GlobalState"
+import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_QUEUE, PASS, NEW_ITEMS } from "../../utils/actions";
 import { Row, Col, Card } from "react-bootstrap";
 import "./Gems.css";
@@ -20,7 +20,7 @@ function Gems() {
     });
   };
 
-  const handlePass = event => {
+  const handlePass = (event) => {
     // event.preventDefault();
     const { id } = event.target;
     dispatch({
@@ -30,59 +30,61 @@ function Gems() {
   };
 
   //probably don't need
-  const handleOpen = event => {
+  const handleOpen = (event) => {
     event.preventDefault();
     const { id } = event.target;
     // open in new tab
   };
 
-
   if (items) {
     return (
       <Fragment>
-        <Row className='mosaic'>
+        <Row className="mosaic">
           {items[0].map((result, index) => (
-            <Col key={`col${index}`} cxs={12} md={5} lg={4}>
+            <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
-                className='card'
+                className="card"
                 key={`gem${index}`}
-                style={{ width: "18rem" }}
+                style={{ width: "auto" }}
               >
                 <img
-                  className='picture'
-                  alt='thumbnail, where art thou?'
+                  className="picture"
+                  alt="thumbnail, where art thou?"
                   src={
                     result.image?.thumbnail.contentUrl ||
                     "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
                   }
-                  height='150'
-                  width='150'
+                  height="150"
+                  width="150"
                 />
                 <Card.Body>
-                  <Card.Title className='title'>
+                  <Card.Title className="title">
                     <a href={result.url}>{result.name}</a>
                   </Card.Title>
-                  <Card.Text className='name'>
+                  <Card.Text className="name">
                     {result.provider[0]["name"]}{" "}
                   </Card.Text>
-                  <Card.Text className='date'>
+                  <Card.Text className="date">
                     <Moment fromNow>{result.datePublished}</Moment>
                   </Card.Text>
-                  <Card.Text className='icons'>
+                  <Card.Text className="icons">
                     <button>
-                      <i className='far fa-gem'
+                      <i
+                        className="far fa-gem"
                         id={index}
-                        onClick={handleAddToQueue}></i>
+                        onClick={handleAddToQueue}
+                      ></i>
                     </button>
                     <button>
                       <i
-                        className='far fa-eye'
+                        className="far fa-eye"
                         id={index}
-                        onClick={handleOpen}></i>
+                        onClick={handleOpen}
+                      ></i>
                     </button>
                     <button>
                       <i
-                        className='far fa-trash-alt'
+                        className="far fa-trash-alt"
                         id={index}
                         onClick={handlePass}
                       ></i>
@@ -98,52 +100,52 @@ function Gems() {
   } else {
     return (
       <Fragment>
-        <Row className='mosaic '>
+        <Row className="mosaic ">
           {tempItems.value.map((result, index) => (
             <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
-                className='card'
+                className="card"
                 key={`gem${index}`}
                 style={{ width: "18rem" }}
               >
                 <img
-                  className='picture'
-                  alt='thumbnail, where art thou?'
+                  className="picture"
+                  alt="thumbnail, where art thou?"
                   src={
                     result.image?.thumbnail.contentUrl ||
                     "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
                   }
-                  height='150'
-                  width='150'
+                  height="150"
+                  width="150"
                 />
                 <Card.Body>
-                  <Card.Title className='title'>
+                  <Card.Title className="title">
                     <a href={result.url}>{result.name}</a>
                   </Card.Title>
-                  <Card.Text className='name'>
+                  <Card.Text className="name">
                     {result.provider[0]["name"]}{" "}
                   </Card.Text>
-                  <Card.Text className='date'>
+                  <Card.Text className="date">
                     <Moment fromNow>{result.datePublished}</Moment>
                   </Card.Text>
-                  <Card.Text className='icons'>
+                  <Card.Text className="icons">
                     <button>
                       <i
-                        className='far fa-gem'
+                        className="far fa-gem"
                         id={index}
-                        onClick={handleAddToQueue}>
-                      </i>
+                        onClick={handleAddToQueue}
+                      ></i>
                     </button>
                     <button>
                       <i
-                        className='far fa-eye'
+                        className="far fa-eye"
                         id={index}
-                        onClick={handleOpen}>
-                      </i>
+                        onClick={handleOpen}
+                      ></i>
                     </button>
                     <button>
                       <i
-                        className='far fa-trash-alt'
+                        className="far fa-trash-alt"
                         id={index}
                         onClick={handlePass}
                       ></i>
