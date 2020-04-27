@@ -1,8 +1,6 @@
 import React, {
   useState,
   useEffect,
-  Component,
-  componentDidUpdate,
 } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
@@ -12,7 +10,6 @@ import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
 import UserSignIn from "../components/UserSignIn/UserSignIn";
-// import { Link } from "react-router-dom"; //TBD do we need?
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -52,7 +49,6 @@ function Mine() {
       items: items,
     });
   }
-
 
   // knuth shuffle
   function shuffle(array) {

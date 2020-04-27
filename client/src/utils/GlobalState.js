@@ -10,10 +10,12 @@ const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
+  
   let { items } = state;
   let { id } = action;
   console.log(action);
   console.log(id)
+
   switch (action.type) {
     case ADD_TO_QUEUE:
       items[0].splice(id, 1)

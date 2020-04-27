@@ -11,8 +11,6 @@ function Gems() {
   const { items } = state;
   const [tempItems, setTempItems] = useState(sampleItems);
 
-  // const id = "dummyID"; // temporary to allow compile
-
   const handleAddToQueue = (event) => {
     // event.preventDefault();
     const { id } = event.target;
@@ -37,9 +35,6 @@ function Gems() {
     const { id } = event.target;
     // open in new tab
   };
-
-  // useEffect(() => {
-  // }, [items]);
 
 
   if (items) {
