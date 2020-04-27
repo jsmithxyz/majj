@@ -10,17 +10,10 @@ function LeftNav() {
   const [filterObject, setFilterObject] = useState({})
   const { filter } = state;
 
-  // const [tempFilter, setTempFilter] = useState({ Animals: "on" })
-  // dispatch({ 
-  //   type: NEW_FILTER,
-  //   filter: tempFilter
-  // });
-
   const handleRadioChange = (event) => {
     const { name, value } = event.target;
     setFilterObject({ ...filterObject, [name]: value })
   }
-
 
   const handleApplyFilter = (event) => {
     event.preventDefault();
@@ -28,9 +21,6 @@ function LeftNav() {
       type: NEW_FILTER,
       filter: filterObject,
     });
-
-    // let { filter } = state;
-    // console.log(filter)
   };
 
   /* This defines the actual bar going down the screen */

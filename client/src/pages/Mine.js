@@ -1,8 +1,6 @@
 import React, {
   useState,
   useEffect,
-  Component,
-  componentDidUpdate,
 } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
@@ -12,7 +10,6 @@ import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
 import UserSignIn from "../components/UserSignIn/UserSignIn";
-// import { Link } from "react-router-dom"; //TBD do we need?
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -96,31 +93,5 @@ function Mine() {
   }
 }
 
-// //would like to dry this up
-// if (items) {
-//   return (
-//     <div>
-//       <MainNav />
-//       <div className="flexbox-containter" style={flexbox}>
-//         <LeftNav />
-//         {Object.keys(items).map((key) => (
-//           <Gems key={key} details={items[key]} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// } else {
-//   return (
-//     <div>
-//       <MainNav />
-//       <div className="flexbox-containter" style={flexbox}>
-//         <LeftNav />
-//         {Object.keys(tempItems).map((key) => (
-//           <Gems key={key} details={tempItems[key]} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
 
 export default Mine;

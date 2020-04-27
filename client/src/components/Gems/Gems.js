@@ -1,33 +1,31 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState"
-import { ADD_TO_QUEUE, PASS } from "../../utils/actions";
+import { ADD_TO_QUEUE, PASS, NEW_ITEMS } from "../../utils/actions";
 import { Row, Col, Card } from "react-bootstrap";
 import "./Gems.css";
 import sampleItems from "../../utils/sample-items";
 import Moment from "react-moment";
 
-function Gems() {  
+function Gems() {
   const [state, dispatch] = useStoreContext();
   const { items } = state;
   const [tempItems, setTempItems] = useState(sampleItems);
 
-  // const id = "dummyID"; // temporary to allow compile
-
   const handleAddToQueue = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const { id } = event.target;
-    dispatch({ 
+    dispatch({
       type: ADD_TO_QUEUE,
-      _id: id,
+      id: id,
     });
   };
 
   const handlePass = event => {
-    event.preventDefault();
+    // event.preventDefault();
     const { id } = event.target;
-    dispatch({ 
+    dispatch({
       type: PASS,
-      _id: id,
+      id: id,
     });
   };
 
@@ -35,19 +33,11 @@ function Gems() {
   const handleOpen = event => {
     event.preventDefault();
     const { id } = event.target;
-    // console.log("woof")
     // open in new tab
   };
 
-  useEffect(() => {
-    // console.log("useEffect() on [items] in Gems")
-    // console.log(items);
-  }, [items]);
-
 
   if (items) {
-    // console.log("if(items) path of Gems return")
-    // console.log(items[0])
     return (
       <Fragment>
         <Row className='mosaic'>
@@ -80,10 +70,15 @@ function Gems() {
                   </Card.Text>
                   <Card.Text className='icons'>
                     <button>
-                      <i className='far fa-gem' onClick={handleAddToQueue}></i>
+                      <i className='far fa-gem'
+                        id={index}
+                        onClick={handleAddToQueue}></i>
                     </button>
                     <button>
-                      <i className='far fa-eye' onClick={handleOpen}></i>
+                      <i
+                        className='far fa-eye'
+                        id={index}
+                        onClick={handleOpen}></i>
                     </button>
                     <button>
                       <i
@@ -101,8 +96,6 @@ function Gems() {
       </Fragment>
     );
   } else {
-    // console.log("else path of Gems return, logging tempItems.value")
-    // console.log(tempItems.value)
     return (
       <Fragment>
         <Row className='mosaic '>
@@ -135,10 +128,18 @@ function Gems() {
                   </Card.Text>
                   <Card.Text className='icons'>
                     <button>
-                      <i className='far fa-gem' onClick={handleAddToQueue}></i>
+                      <i
+                        className='far fa-gem'
+                        id={index}
+                        onClick={handleAddToQueue}>
+                      </i>
                     </button>
                     <button>
-                      <i className='far fa-eye' onClick={handleOpen}></i>
+                      <i
+                        className='far fa-eye'
+                        id={index}
+                        onClick={handleOpen}>
+                      </i>
                     </button>
                     <button>
                       <i
