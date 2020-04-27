@@ -1,31 +1,26 @@
 import React, { createContext, useReducer, useContext } from "react";
-import {
-  ADD_TO_QUEUE,
-  PASS,
-  NEW_FILTER,
-  NEW_ITEMS
-} from "./actions";
+import { ADD_TO_QUEUE, PASS, NEW_FILTER, NEW_ITEMS } from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
-  
+  debugger;
   let { items } = state;
   let { id } = action;
   console.log(action);
-  console.log(id)
+  console.log(id);
 
   switch (action.type) {
     case ADD_TO_QUEUE:
-      items[0].splice(id, 1)
+      items[0].splice(id, 1);
       return {
         ...state,
         // queue: [action.item, ...state.queue],
         items: items,
       };
     case PASS:
-      items[0].splice(id, 1)
+      items[0].splice(id, 1);
       return {
         ...state,
         items: items,
@@ -33,12 +28,12 @@ const reducer = (state, action) => {
     case NEW_FILTER:
       return {
         ...state,
-        filter: [action.filter]
+        filter: [action.filter],
       };
     case NEW_ITEMS:
       return {
         ...state,
-        items: [action.items]
+        items: [action.items],
       };
 
     default:

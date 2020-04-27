@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { NEW_ITEMS } from "../utils/actions";
@@ -92,6 +89,5 @@ function Mine() {
     );
   }
 }
-
 
 export default Mine;

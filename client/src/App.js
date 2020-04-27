@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // import NoMatch from "./pages/NoMatch";
 import Mine from "./pages/Mine";
-import { StoreProvider } from "../src/utils/GlobalState"
+import { StoreProvider } from "../src/utils/GlobalState";
 
 class App extends React.Component {
   render() {
@@ -16,9 +16,6 @@ class App extends React.Component {
               <Route exact path='/' component={Mine} />
               {/* <Route path='*' component={NoMatch} /> */}
             </Switch>
-            {/* <CreateProfile /> */}
-            {/* <UserSignIn /> */}
-
           </div>
         </Router>
       </StoreProvider>

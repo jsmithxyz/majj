@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
-import { useStoreContext } from "../../utils/GlobalState"
+import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_QUEUE, PASS, NEW_ITEMS } from "../../utils/actions";
 import { Row, Col, Card } from "react-bootstrap";
 import "./Gems.css";
@@ -20,7 +20,7 @@ function Gems() {
     });
   };
 
-  const handlePass = event => {
+  const handlePass = (event) => {
     // event.preventDefault();
     const { id } = event.target;
     dispatch({
@@ -29,13 +29,11 @@ function Gems() {
     });
   };
 
-  //probably don't need
-  const handleOpen = event => {
+  const handleOpen = (event) => {
     event.preventDefault();
     const { id } = event.target;
-    // open in new tab
+    window.open(items[0][id].url, "_blank");
   };
-
 
   if (items) {
     return (
@@ -70,15 +68,18 @@ function Gems() {
                   </Card.Text>
                   <Card.Text className='icons'>
                     <button>
-                      <i className='far fa-gem'
+                      <i
+                        className='far fa-gem'
                         id={index}
-                        onClick={handleAddToQueue}></i>
+                        onClick={handleAddToQueue}
+                      ></i>
                     </button>
                     <button>
                       <i
                         className='far fa-eye'
                         id={index}
-                        onClick={handleOpen}></i>
+                        onClick={handleOpen}
+                      ></i>
                     </button>
                     <button>
                       <i
@@ -131,15 +132,15 @@ function Gems() {
                       <i
                         className='far fa-gem'
                         id={index}
-                        onClick={handleAddToQueue}>
-                      </i>
+                        onClick={handleAddToQueue}
+                      ></i>
                     </button>
                     <button>
                       <i
                         className='far fa-eye'
                         id={index}
-                        onClick={handleOpen}>
-                      </i>
+                        onClick={handleOpen}
+                      ></i>
                     </button>
                     <button>
                       <i
