@@ -27,11 +27,11 @@ function LeftNav() {
   let StyledSideNav = {
     zIndex: "1",
     backgroundColor: "#034169",
-    overflow: "hidden",
+    overflowX: "hidden",
     height: "100vh",
     paddingTop: "10px",
     boxShadow: "4px 4px 4px 4px #00000080",
-    position: "fixed",
+    position: "sticky",
     margin: "0px",
     marginRight: "20px",
   };
@@ -52,7 +52,7 @@ function LeftNav() {
       <div className="create-heading">choose your topics below:</div>
       <Form>
         {["checkbox"].map((type) => (
-          <div key={`default-${type}`} className="mb-3 choices">
+          <div key={`default-${type}`} className="choices">
             <Row className="rad-row">
               <Col md={4} className="choices-col">
                 <Form.Check
@@ -127,6 +127,86 @@ function LeftNav() {
                 <Form.Check
                   label="Music"
                   name="Music"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+            </Row>
+            <Row className="rad-row">
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Movies"
+                  name="Movies"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Entertainment"
+                  name="Entertainment"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+            </Row>
+            <Row className="rad-row">
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Literature"
+                  name="Literature"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Style"
+                  name="Style"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+            </Row>
+            <Row className="rad-row">
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Science"
+                  name="Science"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Travel"
+                  name="Travel"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+            </Row>
+            <Row className="rad-row">
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Food"
+                  name="Food"
+                  type={type}
+                  id={`default-${type}`}
+                  onChange={handleRadioChange}
+                />
+              </Col>
+              <Col md={4} className="choices-col">
+                <Form.Check
+                  label="Health"
+                  name="Health"
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
