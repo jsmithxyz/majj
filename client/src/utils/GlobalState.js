@@ -1,22 +1,36 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { ADD_TO_QUEUE, PASS, NEW_FILTER, NEW_ITEMS } from "./actions";
+import {
+  CREATE_QUEUE,
+  ADD_TO_QUEUE,
+  PASS,
+  NEW_FILTER,
+  NEW_ITEMS
+} from "./actions";
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+export const StoreContext = createContext();
+// const { Provider } = StoreContext;
+const initialState = {
+  // filter: {},
+  queue: [],
+  items: []
+};
 
 const reducer = (state, action) => {
-  debugger;
-  let { items } = state;
+  let { queue, items } = state;
   let { id } = action;
-  console.log(action);
-  console.log(id);
+
 
   switch (action.type) {
+    case CREATE_QUEUE:
+      return {
+        ...state,
+        queue: [action.queue]
+      };
     case ADD_TO_QUEUE:
       items[0].splice(id, 1);
       return {
         ...state,
-        // queue: [action.item, ...state.queue],
+        // queue: newQueue,
         items: items,
       };
     case PASS:
@@ -41,13 +55,11 @@ const reducer = (state, action) => {
   }
 };
 
-// i don't really understand the StoreProvider() method
-const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    // TBD what goes in here
-  });
 
-  return <Provider value={[state, dispatch]} {...props} />;
+const StoreProvider = ({ ...props }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const value = [ state, dispatch ];
+  return <StoreContext.Provider value={value} {...props} />;
 };
 
 const useStoreContext = () => {
