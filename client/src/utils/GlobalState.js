@@ -19,6 +19,7 @@ const reducer = (state, action) => {
   let { queue, items } = state;
   let { id } = action;
 
+
   switch (action.type) {
     case CREATE_QUEUE:
       return {
@@ -26,14 +27,14 @@ const reducer = (state, action) => {
         queue: [action.queue]
       };
     case ADD_TO_QUEUE:
-      items[0].splice(id, 1)
+      items[0].splice(id, 1);
       return {
         ...state,
         // queue: newQueue,
         items: items,
       };
     case PASS:
-      items[0].splice(id, 1)
+      items[0].splice(id, 1);
       return {
         ...state,
         items: items,
@@ -41,12 +42,12 @@ const reducer = (state, action) => {
     case NEW_FILTER:
       return {
         ...state,
-        filter: [action.filter]
+        filter: [action.filter],
       };
     case NEW_ITEMS:
       return {
         ...state,
-        items: [action.items]
+        items: [action.items],
       };
 
     default:
