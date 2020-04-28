@@ -1,6 +1,6 @@
 .mosaic.row {
   margin-top: 0px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   height: 100vh;
   overflow: auto;
 }
