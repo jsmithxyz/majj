@@ -1,6 +1,7 @@
 .majj {
   background-color: #056766;
-  font-family: "luckiest guy", sans-serif;
+  /* font-family: "luckiest guy", sans-serif; */
+  font-family: 'Gotu', sans-serif;
   box-shadow: 4px 4px 4px 4px #00000080;
   overflow: hidden;
 }
@@ -16,7 +17,8 @@
 .slogan-mainnav {
   font-size: 20px;
   letter-spacing: 2px;
-  font-family: "Special Elite", cursive;
+  /* font-family: "Special Elite", cursive; */
+  font-family: 'Gotu', sans-serif;
 }
 
 .rotate {
