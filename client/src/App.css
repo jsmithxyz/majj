@@ -1,6 +1,7 @@
 body,
 html {
-  font-family: "Special Elite", cursive;
+  /* font-family: "Special Elite", cursive; */
+  font-family: 'Gotu', sans-serif;
   color: white;
   background-image: url("./img/gembackground.jpg");
   background-size: 350px;
