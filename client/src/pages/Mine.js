@@ -4,7 +4,7 @@ import React, {
 } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { NEW_ITEMS } from "../utils/actions";
+import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
@@ -26,8 +26,17 @@ function Mine() {
   };
 
   useEffect(() => {
-    loadItems();
+      loadItems();
+    createQueue();
   }, [filter]);
+
+  function createQueue() {
+    const newQueue = [];
+    dispatch({
+      type: CREATE_QUEUE,
+      queue: newQueue,
+    });
+  }
 
   async function loadItems() {
     let arr = [];

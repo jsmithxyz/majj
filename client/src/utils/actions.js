@@ -6,7 +6,7 @@ export const LOG_OUT = "LOG_OUT";
 
 // family of QUEUE actions (item actions)
 export const LOADING = "LOADING"; // while item is switching
-export const LAUNCH_QUEUE = "CREATE_QUEUE"; // componentDidMount() called right away
+export const CREATE_QUEUE = "CREATE_QUEUE"; // componentDidMount() called right away
 export const NEXT = "NEXT"; // tells queue to pop(), sends action to re render next item
 
 // family of CARD actions
