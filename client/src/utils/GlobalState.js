@@ -18,10 +18,6 @@ const initialState = {
 const reducer = (state, action) => {
   let { queue, items } = state;
   let { id } = action;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6500d22afaaf5a7a4b16ec22d84b267c03b23fe4
 
   switch (action.type) {
     case CREATE_QUEUE:
