@@ -6,7 +6,6 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
-import UserSignIn from "../components/UserSignIn/UserSignIn";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -76,7 +75,7 @@ function Mine() {
     return (
       <div>
         <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
+        <div className="flexbox-containter" style={flexbox}>
           <LeftNav />
           {Object.keys(items).map((key) => (
             <Gems key={key} details={items[key]} />
@@ -88,7 +87,7 @@ function Mine() {
     return (
       <div>
         <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
+        <div className="flexbox-containter" style={flexbox}>
           <LeftNav />
           {Object.keys(tempItems).map((key) => (
             <Gems key={key} details={tempItems[key]} />
