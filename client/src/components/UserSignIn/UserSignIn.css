@@ -26,7 +26,8 @@
 
 .mod-heading {
   text-align: center;
-  font-family: luckiest guy;
+  /* font-family: luckiest guy; */
+  font-family: 'Gotu', sans-serif;
   color: white;
   letter-spacing: 3px;
   padding: 20px;
@@ -37,5 +38,6 @@
 .slogan {
   font-size: 15px;
   letter-spacing: 1px;
-  font-family: "Special Elite", cursive;
+  /* font-family: "Special Elite", cursive; */
+  font-family: 'Gotu', sans-serif;
 }

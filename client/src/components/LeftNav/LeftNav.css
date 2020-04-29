@@ -20,7 +20,8 @@
 }
 
 .create-heading {
-  font-family: luckiest guy;
+  /* font-family: luckiest guy; */
+  font-family: 'Gotu', sans-serif;
   color: white;
   letter-spacing: 0px;
   padding-top: 10px;
