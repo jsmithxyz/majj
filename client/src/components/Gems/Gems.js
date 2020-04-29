@@ -29,11 +29,10 @@ function Gems() {
     });
   };
 
-  //probably don't need
   const handleOpen = (event) => {
     event.preventDefault();
     const { id } = event.target;
-    // open in new tab
+    window.open(items[0][id].url, "_blank");
   };
 
   if (items) {
