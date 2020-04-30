@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 // Mongodb connection - will need to set MONGODB_URI into .env when time comes
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 // Send every request to the React app

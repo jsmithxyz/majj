@@ -1,8 +1,30 @@
 body,
 html {
-  /* font-family: "Special Elite", cursive; */
-  font-family: 'Gotu', sans-serif;
-  color: white;
-  background-image: url("./img/gembackground.jpg");
-  background-size: 350px;
+  font-family: "Gotu", sans-serif;
+  background-color: #e1e1e1;
+  /* #F7F7F7 */
+}
+
+.btn,
+button {
+  background-color: #a081d9 !important;
+  color: white !important;
+  border: 0px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px #00000080;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #54d1db !important;
+}
+
+a {
+  color: #653cad;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #54d1db;
 }
