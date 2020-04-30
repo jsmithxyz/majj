@@ -1,6 +1,5 @@
 .rad-row {
   margin-bottom: 10px;
-  margin-left: 5px;
 }
 
 .create-heading {
@@ -20,9 +19,9 @@
   padding-top: 30px;
   overflow-x: hidden;
   z-index: 1;
-  /* background-color: #e1e1e1; */
+  background-color: #e1e1e1;
   height: 100vh;
-  box-shadow: 4px 4px 4px 4px #00000080;
+  box-shadow: 6px 6px 6px #00000080;
   /* marginRight: "30px", */
 }
 

@@ -14,12 +14,15 @@
   font-size: 20px;
   text-align: center;
 }
+
 .card {
   color: black;
   height: 450px;
   box-shadow: 4px 4px 4px 4px #00000080;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
   border-radius: 3px;
   border-color: #27241d;
 }

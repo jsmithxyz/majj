@@ -1,8 +1,13 @@
 body,
 html {
   font-family: "Gotu", sans-serif;
-  background-color: #e1e1e1;
+  background-color: #f7f7f7;
   /* #F7F7F7 */
+  background: url("./img/geode.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .btn,
