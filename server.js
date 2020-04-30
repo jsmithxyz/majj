@@ -1,8 +1,11 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
-const mongoose = require("mongoose");
+const db = require("./config/keys").mongoURI;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -11,10 +14,17 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// temp mongoose connection for authentication test
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+  })
+  .then(() => console.log("mongodb connected"))
+  .catch((err) => console.log(err));
 // Mongodb connection - will need to set MONGODB_URI into .env when time comes
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj", {
-  useNewUrlParser: true,
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj", {
+//   useNewUrlParser: true,
+// });
 
 // Send every request to the React app
 // Define any API routes before this runs
