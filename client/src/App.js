@@ -13,7 +13,9 @@ class App extends React.Component {
         <Router>
           <div>
             <Switch>
-              <Route exact path="/" component={Mine} />
+              <Route exact path={["/", "/user"]}>
+                <Mine />
+              </Route>
               {/* <Route path='*' component={NoMatch} /> */}
             </Switch>
           </div>

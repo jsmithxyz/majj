@@ -1,5 +1,3 @@
-// goes in /scripts
-
 const mongoose = require("mongoose");
 const db = require("../models");
 
@@ -9,32 +7,32 @@ const userSeed = [
   {
     username: "default",
     password: "noUser",
-    queue: ["all"],
-    filter: ["all"],
+    queue: [],
+    filter: {},
   },
   {
     username: "James",
     password: "james",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
     username: "Alyssa",
     password: "alyssa",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
     username: "Jordan",
     password: "jordan",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
     username: "Max",
     password: "max",
     queue: [],
-    filter: [],
+    filter: {},
   },
 ];
 

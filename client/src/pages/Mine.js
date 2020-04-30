@@ -6,6 +6,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
+import { Link } from "react-router-dom";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -22,7 +23,7 @@ function Mine() {
   };
 
   useEffect(() => {
-      loadItems();
+    loadItems();
     createQueue();
   }, [filter]);
 
@@ -75,10 +76,10 @@ function Mine() {
     return (
       <div>
         <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
+        <div className='flexbox-containter' style={flexbox}>
           <LeftNav />
           {Object.keys(items).map((key) => (
-            <Gems key={key} details={items[key]} />
+            <Gems key={key} details={items[key]}></Gems>
           ))}
         </div>
       </div>
@@ -87,7 +88,7 @@ function Mine() {
     return (
       <div>
         <MainNav />
-        <div className="flexbox-containter" style={flexbox}>
+        <div className='flexbox-containter' style={flexbox}>
           <LeftNav />
           {Object.keys(tempItems).map((key) => (
             <Gems key={key} details={tempItems[key]} />
