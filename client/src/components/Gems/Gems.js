@@ -19,7 +19,6 @@ function Gems() {
   const [tempItems, setTempItems] = useState(sampleItems);
 
   const handleAddToQueue = (event) => {
-    // event.preventDefault();
     const { id } = event.target;
     dispatch({
       type: ADD_TO_QUEUE,
@@ -28,7 +27,6 @@ function Gems() {
   };
 
   const handlePass = (event) => {
-    // event.preventDefault();
     const { id } = event.target;
     dispatch({
       type: PASS,
