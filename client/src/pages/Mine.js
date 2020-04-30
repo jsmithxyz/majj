@@ -1,18 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  Component,
-  componentDidUpdate,
-} from "react";
+import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { NEW_ITEMS } from "../utils/actions";
+import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
-import UserSignIn from "../components/UserSignIn/UserSignIn";
-// import { Link } from "react-router-dom"; //TBD do we need?
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -29,42 +22,52 @@ function Mine() {
   };
 
   useEffect(() => {
-    loadItems();
+      loadItems();
+    createQueue();
   }, [filter]);
 
+  function createQueue() {
+    const newQueue = [];
+    dispatch({
+      type: CREATE_QUEUE,
+      queue: newQueue,
+    });
+  }
+
   async function loadItems() {
+    let arr = [];
     if (filter) {
-      const arr = await API.getItems(filter)
-      const items = []
-      await arr.forEach(async element => {
-        var topic = await element;
-        topic.data.value.forEach(newsObject => {
-          items.push(newsObject)
-        })
-      });
-      // console.log("if(filter) path of loadItems()")
-      console.log(items)
-      dispatch({
-        type: NEW_ITEMS,
-        items: items
-      });
-      //i know this super WET, will condense once debugged
+      arr = await API.getItems(filter);
     } else {
-      const arr = await API.getItems()
-      const items = []
-      await arr.forEach(async element => {
-        var topic = await element;
-        topic.data.value.forEach(newsObject => {
-          items.push(newsObject)
-        })
-      });
-      // console.log("else statement in loadItems(), so no filter")
-      // console.log(items)
-      dispatch({
-        type: NEW_ITEMS,
-        items: items
-      });
+      arr = await API.getItems();
     }
+    const items = [];
+    arr.map(async (element) => {
+      var topic = element;
+      topic.data.value.forEach((newsObject) => {
+        items.push(newsObject);
+      });
+    });
+    shuffle(items);
+    dispatch({
+      type: NEW_ITEMS,
+      items: items,
+    });
+  }
+
+  // knuth shuffle
+  function shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
   //would like to dry this up
@@ -92,13 +95,7 @@ function Mine() {
         </div>
       </div>
     );
-
   }
 }
-
-
-
-
-
 
 export default Mine;
