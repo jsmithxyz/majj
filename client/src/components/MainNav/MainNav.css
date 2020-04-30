@@ -1,24 +1,16 @@
 .majj {
-  background-color: #056766;
-  /* font-family: "luckiest guy", sans-serif; */
-  font-family: 'Gotu', sans-serif;
+  background-color: #7e7e7e;
   box-shadow: 4px 4px 4px 4px #00000080;
-  overflow: hidden;
 }
 
 .majj-text {
   color: white;
-  letter-spacing: 3px;
-  padding-top: 20px;
   font-size: 70px;
-  text-shadow: 1px 1px 2px black, 0 0 25px goldenrod, 0 0 25px #dd9932;
+  text-shadow: 1px 1px 17px white;
 }
 
 .slogan-mainnav {
   font-size: 20px;
-  letter-spacing: 2px;
-  /* font-family: "Special Elite", cursive; */
-  font-family: 'Gotu', sans-serif;
 }
 
 .rotate {

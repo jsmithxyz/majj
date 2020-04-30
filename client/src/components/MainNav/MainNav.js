@@ -1,6 +1,6 @@
 import React from "react";
 import "./MainNav.css";
-import yellowgem from "../../img/yellowgem.png";
+import purplegem from "../../img/purplegem.png";
 import { Navbar } from "react-bootstrap";
 
 function MainNav() {
@@ -12,13 +12,13 @@ function MainNav() {
       <div>
         <div className="majj-text">
           <img
-            src={yellowgem}
+            src={purplegem}
             height="80px"
             width="80px"
             alt="gem"
             className="rotate yellowgem"
           />
-          majj
+          MAJJ
           <div className="slogan-mainnav">mining for gems on the web</div>
         </div>
       </div>

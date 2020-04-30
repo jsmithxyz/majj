@@ -33,6 +33,7 @@ mongoose
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
 // Mongodb connection - will need to set MONGODB_URI into .env when time comes
+
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj", {
 //   useNewUrlParser: true,
 // });
