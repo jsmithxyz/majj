@@ -12,16 +12,3 @@
 .slogan-mainnav {
   font-size: 20px;
 }
-
-.rotate {
-  animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(0deg);
-  }
-}
