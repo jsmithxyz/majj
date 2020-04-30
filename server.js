@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,6 +15,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// passport middleware
+app.use(passport.initialize());
+
+// passport config
+require("./config/passport")(passport);
+
+// routes
+app.use("/api/users", users)
 
 // temp mongoose connection for authentication test
 mongoose
