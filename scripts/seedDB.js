@@ -13,26 +13,30 @@ const userSeed = [
     filter: ["all"],
   },
   {
-    username: "James",
-    password: "james",
+    name: "James",
+    email: "james@majj.com",
+    password: "jamespassword",
     queue: [],
     filter: [],
   },
   {
-    username: "Alyssa",
-    password: "alyssa",
+    name: "Alyssa",
+    email: "alyssa@majj.com",
+    password: "alyssapassword",
     queue: [],
     filter: [],
   },
   {
-    username: "Jordan",
-    password: "jordan",
+    name: "Jordan",
+    email: "Jordan@majj.com",
+    password: "jordanpassword",
     queue: [],
     filter: [],
   },
   {
-    username: "Max",
-    password: "max",
+    name: "Max",
+    email: "max@majj.com",
+    password: "maxpassword",
     queue: [],
     filter: [],
   },
@@ -64,13 +68,13 @@ db.User.collection
     process.exit(1);
   });
 
-db.Item.collection
-  .insertMany(savedItemSeed)
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Item.collection
+//   .insertMany(savedItemSeed)
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });
