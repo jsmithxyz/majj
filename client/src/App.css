@@ -32,4 +32,5 @@ a {
 a:hover {
   text-decoration: none;
   color: #54d1db;
+  font-weight: normal;
 }
