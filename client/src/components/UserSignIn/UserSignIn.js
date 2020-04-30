@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./UserSignIn.css";
+import { useStoreContext } from "../../utils/GlobalState"
 import { Modal, Button, Form } from "react-bootstrap";
 import yellowgem from "../../img/yellowgem.png";
+import { SIGN_IN, SIGN_OUT } from "../../utils/actions"
 
 function UserSignIn() {
+  const [state, dispatch] = useStoreContext();
   const [signUp, setSignUp] = useState("");
   const [show, setShow] = useState(false);
   const [formObject, setFormObject] = useState({});
@@ -25,8 +28,13 @@ function UserSignIn() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log(formObject)
     if (formObject.username && formObject.password) {
       // some user login action here
+      dispatch({
+        type: SIGN_IN,
+        user: formObject,
+      });
     }
   }
 

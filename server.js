@@ -4,6 +4,15 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const users = require("./routes/api/users");
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+const db = require("./config/keys").mongoURI;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,13 +23,22 @@ if (process.env.NODE_ENV === "production") {
 
 //Added routes, both Database Routes and view Route
 app.use(routes);
+// passport middleware
+app.use(passport.initialize());
 
-// Mongodb connection - will need to set MONGODB_URI into .env when time comes
+// passport config
+require("./config/passport")(passport);
+
+// routes
+app.use("/api/users", users);
+
+// temp mongoose connection for authentication test
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/majj", {
+  .connect(db, {
     useNewUrlParser: true,
   })
-  .then(() => console.log("Mongoose Connected!"));
+  .then(() => console.log("mongodb connected"))
+  .catch((err) => console.log(err));
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

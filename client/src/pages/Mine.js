@@ -23,9 +23,13 @@ function Mine() {
   };
 
   useEffect(() => {
+    // console.log(filter);
     loadItems();
-    createQueue();
   }, [filter]);
+
+  useEffect(() => {
+    // console.log(queue);
+  }, [queue]);
 
   function createQueue() {
     const newQueue = [];

@@ -2,24 +2,30 @@ import React, { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import "./LeftNav.css";
 import { useStoreContext } from "../../utils/GlobalState";
-import { NEW_FILTER } from "../../utils/actions";
+import { APPLY_FILTER, FILTER_CHANGE } from "../../utils/actions";
 import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const [filterObject, setFilterObject] = useState({});
+  // const [filterObject, setFilterObject] = useState({});
   const { filter } = state;
 
   const handleRadioChange = (event) => {
-    const { name, value } = event.target;
-    setFilterObject({ ...filterObject, [name]: value });
+    // console.log(event.target.checked)
+    const { name, checked } = event.target;
+    // setFilterObject({ ...filterObject, [name]: value });
+    console.log(name + ": " + checked);
+    dispatch({
+      type: FILTER_CHANGE,
+      topic: name,
+      value: checked,
+    });
   };
 
   const handleApplyFilter = (event) => {
     event.preventDefault();
     dispatch({
-      type: NEW_FILTER,
-      filter: filterObject,
+      type: APPLY_FILTER,
     });
   };
 
@@ -57,7 +63,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Sports'
-                  name='Sports'
+                  name='sports'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -66,7 +72,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Politics'
-                  name='Politics'
+                  name='politics'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -77,7 +83,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Art'
-                  name='Art'
+                  name='art'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -86,7 +92,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Fashion'
-                  name='Fashion'
+                  name='fashion'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -97,7 +103,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Technology'
-                  name='Technology'
+                  name='technology'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -106,7 +112,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Animals'
-                  name='Animals'
+                  name='animals'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -117,7 +123,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Home Decor'
-                  name='Home Decor'
+                  name='home Decor'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -126,7 +132,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Music'
-                  name='Music'
+                  name='music'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -137,7 +143,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Movies'
-                  name='Movies'
+                  name='movies'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -146,7 +152,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Entertainment'
-                  name='Entertainment'
+                  name='entertainment'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -157,7 +163,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Literature'
-                  name='Literature'
+                  name='literature'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -166,7 +172,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Style'
-                  name='Style'
+                  name='style'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -177,7 +183,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Science'
-                  name='Science'
+                  name='science'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -186,7 +192,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Travel'
-                  name='Travel'
+                  name='travel'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -197,7 +203,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Food'
-                  name='Food'
+                  name='food'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
@@ -206,7 +212,7 @@ function LeftNav() {
               <Col md={4} className='choices-col'>
                 <Form.Check
                   label='Health'
-                  name='Health'
+                  name='health'
                   type={type}
                   id={`default-${type}`}
                   onChange={handleRadioChange}
