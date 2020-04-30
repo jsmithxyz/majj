@@ -93,8 +93,6 @@ const reducer = (state, action) => {
     case FILTER_CHANGE:
       let { topic, value } = action;
       mutateFilter[topic] = value;
-      console.log(mutateFilter)
-      console.log(filter);
       return state;
 
     case APPLY_FILTER:
