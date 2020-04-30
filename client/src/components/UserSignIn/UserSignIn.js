@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./UserSignIn.css";
 import { useStoreContext } from "../../utils/GlobalState"
 import { Modal, Button, Form } from "react-bootstrap";
-import yellowgem from "../../img/yellowgem.png";
+import purplegem from "../../img/purplegem.png";
 import { SIGN_IN, SIGN_OUT } from "../../utils/actions"
+
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
@@ -38,32 +39,25 @@ function UserSignIn() {
     }
   }
 
-  let style = {
-    backgroundColor: "#461767",
-    color: "#675682",
-    border: "0px",
-    borderRadius: "10px",
-  };
-
   // can this conditional be dried up somehow?
   if (signUp === "signup") {
     // load this if the user wants to sign up
     return (
       <>
-        <Button className="mod-btn" style={style} onClick={handleShow}>
+        <Button className="mod-btn" onClick={handleShow}>
           <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Title className="mod-heading mod-head">
             <img
-              src={yellowgem}
-              height="30px"
-              width="30px"
+              src={purplegem}
+              height="40px"
+              width="40px"
               alt="gem"
               className="yellowgem"
             />
-            majj
+            MAJJ
             <div className="slogan">mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
@@ -108,10 +102,10 @@ function UserSignIn() {
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className="mod-btn" style={style} onClick="">
+            <Button className="mod-btn" onClick="">
               Register!
             </Button>
-            <Button className="mod-btn" style={style} onClick={handleSetLogin}>
+            <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
           </Modal.Footer>
@@ -122,20 +116,20 @@ function UserSignIn() {
     // return this if user wants to log in or hasn't clicked 'sign up'
     return (
       <>
-        <Button className="mod-btn" style={style} onClick={handleShow}>
+        <Button className="mod-btn" onClick={handleShow}>
           <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Title className="mod-heading mod-head">
             <img
-              src={yellowgem}
-              height="30px"
-              width="30px"
+              src={purplegem}
+              height="40px"
+              width="40px"
               alt="gem"
               className="yellowgem"
             />
-            majj
+            MAJJ
             <div className="slogan">mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
@@ -164,12 +158,11 @@ function UserSignIn() {
           <Modal.Footer>
             <Button
               className="mod-btn"
-              style={style}
               onClick={(handleClose, handleFormSubmit)}
             >
               Login
             </Button>
-            <Button className="mod-btn" style={style} onClick={handleSetSignUp}>
+            <Button className="mod-btn" onClick={handleSetSignUp}>
               SignUp
             </Button>
           </Modal.Footer>
