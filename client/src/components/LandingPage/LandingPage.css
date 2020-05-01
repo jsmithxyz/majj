@@ -1,0 +1,36 @@
+.geode {
+  text-align: center;
+  font-family: "Gotu", sans-serif;
+  color: #222222;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  font-size: 6rem;
+  transform: translate(-50%, -50%);
+  padding: 3px 0px;
+}
+.slogan-mainnav {
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: 900;
+}
+
+.majj-text {
+  text-shadow: 1px 1px 17px #222222;
+  font-weight: 900;
+}
+
+.about {
+  border-top: thin solid#51279B;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 16px;
+  border-bottom: thin solid#51279B;
+}
+
+@media only screen and (max-width: 600px) {
+  .geode {
+    font-size: 25px;
+  }
+}

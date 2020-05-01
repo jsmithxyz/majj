@@ -7,25 +7,12 @@
 
 .userheading {
   margin-top: 20px;
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
   color: white;
   font-size: 30px;
   text-align: center;
 }
 .next {
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
   color: white;
-}
-.nav-btns {
-  margin: 20px;
-  box-shadow: 1px 2px 4px #00000080;
-}
-
-.nav-btns:hover {
-  background-color: #f0b429 !important;
-  color: #fff3c4 !important;
 }
 
 .links {

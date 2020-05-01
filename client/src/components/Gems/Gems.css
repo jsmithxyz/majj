@@ -1,12 +1,7 @@
 .mosaic.row {
-  margin-top: 0px;
-  /* padding-left: 10px; */
+  margin: 0px;
   height: 100vh;
   overflow: auto;
-}
-
-.tile:hover {
-  opacity: 0.5;
 }
 
 .picture {
@@ -16,38 +11,28 @@
 }
 
 .title {
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 20px;
   text-align: center;
 }
+
 .card {
   color: black;
   height: 450px;
   box-shadow: 4px 4px 4px 4px #00000080;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
   border-radius: 3px;
-  border-color: #034169;
-}
-
-a {
-  color: #8002a3;
-}
-a:hover {
-  text-decoration: none;
-  color: #056766;
-}
-
-button {
-  color: #8002a3;
-  border: white;
-}
-button:hover {
-  background: #f6b137;
+  border-color: #27241d;
 }
 
 .icons {
   text-align: center;
+}
+
+button {
+  margin: 5px;
 }
 
 .name {
@@ -56,4 +41,10 @@ button:hover {
 
 .date {
   text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    font-size: 13px;
+  }
 }

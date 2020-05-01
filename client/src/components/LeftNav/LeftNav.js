@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Form,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import "./LeftNav.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { APPLY_FILTER, FILTER_CHANGE } from "../../utils/actions";
@@ -29,32 +36,20 @@ function LeftNav() {
     });
   };
 
-  /* This defines the actual bar going down the screen */
-  let StyledSideNav = {
-    zIndex: "1",
-    backgroundColor: "#034169",
-    overflowX: "hidden",
-    height: "100vh",
-    paddingTop: "10px",
-    boxShadow: "4px 4px 4px 4px #00000080",
-    position: "sticky",
-    margin: "0px",
-    marginRight: "20px",
-  };
-
-  let style = {
-    backgroundColor: "#461767",
-    color: "#675682",
-    border: "0px",
-    borderRadius: "10px",
-  };
-
   return (
-    <Col xs={4} md={4} lg={3} style={StyledSideNav}>
-      <UserSignIn />
-      <Button className='sign-out' style={style}>
-        <i className='fas fa-sign-out-alt fa-2x'></i>
-      </Button>
+    <Col xs={4} md={3} lg={3} className='side-nav'>
+      <div className='prof-signout'>
+        <UserSignIn />
+        <Button className='sign-out'>
+          <OverlayTrigger
+            key='bottom'
+            placement='bottom'
+            overlay={<Tooltip id={`tooltip-bottom`}>sign out</Tooltip>}
+          >
+            <i class='fas fa-sign-out-alt fa-2x'></i>
+          </OverlayTrigger>
+        </Button>
+      </div>
       <div className='create-heading'>choose your topics below:</div>
       <Form>
         {["checkbox"].map((type) => (
@@ -222,7 +217,7 @@ function LeftNav() {
           </div>
         ))}
         <br />
-        <Button className='apply-btn' style={style} onClick={handleApplyFilter}>
+        <Button className='apply-btn' onClick={handleApplyFilter}>
           Apply
         </Button>
       </Form>

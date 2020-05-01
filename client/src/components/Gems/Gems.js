@@ -1,7 +1,14 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_QUEUE, PASS, NEW_ITEMS } from "../../utils/actions";
-import { Row, Col, Card } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Card,
+  Image,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import "./Gems.css";
 import sampleItems from "../../utils/sample-items";
 import Moment from "react-moment";
@@ -51,9 +58,9 @@ function Gems() {
               <Card
                 className='card'
                 key={`gem${index}`}
-                style={{ width: "auto" }}
+                style={{ width: "20em" }}
               >
-                <img
+                <Image
                   className='picture'
                   alt='thumbnail, where art thou?'
                   src={
@@ -62,6 +69,7 @@ function Gems() {
                   }
                   height='150'
                   width='150'
+                  roundedCircle
                 />
                 <Card.Body>
                   <Card.Title className='title'>
@@ -75,25 +83,55 @@ function Gems() {
                   </Card.Text>
                   <Card.Text className='icons'>
                     <button>
-                      <i
-                        className='far fa-gem'
-                        id={index}
-                        onClick={handleAddToQueue}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            add to your saved gems
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-gem'
+                          id={index}
+                          onClick={handleAddToQueue}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                     <button>
-                      <i
-                        className='far fa-eye'
-                        id={index}
-                        onClick={handleOpen}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            view article now
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-eye'
+                          id={index}
+                          onClick={handleOpen}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                     <button>
-                      <i
-                        className='far fa-trash-alt'
-                        id={index}
-                        onClick={handlePass}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            delete this article
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-trash-alt'
+                          id={index}
+                          onClick={handlePass}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                   </Card.Text>
                 </Card.Body>

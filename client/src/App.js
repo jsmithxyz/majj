@@ -5,6 +5,7 @@ import "./App.css";
 // import NoMatch from "./pages/NoMatch";
 import Mine from "./pages/Mine";
 import { StoreProvider } from "../src/utils/GlobalState";
+// import LandingPage from "../src/components/LandingPage/LandingPage";
 
 class App extends React.Component {
   render() {
