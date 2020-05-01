@@ -8,11 +8,20 @@ import { StoreProvider } from "../src/utils/GlobalState";
 import Splash from "./pages/Splash";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { color: "#e1e0e5" };
+  }
+
+  changeColor = (color) => {
+    this.setState({ color });
+  };
+
   render() {
     return (
       <StoreProvider>
         <Router>
-          <div>
+          <div style={{ background: this.state.color }}>
             <Switch>
               <Route exact path="/" component={Splash} />
               {/* <Route path='*' component={NoMatch} /> */}
