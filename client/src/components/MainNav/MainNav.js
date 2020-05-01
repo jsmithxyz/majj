@@ -7,19 +7,21 @@ function MainNav() {
   return (
     <Navbar
       sticky="top"
-      className="justify-content-center container-fluid majj"
+      className="justify-content-center text-center container-fluid majj"
     >
       <div>
-        <div className="majj-text">
+        <div className="animated flip majj-text">
           <img
             src={purplegem}
-            height="80px"
-            width="80px"
+            height="60px"
+            width="60px"
             alt="gem"
             className="rotate yellowgem"
           />
           MAJJ
-          <div className="slogan-mainnav">mining for gems on the web</div>
+          <div className="animated fadeIn delay-1s slogan-mainnav2">
+            mining for gems on the web
+          </div>
         </div>
       </div>
     </Navbar>
