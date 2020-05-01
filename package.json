@@ -16,7 +16,8 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "authstart": "node server.js",
-    "authserver": "nodemon server.js"
+    "authserver": "nodemon server.js",
+    "dev": "concurrently \"npm run authserver\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
