@@ -31,9 +31,10 @@ function UserSignIn() {
     console.log(formObject);
     if (formObject.username && formObject.password) {
       // some user login action here
+      // api call to grab user from DB
       dispatch({
         type: SIGN_IN,
-        user: formObject,
+        user: formObject, // this will need to be database information
       });
     }
   }

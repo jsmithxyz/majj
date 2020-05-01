@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
-import sampleItems from "../utils/sample-items";
+// import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
 import { Link } from "react-router-dom";
 

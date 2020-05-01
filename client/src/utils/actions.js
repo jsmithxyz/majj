@@ -2,7 +2,7 @@
 export const ADD_USER = "ADD_USER"; // ADDS USER PROFILE
 export const CREATE_PROFILE = "CREATE_PROFILE"; // TAKES TO "CREATE PROFILE SECTION"
 export const SIGN_IN = "SIGN_IN";
-export const SIGN_OUT = "LOG_OUT";
+export const SIGN_OUT = "SIGN_OUT";
 
 // family of QUEUE actions (item actions)
 export const LOADING = "LOADING"; // while item is switching
