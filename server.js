@@ -26,6 +26,8 @@ app.use("/api/users", users);
 mongoose
   .connect(db, {
     useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
