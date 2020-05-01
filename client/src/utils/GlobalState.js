@@ -52,7 +52,16 @@ const initialState = {
     health: false
   },
   queue: [],
-  items: []
+  items: [],
+  user: {
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+    queue: [],
+    filter: {},
+    loggedIn: false
+  }
 };
 
 const reducer = (state, action) => {
@@ -64,8 +73,25 @@ const reducer = (state, action) => {
     case SIGN_IN:
       return {
         ...state,
+        user: [...action.user]
         //some api call here
-        queue: [action.queue]
+        // queue: [action.queue]
+      };
+
+    case SIGN_OUT:
+      return {
+        ...state,
+        user: {
+          username: "",
+          email: "",
+          password: "",
+          password2: "",
+          queue: [],
+          filter: {},
+          loggedIn: false
+        }
+        //some api call here
+        // queue: [action.queue]
       };
 
     case CREATE_QUEUE:
@@ -93,12 +119,17 @@ const reducer = (state, action) => {
     case FILTER_CHANGE:
       let { topic, value } = action;
       mutateFilter[topic] = value;
-      return state;
-
-    case APPLY_FILTER:
       return {
         ...state,
-        filter: mutateFilter,
+        mutateFilter: mutateFilter,
+      };
+
+    case APPLY_FILTER:
+      let newFilter = action.filter;
+      newFilter.kitten = action.kitten;
+      return {
+        ...state,
+        filter: newFilter,
       };
 
     case NEW_ITEMS:
