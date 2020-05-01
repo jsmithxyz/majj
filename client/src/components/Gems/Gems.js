@@ -52,7 +52,7 @@ function Gems() {
   if (items) {
     return (
       <Fragment>
-        <Row className='mosaic'>
+        <Row className="mosaic animated fadeInUp delay-2s">
           {items[0].map((result, index) => (
             <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card

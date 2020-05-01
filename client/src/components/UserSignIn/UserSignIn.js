@@ -58,7 +58,6 @@ function UserSignIn() {
               className='yellowgem'
             />
             MAJJ
-            <div className='slogan'>mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
             <Form>
@@ -130,7 +129,6 @@ function UserSignIn() {
               className='yellowgem'
             />
             MAJJ
-            <div className='slogan'>mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
             <Form>
