@@ -6,6 +6,7 @@ import purplegem from "../../img/purplegem.png";
 import { Navbar } from "react-bootstrap";
 
 function MainNav() {
+  // change to nav on scroll, need to finish figuring this out
   const [change, setChange] = useState(false);
   const changePosition = 0;
 
