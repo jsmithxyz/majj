@@ -118,10 +118,15 @@ const reducer = (state, action) => {
 
     case FILTER_CHANGE:
       let { topic, value } = action;
-      mutateFilter[topic] = value;
+      // console.log(mutateFilter[topic])
+      let newMutation = {...mutateFilter}
+      newMutation[topic] = value;
+      // console.log(mutateFilter[topic])
+
+      // console.log("woof")
       return {
         ...state,
-        mutateFilter: mutateFilter,
+        mutateFilter: {...newMutation}
       };
 
     case APPLY_FILTER:
