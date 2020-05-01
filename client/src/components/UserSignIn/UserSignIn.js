@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./UserSignIn.css";
-import { useStoreContext } from "../../utils/GlobalState"
+import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import { SIGN_IN, SIGN_OUT } from "../../utils/actions"
-
+import { SIGN_IN, SIGN_OUT } from "../../utils/actions";
+import { Link } from "react-router-dom";
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
   const [signUp, setSignUp] = useState("");
   const [show, setShow] = useState(false);
-  const [formObject, setFormObject] = useState({});
+  // use this for user info?
+  const [userObject, setUserObject] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,26 +23,33 @@ function UserSignIn() {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
+    setUserObject({ ...userObject, [name]: value });
   }
+
+  // validating object
+  // function showInfo() {
+  //   console.log(formObject);
+  // }
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
+
+  // !TODO - come back to this - not sure we're going to need it
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject)
-    if (formObject.username && formObject.password) {
+    console.log(userObject);
+    if (userObject.email && userObject.password) {
       // some user login action here
       dispatch({
         type: SIGN_IN,
-        user: formObject,
+        // user: formObject,
       });
     }
   }
 
   // can this conditional be dried up somehow?
   if (signUp === "signup") {
-    // load this if the user wants to sign up
+    // ! load this if the user wants to sign up
     return (
       <>
         <Button className="mod-btn" onClick={handleShow}>
@@ -80,15 +88,7 @@ function UserSignIn() {
                   placeholder="Enter Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  onChange={handleInputChange}
-                  name="username"
-                  type="username"
-                  placeholder="Enter Username"
-                />
-              </Form.Group>
+
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
@@ -98,13 +98,24 @@ function UserSignIn() {
                   placeholder="Password"
                 />
               </Form.Group>
+              <Form.Group controlId="formPasswordConfirm">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  onChange={handleInputChange}
+                  name="password2"
+                  type="password2"
+                  placeholder="Confirm password"
+                />
+              </Form.Group>
             </Form>
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className="mod-btn" onClick="">
+            <Button className="mod-btn">
               Register!
             </Button>
+            {/* currently links to new page - will handle with router? */}
+            {/* <Link to="/register">Register</Link> */}
             <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
@@ -113,7 +124,7 @@ function UserSignIn() {
       </>
     );
   } else {
-    // return this if user wants to log in or hasn't clicked 'sign up'
+    // ! return this if user wants to log in or hasn't clicked 'sign up'
     return (
       <>
         <Button className="mod-btn" onClick={handleShow}>
