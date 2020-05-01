@@ -19,7 +19,7 @@ function LeftNav() {
 
   const handleRadioChange = (event) => {
     const { name, checked } = event.target;
-    console.log(name + ": " + checked);
+    // console.log(name + ": " + checked);
     dispatch({
       type: FILTER_CHANGE,
       topic: name,
@@ -30,8 +30,7 @@ function LeftNav() {
   const handleApplyFilter = (event) => {
     dispatch({
       type: APPLY_FILTER,
-      filter: { ...mutateFilter },
-      kitten: false,
+      filter: { ...mutateFilter }
     });
   };
 
@@ -42,7 +41,6 @@ function LeftNav() {
           label={key}
           name={key}
           id={key}
-          // checked={value}
           type={"checkbox"}
           className={`default-checkbox`}
           onChange={handleRadioChange}
@@ -50,7 +48,6 @@ function LeftNav() {
       </Col>
     );
   }
-
 
   const checkboxArrayMaker = () => {
     let topics = Object.keys(mutateFilter);
