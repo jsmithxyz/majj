@@ -1,7 +1,3 @@
-.rad-row {
-  margin-bottom: 10px;
-}
-
 .create-heading {
   font-weight: bold;
   padding-top: 10px;
@@ -12,7 +8,8 @@
 
 .prof-signout {
   text-align: center;
-  /* border-bottom: thin solid; */
+  padding-bottom: 20px;
+  border-bottom: thin solid#51279B;
 }
 
 .side-nav {

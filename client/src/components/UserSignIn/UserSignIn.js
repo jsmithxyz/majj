@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./UserSignIn.css";
-import { useStoreContext } from "../../utils/GlobalState"
+import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import { SIGN_IN, SIGN_OUT } from "../../utils/actions"
-
+import { SIGN_IN, SIGN_OUT } from "../../utils/actions";
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
@@ -29,7 +28,7 @@ function UserSignIn() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject)
+    console.log(formObject);
     if (formObject.username && formObject.password) {
       // some user login action here
       dispatch({
@@ -58,7 +57,6 @@ function UserSignIn() {
               className="yellowgem"
             />
             MAJJ
-            <div className="slogan">mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
             <Form>
@@ -130,7 +128,6 @@ function UserSignIn() {
               className="yellowgem"
             />
             MAJJ
-            <div className="slogan">mining for gems on the web</div>
           </Modal.Title>
           <Modal.Body>
             <Form>

@@ -7,17 +7,23 @@ import { Button } from "react-bootstrap";
 function LandingPage() {
   return (
     <div className="geode">
-      <img src={purplegem} height="80px" width="80px" alt="gem" />
-      <span className="majj-text">MAJJ</span>
-      <div className="slogan-mainnav">mining for gems on the web</div>
-      <div className="about">
+      <div className="animated flip majj-text">
+        <img src={purplegem} height="60px" width="60px" alt="gem" />
+        MAJJ
+      </div>
+      <div className="animated fadeIn delay-1s slogan-mainnav">
+        mining for gems on the web
+      </div>
+      <div className="animated fadeIn delay-2s about">
         We're making it easier for you to dig through the web based on your
-        preferences, save articles to your profile, and view at your leisure.
+        preferences, and save articles to your profile to view at your leisure.
         Click below to get diggin'.
       </div>
-      <Link to="/mine">
-        <Button>Start Mining</Button>
-      </Link>
+      <div className="animated rotateIn delay-3s">
+        <Link to="/mine">
+          <Button>Start Mining</Button>
+        </Link>
+      </div>
     </div>
   );
 }

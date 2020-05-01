@@ -25,7 +25,7 @@ function LeftNav() {
     dispatch({
       type: FILTER_CHANGE,
       topic: name,
-      value: checked
+      value: checked,
     });
   };
 
@@ -37,7 +37,7 @@ function LeftNav() {
   };
 
   return (
-    <Col xs={4} md={3} lg={3} className="side-nav">
+    <Col xs={4} md={3} lg={3} className="animated fadeIn delay-2s side-nav">
       <div className="prof-signout">
         <UserSignIn />
         <Button className="sign-out">
