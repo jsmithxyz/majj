@@ -14,14 +14,11 @@ import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  // const [filterObject, setFilterObject] = useState({});
-  const { filter } = state;
+  const { filter, mutateFilter } = state;
 
   const handleRadioChange = (event) => {
-    // console.log(event.target.checked)
     const { name, checked } = event.target;
-    // setFilterObject({ ...filterObject, [name]: value });
-    console.log(name + ": " + checked);
+    // console.log(name + ": " + checked);
     dispatch({
       type: FILTER_CHANGE,
       topic: name,
@@ -30,9 +27,9 @@ function LeftNav() {
   };
 
   const handleApplyFilter = (event) => {
-    event.preventDefault();
     dispatch({
       type: APPLY_FILTER,
+      filter: {...mutateFilter}
     });
   };
 
