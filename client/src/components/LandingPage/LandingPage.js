@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import purplegem from "../../img/purplegem.png";
 import { Button } from "react-bootstrap";
@@ -10,11 +11,13 @@ function LandingPage() {
       <span className="majj-text">MAJJ</span>
       <div className="slogan-mainnav">mining for gems on the web</div>
       <div className="about">
-        We're making it easier for you to dig through the web for topics based
-        on your preferences, save to your profile, and view at your leisure.
-        click below to get diggin'.
+        We're making it easier for you to dig through the web based on your
+        preferences, save articles to your profile, and view at your leisure.
+        Click below to get diggin'.
       </div>
-      <Button>Start Mining</Button>
+      <Link to="/mine">
+        <Button>Start Mining</Button>
+      </Link>
     </div>
   );
 }
