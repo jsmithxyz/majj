@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   //thinking of this as createItems() to match the action type
   getItems: async function (filter) {
-    console.log("call!")
+    console.log("call!");
     if (filter) {
       let resArr = await Promise.all(
         Object.keys(filter).map(async (key) => {
@@ -23,7 +23,7 @@ export default {
         })
       );
 
-      const filteredResults = resArr.filter((result) => result != undefined);
+      const filteredResults = resArr.filter((result) => result !== undefined);
       return filteredResults;
     } else {
       let resArr = [];
