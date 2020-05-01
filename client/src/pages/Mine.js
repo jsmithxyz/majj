@@ -15,7 +15,9 @@ function Mine() {
   const [state, dispatch] = useStoreContext();
   const { filter, queue, items } = state;
 
-  const [tempItems, setTempItems] = useState(sampleItems);
+  let newGems = itemizer(items);
+  const [gems, setGems] = useState(newGems);
+  // const [currentItems, setCurrentItems] = useState(items);
 
   let flexbox = {
     display: "flex",
@@ -30,6 +32,11 @@ function Mine() {
   useEffect(() => {
     // console.log(queue);
   }, [queue]);
+
+  useEffect(() => {
+    let newGems = itemizer(items);
+    setGems(newGems);
+  }, [items]);
 
   function createQueue() {
     const newQueue = [];
@@ -75,32 +82,25 @@ function Mine() {
     return array;
   }
 
-  //would like to dry this up
-  if (items) {
-    return (
-      <div>
-        <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
-          <LeftNav />
-          {Object.keys(items).map((key) => (
-            <Gems key={key} details={items[key]}></Gems>
-          ))}
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
-          <LeftNav />
-          {Object.keys(tempItems).map((key) => (
-            <Gems key={key} details={tempItems[key]} />
-          ))}
-        </div>
-      </div>
-    );
+  function itemizer(items) {
+    let newGems = Object.keys(items).map((key) => (
+      <Gems key={key} details={items[key]} />
+    ));
+    return newGems;
   }
+
+  //would like to dry this up
+  // if (items) {
+  return (
+    <div>
+      <MainNav />
+      <div className='flexbox-containter' style={flexbox}>
+        <LeftNav />
+
+        {gems}
+      </div>
+    </div>
+  );
 }
 
 export default Mine;

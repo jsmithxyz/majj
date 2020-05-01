@@ -12,7 +12,7 @@ export const NEXT = "NEXT"; // tells queue to pop(), sends action to re render n
 // family of CARD actions
 export const ADD_TO_QUEUE = "ADD_TO_QUEUE"; // add item to queue
 export const PASS = "PASS"; // get rid of item from presentation, 
-export const APPLY_FILTER = "NEW_FILTER"; // changes filter settings, will re call
+export const APPLY_FILTER = "APPLY_FILTER"; // changes filter settings, will re call
 export const FILTER_CHANGE = "FILTER_CHANGE";
 
 // family of ITEM actions (bing API)
