@@ -14,9 +14,9 @@ class App extends React.Component {
         <Router>
           <div>
             <Switch>
-              <Route exact path="/" component={Splash} />
+              <Route exact path='/' component={Splash} />
               {/* <Route path='*' component={NoMatch} /> */}
-              <Route exact path="/mine" component={Mine} />
+              <Route exact path='/mine' component={Mine} />
             </Switch>
           </div>
         </Router>

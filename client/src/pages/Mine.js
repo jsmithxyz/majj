@@ -6,6 +6,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 // import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
+import { Link } from "react-router-dom";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -14,10 +15,9 @@ function Mine() {
   const [state, dispatch] = useStoreContext();
   const { filter, queue, items } = state;
 
-  let newGems = itemizer(items)
+  let newGems = itemizer(items);
   const [gems, setGems] = useState(newGems);
   // const [currentItems, setCurrentItems] = useState(items);
-
 
   let flexbox = {
     display: "flex",
@@ -34,7 +34,7 @@ function Mine() {
   }, [queue]);
 
   useEffect(() => {
-    let newGems = itemizer(items)
+    let newGems = itemizer(items);
     setGems(newGems);
   }, [items]);
 
@@ -84,7 +84,8 @@ function Mine() {
 
   function itemizer(items) {
     let newGems = Object.keys(items).map((key) => (
-      <Gems key={key} details={items[key]} />))
+      <Gems key={key} details={items[key]} />
+    ));
     return newGems;
   }
 
@@ -93,11 +94,10 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <div className="flexbox-containter" style={flexbox}>
+      <div className='flexbox-containter' style={flexbox}>
         <LeftNav />
 
         {gems}
-
       </div>
     </div>
   );

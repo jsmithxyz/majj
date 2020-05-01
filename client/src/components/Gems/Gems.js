@@ -12,6 +12,7 @@ import {
 import "./Gems.css";
 import sampleItems from "../../utils/sample-items";
 import Moment from "react-moment";
+import Database from "../../utils/Database";
 
 function Gems() {
   const [state, dispatch] = useStoreContext();
@@ -20,10 +21,18 @@ function Gems() {
 
   const handleAddToQueue = (event) => {
     const { id } = event.target;
-    dispatch({
-      type: ADD_TO_QUEUE,
-      id: id,
-    });
+    Database.updateQueue({
+      username: "default", //this will be pulled from state at some point?
+      $push: { queue: items[0][id].url },
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: ADD_TO_QUEUE,
+          id: id,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   const handlePass = (event) => {
@@ -43,40 +52,40 @@ function Gems() {
   if (items) {
     return (
       <Fragment>
-        <Row className="mosaic">
+        <Row className='mosaic'>
           {items[0].map((result, index) => (
             <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
-                className="card"
+                className='card'
                 key={`gem${index}`}
                 style={{ width: "20em" }}
               >
                 <Image
-                  className="picture"
-                  alt="thumbnail, where art thou?"
+                  className='picture'
+                  alt='thumbnail, where art thou?'
                   src={
                     result.image?.thumbnail.contentUrl ||
                     "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
                   }
-                  height="150"
-                  width="150"
+                  height='150'
+                  width='150'
                   roundedCircle
                 />
                 <Card.Body>
-                  <Card.Title className="title">
+                  <Card.Title className='title'>
                     <a href={result.url}>{result.name}</a>
                   </Card.Title>
-                  <Card.Text className="name">
+                  <Card.Text className='name'>
                     {result.provider[0]["name"]}{" "}
                   </Card.Text>
-                  <Card.Text className="date">
+                  <Card.Text className='date'>
                     <Moment fromNow>{result.datePublished}</Moment>
                   </Card.Text>
-                  <Card.Text className="icons">
+                  <Card.Text className='icons'>
                     <button>
                       <OverlayTrigger
-                        key="bottom"
-                        placement="bottom"
+                        key='bottom'
+                        placement='bottom'
                         overlay={
                           <Tooltip id={`tooltip-bottom`}>
                             add to your saved gems
@@ -84,7 +93,7 @@ function Gems() {
                         }
                       >
                         <i
-                          className="far fa-gem"
+                          className='far fa-gem'
                           id={index}
                           onClick={handleAddToQueue}
                         ></i>
@@ -92,8 +101,8 @@ function Gems() {
                     </button>
                     <button>
                       <OverlayTrigger
-                        key="bottom"
-                        placement="bottom"
+                        key='bottom'
+                        placement='bottom'
                         overlay={
                           <Tooltip id={`tooltip-bottom`}>
                             view article now
@@ -101,7 +110,7 @@ function Gems() {
                         }
                       >
                         <i
-                          className="far fa-eye"
+                          className='far fa-eye'
                           id={index}
                           onClick={handleOpen}
                         ></i>
@@ -109,8 +118,8 @@ function Gems() {
                     </button>
                     <button>
                       <OverlayTrigger
-                        key="bottom"
-                        placement="bottom"
+                        key='bottom'
+                        placement='bottom'
                         overlay={
                           <Tooltip id={`tooltip-bottom`}>
                             delete this article
@@ -118,7 +127,7 @@ function Gems() {
                         }
                       >
                         <i
-                          className="far fa-trash-alt"
+                          className='far fa-trash-alt'
                           id={index}
                           onClick={handlePass}
                         ></i>
@@ -135,52 +144,52 @@ function Gems() {
   } else {
     return (
       <Fragment>
-        <Row className="mosaic ">
+        <Row className='mosaic '>
           {tempItems.value.map((result, index) => (
             <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
-                className="card"
+                className='card'
                 key={`gem${index}`}
                 style={{ width: "18rem" }}
               >
                 <img
-                  className="picture"
-                  alt="thumbnail, where art thou?"
+                  className='picture'
+                  alt='thumbnail, where art thou?'
                   src={
                     result.image?.thumbnail.contentUrl ||
                     "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
                   }
-                  height="150"
-                  width="150"
+                  height='150'
+                  width='150'
                 />
                 <Card.Body>
-                  <Card.Title className="title">
+                  <Card.Title className='title'>
                     <a href={result.url}>{result.name}</a>
                   </Card.Title>
-                  <Card.Text className="name">
+                  <Card.Text className='name'>
                     {result.provider[0]["name"]}{" "}
                   </Card.Text>
-                  <Card.Text className="date">
+                  <Card.Text className='date'>
                     <Moment fromNow>{result.datePublished}</Moment>
                   </Card.Text>
-                  <Card.Text className="icons">
+                  <Card.Text className='icons'>
                     <button>
                       <i
-                        className="far fa-gem"
+                        className='far fa-gem'
                         id={index}
                         onClick={handleAddToQueue}
                       ></i>
                     </button>
                     <button>
                       <i
-                        className="far fa-eye"
+                        className='far fa-eye'
                         id={index}
                         onClick={handleOpen}
                       ></i>
                     </button>
                     <button>
                       <i
-                        className="far fa-trash-alt"
+                        className='far fa-trash-alt'
                         id={index}
                         onClick={handlePass}
                       ></i>
