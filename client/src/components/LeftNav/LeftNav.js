@@ -14,7 +14,12 @@ import UserSignIn from "../UserSignIn/UserSignIn";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const { filter, mutateFilter } = state;
+  const { filter, mutateFilter, user } = state;
+
+  const loadUserFilter = () => {
+    let userFilter = user.filter;
+    // need to apply this to checkboxes somehow
+  }
 
   const handleRadioChange = (event) => {
     const { name, checked } = event.target;
@@ -29,7 +34,8 @@ function LeftNav() {
   const handleApplyFilter = (event) => {
     dispatch({
       type: APPLY_FILTER,
-      filter: {...mutateFilter}
+      filter: {...mutateFilter},
+      kitten: false,
     });
   };
 
