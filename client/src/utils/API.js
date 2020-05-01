@@ -4,6 +4,7 @@ import React from "react";
 export default {
   //thinking of this as createItems() to match the action type
   getItems: async function (filter) {
+    console.log("call!")
     if (filter) {
       let resArr = await Promise.all(Object.keys(filter).map(async (key) => {
 
