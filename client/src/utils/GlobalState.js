@@ -14,7 +14,6 @@ export const StoreContext = createContext();
 const initialState = {
   // would love to DRY this up somehow
   filter: {
-    kitten: true, //always true
     sports: false,
     art: false,
     technology: false,
@@ -33,7 +32,6 @@ const initialState = {
     health: false
   },
   mutateFilter: {
-    kitten: true,  //always true
     sports: false,
     art: false,
     technology: false,
@@ -118,15 +116,15 @@ const reducer = (state, action) => {
 
     case FILTER_CHANGE:
       let { topic, value } = action;
-      mutateFilter[topic] = value;
+      let newMutation = {...mutateFilter}
+      newMutation[topic] = value;
       return {
         ...state,
-        mutateFilter: mutateFilter,
+        mutateFilter: {...newMutation}
       };
 
     case APPLY_FILTER:
       let newFilter = action.filter;
-      newFilter.kitten = action.kitten;
       return {
         ...state,
         filter: newFilter,
