@@ -1,24 +1,30 @@
 import React from "react";
 import "./MainNav.css";
-import yellowgem from "../../img/yellowgem.png";
+import purplegem from "../../img/purplegem.png";
+import { Navbar } from "react-bootstrap";
 
 function MainNav() {
   return (
-    <>
-      <div className="container-fluid majj text-center">
-        <div className="majj-text">
+    <Navbar
+      sticky="top"
+      className="justify-content-center text-center container-fluid majj"
+    >
+      <div>
+        <div className="animated flip majj-text">
           <img
-            src={yellowgem}
-            height="80px"
-            width="80px"
+            src={purplegem}
+            height="60px"
+            width="60px"
             alt="gem"
             className="rotate yellowgem"
           />
-          majj
-          <div className="slogan-mainnav">mining for gems on the web</div>
+          MAJJ
+          <div className="animated fadeIn delay-1s slogan-mainnav2">
+            mining for gems on the web
+          </div>
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }
 

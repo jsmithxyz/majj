@@ -2,8 +2,6 @@ import React from "react";
 import "./UserProfile.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import user from "../../img/userprofile.jpg";
-import gemfolder from "../../img/gemfolder.png";
-import smyellowgem from "../../img/smyellowgem.png";
 
 function UserProfile() {
   return (

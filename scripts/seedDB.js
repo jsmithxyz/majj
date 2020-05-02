@@ -1,5 +1,3 @@
-// goes in /scripts
-
 const mongoose = require("mongoose");
 const db = require("../models");
 
@@ -9,32 +7,36 @@ const userSeed = [
   {
     username: "default",
     password: "noUser",
-    queue: ["all"],
-    filter: ["all"],
+    queue: [],
+    filter: {},
   },
   {
-    username: "James",
-    password: "james",
+    name: "James",
+    email: "james@majj.com",
+    password: "jamespassword",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
-    username: "Alyssa",
-    password: "alyssa",
+    name: "Alyssa",
+    email: "alyssa@majj.com",
+    password: "alyssapassword",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
-    username: "Jordan",
-    password: "jordan",
+    name: "Jordan",
+    email: "Jordan@majj.com",
+    password: "jordanpassword",
     queue: [],
-    filter: [],
+    filter: {},
   },
   {
-    username: "Max",
-    password: "max",
+    name: "Max",
+    email: "max@majj.com",
+    password: "maxpassword",
     queue: [],
-    filter: [],
+    filter: {},
   },
 ];
 
@@ -64,13 +66,13 @@ db.User.collection
     process.exit(1);
   });
 
-db.Item.collection
-  .insertMany(savedItemSeed)
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Item.collection
+//   .insertMany(savedItemSeed)
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });

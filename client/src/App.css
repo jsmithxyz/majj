@@ -1,7 +1,35 @@
 body,
 html {
-  font-family: "Special Elite", cursive;
-  color: white;
-  background-image: url("./img/gembackground.jpg");
-  background-size: 350px;
+  font-family: "Gotu", sans-serif;
+  background-color: #f7f7f7;
+  /* #F7F7F7 */
+  background: url("./img/geode.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.btn,
+button {
+  background-color: #a081d9 !important;
+  color: white !important;
+  border: 0px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px #00000080;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #54d1db !important;
+}
+
+a {
+  color: #653cad;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #54d1db;
 }
