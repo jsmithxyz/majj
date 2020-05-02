@@ -4,7 +4,6 @@ import API from "../utils/API";
 import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
-// import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
 
 // queue = user's list of saved items (DB)
@@ -16,7 +15,6 @@ function Mine() {
 
   let newGems = itemizer(items);
   const [gems, setGems] = useState(newGems);
-  // const [currentItems, setCurrentItems] = useState(items);
 
   let flexbox = {
     display: "flex",
@@ -88,8 +86,6 @@ function Mine() {
     return newGems;
   }
 
-  //would like to dry this up
-  // if (items) {
   return (
     <div>
       <MainNav />

@@ -7,18 +7,17 @@ import {
   FILTER_CHANGE,
   NEW_ITEMS,
   SIGN_IN,
-  SIGN_OUT
+  SIGN_OUT,
 } from "./actions";
 
 export const StoreContext = createContext();
 const initialState = {
   // would love to DRY this up somehow
   filter: {
-    kitten: true, //always true
     sports: false,
     art: false,
     technology: false,
-    homeDecor: false,
+    decoration: false,
     movies: false,
     literature: false,
     science: false,
@@ -27,17 +26,22 @@ const initialState = {
     fashion: false,
     animals: false,
     music: false,
-    entertainment: false,
     style: false,
+    entertainment: false,
     travel: false,
-    health: false
+    health: false,
+    business: false,
+    gardening: false,
+    recipes: false,
+    hobbies: false,
+    astrology: false,
+    crafts: false,
   },
   mutateFilter: {
-    kitten: true,  //always true
     sports: false,
     art: false,
     technology: false,
-    homeDecor: false,
+    decoration: false,
     movies: false,
     literature: false,
     science: false,
@@ -46,10 +50,16 @@ const initialState = {
     fashion: false,
     animals: false,
     music: false,
-    entertainment: false,
     style: false,
+    entertainment: false,
     travel: false,
-    health: false
+    health: false,
+    business: false,
+    gardening: false,
+    recipes: false,
+    hobbies: false,
+    astrology: false,
+    crafts: false,
   },
   queue: [],
   items: [],
@@ -60,8 +70,8 @@ const initialState = {
     password2: "",
     queue: [],
     filter: {},
-    loggedIn: false
-  }
+    loggedIn: false,
+  },
 };
 
 const reducer = (state, action) => {
@@ -69,11 +79,10 @@ const reducer = (state, action) => {
   let { id } = action;
 
   switch (action.type) {
-
     case SIGN_IN:
       return {
         ...state,
-        user: [...action.user]
+        user: [...action.user],
         //some api call here
         // queue: [action.queue]
       };
@@ -88,8 +97,8 @@ const reducer = (state, action) => {
           password2: "",
           queue: [],
           filter: {},
-          loggedIn: false
-        }
+          loggedIn: false,
+        },
         //some api call here
         // queue: [action.queue]
       };
@@ -97,7 +106,7 @@ const reducer = (state, action) => {
     case CREATE_QUEUE:
       return {
         ...state,
-        queue: [action.queue]
+        queue: [action.queue],
       };
 
     case ADD_TO_QUEUE:
@@ -118,15 +127,15 @@ const reducer = (state, action) => {
 
     case FILTER_CHANGE:
       let { topic, value } = action;
-      mutateFilter[topic] = value;
+      let newMutation = { ...mutateFilter };
+      newMutation[topic] = value;
       return {
         ...state,
-        mutateFilter: mutateFilter,
+        mutateFilter: { ...newMutation },
       };
 
     case APPLY_FILTER:
       let newFilter = action.filter;
-      newFilter.kitten = action.kitten;
       return {
         ...state,
         filter: newFilter,
@@ -142,7 +151,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
 
 const StoreProvider = ({ ...props }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

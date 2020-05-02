@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Col,
   Row,
@@ -15,11 +15,7 @@ import UserSignIn from "../UserSignIn/UserSignIn";
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
   const { filter, mutateFilter, user } = state;
-
-  const loadUserFilter = () => {
-    let userFilter = user.filter;
-    // need to apply this to checkboxes somehow
-  }
+  const [rows, setRows] = useState();
 
   const handleRadioChange = (event) => {
     const { name, checked } = event.target;
@@ -34,10 +30,61 @@ function LeftNav() {
   const handleApplyFilter = (event) => {
     dispatch({
       type: APPLY_FILTER,
-      filter: {...mutateFilter},
-      kitten: false,
+      filter: { ...mutateFilter }
     });
   };
+
+  const checkboxMaker = (key, value) => {
+    return (
+      <Col md={4} className="choices-col">
+        <Form.Check
+          label={key}
+          name={key}
+          id={key}
+          type={"checkbox"}
+          className={`default-checkbox`}
+          onChange={handleRadioChange}
+        />
+      </Col>
+    );
+  }
+
+  const checkboxArrayMaker = () => {
+    let topics = Object.keys(mutateFilter);
+    let checkboxes = topics.map((key) => {
+      let checkedValue = mutateFilter[key];
+      return checkboxMaker(key, checkedValue);
+    });
+    let newRows = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      let checkboxRow =
+        <Row className="rad-row">
+          {checkboxes[i]}
+          {checkboxes[i + 1]}
+        </Row>
+      newRows.push(checkboxRow);
+      i++;
+    }
+    return newRows;
+  }
+
+  const applyFilter= (filter) => {
+    Object.keys(filter).map((key) => {
+      if (document.getElementById(key)) {
+        document.getElementById(key).checked = filter[key];
+      }
+    });
+  }
+
+  useEffect(() => {
+    let newRows = checkboxArrayMaker();
+    setRows(newRows)
+  }, [mutateFilter]);
+
+  useEffect(() => {
+      applyFilter(filter);
+    }, [filter]);
+
 
   return (
     <Col xs={4} md={3} lg={3} className="animated fadeIn delay-2s side-nav">
@@ -55,170 +102,9 @@ function LeftNav() {
       </div>
       <div className='create-heading'>choose your topics below:</div>
       <Form>
-        {["checkbox"].map((type) => (
-          <div key={`default-${type}`} className='choices'>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Sports'
-                  name='sports'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Politics'
-                  name='politics'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Art'
-                  name='art'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Fashion'
-                  name='fashion'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Technology'
-                  name='technology'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Animals'
-                  name='animals'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Home Decor'
-                  name='home Decor'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Music'
-                  name='music'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Movies'
-                  name='movies'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Entertainment'
-                  name='entertainment'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Literature'
-                  name='literature'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Style'
-                  name='style'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Science'
-                  name='science'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Travel'
-                  name='travel'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-            <Row className='rad-row'>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Food'
-                  name='food'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-              <Col md={4} className='choices-col'>
-                <Form.Check
-                  label='Health'
-                  name='health'
-                  type={type}
-                  id={`default-${type}`}
-                  onChange={handleRadioChange}
-                />
-              </Col>
-            </Row>
-          </div>
-        ))}
+        <div key={`default-checkbox`} className="choices">
+          {rows}
+        </div>
         <br />
         <Button className='apply-btn' onClick={handleApplyFilter}>
           Apply
