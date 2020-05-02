@@ -2,7 +2,7 @@
   "name": "majj",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://salty-ocean-88914.herokuapp.com/mine",
+  "proxy": "https://salty-ocean-88914.herokuapp.com/",
   "dependencies": {
     "@rehooks/window-scroll-position": "^1.0.1",
     "@testing-library/jest-dom": "^4.2.4",
