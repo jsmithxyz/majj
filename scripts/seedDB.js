@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const herokuDB = require("./config/keys").mongoURI;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/majj");
+mongoose.connect(herokuDB);
 
 const userSeed = [
   {
