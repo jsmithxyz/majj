@@ -1,4 +1,5 @@
 import axios from "axios";
+// import router from "../../../routes/api/users";
 
 export default {
   getItems: async function (filter) {
@@ -29,6 +30,7 @@ export default {
           return axiosReturn;
         }
       })
+
       );
 
       const filteredResults = resArr.filter((result) => result !== undefined);
@@ -53,5 +55,11 @@ export default {
       const filteredResults = resArr.filter((result) => result !== undefined);
       return filteredResults;
     }
+  },
+
+  registerUser: async function (userObject) {
+    let userReturn = axios.post("/api/users/register", userObject);
+
+    return userReturn;
   },
 };

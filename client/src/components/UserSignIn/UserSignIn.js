@@ -4,11 +4,14 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
 import { SIGN_IN, SIGN_OUT } from "../../utils/actions";
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
   const [signUp, setSignUp] = useState("");
   const [show, setShow] = useState(false);
+  // use this for user info?
   const [formObject, setFormObject] = useState({});
 
   const handleClose = () => setShow(false);
@@ -24,87 +27,100 @@ function UserSignIn() {
     setFormObject({ ...formObject, [name]: value });
   }
 
+  // validating object
+  // function showInfo() {
+  //   console.log(formObject);
+  // }
+
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
+
+  // !TODO - come back to this - not sure we're going to need it
   function handleFormSubmit(event) {
     event.preventDefault();
     console.log(formObject);
-    if (formObject.username && formObject.password) {
-      // some user login action here
-      // api call to grab user from DB
-      dispatch({
-        type: SIGN_IN,
-        user: formObject, // this will need to be database information
-      });
-    }
+    API.registerUser(formObject);
+   
+
+    // if (userObject.email && userObject.password) {
+    //   // some user login action here
+    //   // api call to grab user from DB
+    //   dispatch({
+    //     type: SIGN_IN,
+    //     user: formObject,
+    //   });
+    // }
   }
 
   // can this conditional be dried up somehow?
   if (signUp === "signup") {
-    // load this if the user wants to sign up
+    // ! load this if the user wants to sign up
     return (
       <>
-        <Button className='mod-btn' onClick={handleShow}>
-          <i class='fas fa-user fa-2x'></i>
+        <Button className="mod-btn" onClick={handleShow}>
+          <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Title className='mod-heading mod-head'>
+          <Modal.Title className="mod-heading mod-head">
             <img
               src={purplegem}
-              height='40px'
-              width='40px'
-              alt='gem'
-              className='yellowgem'
+              height="40px"
+              width="40px"
+              alt="gem"
+              className="yellowgem"
             />
             MAJJ
           </Modal.Title>
           <Modal.Body>
             <Form>
-              <Form.Group controlId='formBasicName'>
+              <Form.Group controlId="formBasicName">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='fullname'
-                  type='name'
-                  placeholder='Enter Full Name'
+                  name="name"
+                  type="name"
+                  placeholder="Enter Full Name"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='email'
-                  type='email'
-                  placeholder='Enter Email Address'
+                  name="email"
+                  type="email"
+                  placeholder="Enter Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicEmail'>
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  onChange={handleInputChange}
-                  name='username'
-                  type='username'
-                  placeholder='Enter Username'
-                />
-              </Form.Group>
-              <Form.Group controlId='formBasicPassword'>
+
+              <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='password'
-                  type='password'
-                  placeholder='Password'
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Form.Group controlId="formPasswordConfirm">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  onChange={handleInputChange}
+                  name="password2"
+                  type="password2"
+                  placeholder="Confirm password"
                 />
               </Form.Group>
             </Form>
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className='mod-btn' onClick=''>
+            <Button className="mod-btn" onClick={handleFormSubmit}>
               Register!
             </Button>
-            <Button className='mod-btn' onClick={handleSetLogin}>
+            {/* currently links to new page - will handle with router? */}
+            {/* <Link to="/register">Register</Link> */}
+            <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
           </Modal.Footer>
@@ -112,42 +128,42 @@ function UserSignIn() {
       </>
     );
   } else {
-    // return this if user wants to log in or hasn't clicked 'sign up'
+    // ! return this if user wants to log in or hasn't clicked 'sign up'
     return (
       <>
-        <Button className='mod-btn' onClick={handleShow}>
-          <i class='fas fa-user fa-2x'></i>
+        <Button className="mod-btn" onClick={handleShow}>
+          <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Title className='mod-heading mod-head'>
+          <Modal.Title className="mod-heading mod-head">
             <img
               src={purplegem}
-              height='40px'
-              width='40px'
-              alt='gem'
-              className='yellowgem'
+              height="40px"
+              width="40px"
+              alt="gem"
+              className="yellowgem"
             />
             MAJJ
           </Modal.Title>
           <Modal.Body>
             <Form>
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='username'
-                  type='username'
-                  placeholder='Enter Username'
+                  name="username"
+                  type="username"
+                  placeholder="Enter Username"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='password'
-                  type='password'
-                  placeholder='Password'
+                  name="password"
+                  type="password"
+                  placeholder="Password"
                 />
               </Form.Group>
             </Form>
@@ -155,12 +171,12 @@ function UserSignIn() {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              className='mod-btn'
+              className="mod-btn"
               onClick={(handleClose, handleFormSubmit)}
             >
               Login
             </Button>
-            <Button className='mod-btn' onClick={handleSetSignUp}>
+            <Button className="mod-btn" onClick={handleSetSignUp}>
               SignUp
             </Button>
           </Modal.Footer>

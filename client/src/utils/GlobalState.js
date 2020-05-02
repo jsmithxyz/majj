@@ -1,4 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
+import API from "../utils/API";
+
 import {
   CREATE_QUEUE,
   ADD_TO_QUEUE,
@@ -76,12 +78,13 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  let { queue, filter, mutateFilter, items, backupItems } = state;
+  let { queue, filter, mutateFilter, items, backupItems, user } = state;
   let { id } = action;
   let replacementItem;
 
   switch (action.type) {
     case SIGN_IN:
+      // let register = API.registerUser(user)
       return {
         ...state,
         user: [...action.user],
