@@ -1,7 +1,7 @@
 const Validator = require("validator"); // usedd to validate inputs & check formats/password match
 const isEmpty = require("is-empty"); // global funcion used in conjunction with validator
 
-module.exports = function validateLoginInput(data) {
+module.exports = validateLoginInput = (data) => {
   // instantiate errors object
   let errors = {};
 
