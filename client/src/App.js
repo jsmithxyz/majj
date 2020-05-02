@@ -6,6 +6,7 @@ import NoMatch from "./pages/NoMatch";
 import Mine from "./pages/Mine";
 import { StoreProvider } from "../src/utils/GlobalState";
 import Splash from "./pages/Splash";
+import { SnackbarProvider } from "react-snackbar-toast";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,15 +21,17 @@ class App extends React.Component {
   render() {
     return (
       <StoreProvider>
-        <Router>
-          <div style={{ background: this.state.color }}>
-            <Switch>
-              <Route exact path="/" component={Splash} />
-              <Route exact path="/mine" component={Mine} />
-              <Route path="*" component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
+        <SnackbarProvider>
+          <Router>
+            <div style={{ background: this.state.color }}>
+              <Switch>
+                <Route exact path="/" component={Splash} />
+                <Route exact path="/mine" component={Mine} />
+                <Route path="*" component={NoMatch} />
+              </Switch>
+            </div>
+          </Router>
+        </SnackbarProvider>
       </StoreProvider>
     );
   }
