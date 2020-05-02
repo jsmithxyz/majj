@@ -15,22 +15,20 @@ export default {
     if (filterNotEmpty) {
       let resArr = await Promise.all(
         Object.keys(filter).map(async (key) => {
-        if (filter[key] === true) {
+          if (filter[key] === true) {
+            let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=50&sortby=dat`;
 
-          let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=50&sortby=dat`;
-
-          let config = {
-            method: "get",
-            url: queryURL,
-            headers: {
-              "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-            },
-          };
-          let axiosReturn = await axios(config);
-          return axiosReturn;
-        }
-      })
-
+            let config = {
+              method: "get",
+              url: queryURL,
+              headers: {
+                "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+              },
+            };
+            let axiosReturn = await axios(config);
+            return axiosReturn;
+          }
+        })
       );
 
       const filteredResults = resArr.filter((result) => result !== undefined);
@@ -66,25 +64,31 @@ export default {
         myReturn = response.data;
         console.log("within axios: " + myReturn);
       })
-      .catch((err ) => {
+      .catch((err) => {
         console.log("in the catch");
         console.log(err);
-        myReturn = err.response
+        myReturn = err.response;
       });
-    console.log("API.js myReturn: " + JSON.stringify(myReturn));
+    console.log("API.js myReturn (register): " + JSON.stringify(myReturn));
     return myReturn;
   },
 
   loginUser: (userObject) => {
+    let myReturn = {};
     axios
       .post("/api/users/login", userObject)
       .then((response) => {
-        console.log("login response: " + JSON.stringify(response));
-        return response;
+        console.log("response from login.js: " + JSON.stringify(response));
+        myReturn = response.data;
+        console.log("within axios: " + myReturn);
+        // return response;
       })
       .catch((err) => {
         console.log("in the catch");
-        console.log(err);
+        console.log(err.response);
+        myReturn = err.response;
       });
+    console.log("API.js myReturn (login): " + JSON.stringify(myReturn));
+    return myReturn;
   },
 };

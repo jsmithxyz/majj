@@ -20,14 +20,14 @@ router.post("/register", (req, res) => {
   console.log("errors: " + JSON.stringify(errors));
   // check validation
   if (!isValid) {
-    debugger
-    console.log('400 error incoming!')
+    debugger;
+    console.log("400 error incoming!");
     return res.status(400).json(errors);
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      console.log('user already exists');
+      console.log("user already exists");
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
@@ -47,7 +47,7 @@ router.post("/register", (req, res) => {
             .catch((err) => console.log(err));
         });
       });
-      // ! do we need something here to return upon successful creation? 
+      // ! do we need something here to return upon successful creation?
     }
   });
 });
@@ -79,6 +79,7 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         console.log("yea you good come on in");
+        return res.status(200).json("Welcome!");
         // ! set authenticated state here
       } else {
         return res

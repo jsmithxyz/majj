@@ -13,7 +13,7 @@ function UserSignIn() {
   const [show, setShow] = useState(false);
   // use this for user info?
   const [formObject, setFormObject] = useState({});
-  const [errorState, setErrorState] = useState({ error: "" });
+  const [errorState, setErrorState] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,24 +30,29 @@ function UserSignIn() {
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
-    console.log(formObject);
     let result = await API.registerUser(formObject);
-    console.log("result from API.js: " + result);
     // !TODO if error, then do this
     if (result.status === 400) {
+      let error = result.data.email;
       console.log("before setFormObject call");
-      console.log('error: ' + result.data.email)
-      setErrorState({ errors: result.data.email }); // ! <-- why won't this update? 
-      console.log(JSON.stringify(errorState));
-      // console.log("from the front end!" + result.data.email);
+      console.log("error: " + result.data.email);
+      setErrorState({ error: error }); 
+    } else{
+      // ! welcome message here. prompt user to login
     }
   }
 
-  function handleLoginSubmit(event) {
+  async function handleLoginSubmit(event) {
     event.preventDefault();
     console.log(formObject);
-    let result = API.loginUser(formObject);
-    console.log("login result: " + JSON.stringify(result));
+    let result = await API.loginUser(formObject);
+    // ! the above is returning correctly, some async funkiness going on here
+    if (result.status === 400) {
+      let error = result.data;
+      console.log("login error: " + error);
+    } else {
+      console.log("login result: " + JSON.stringify(result));
+    }
   }
 
   // can this conditional be dried up somehow?
@@ -89,6 +94,7 @@ function UserSignIn() {
                   type="email"
                   placeholder="Enter Email Address"
                 />
+                
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
