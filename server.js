@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const routes = require("./routes");
 const users = require("./routes/api/users");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || "https://salty-ocean-88914.herokuapp.com/";
 const app = express();
 const db = require("./config/keys").mongoURI;
 app.use(express.urlencoded({ extended: true }));
