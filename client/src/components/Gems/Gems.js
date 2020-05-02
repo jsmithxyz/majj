@@ -12,18 +12,36 @@ import {
 import "./Gems.css";
 import sampleItems from "../../utils/sample-items";
 import Moment from "react-moment";
+import Database from "../../utils/Database";
+import useSnackbar from "react-snackbar-toast";
 
 function Gems() {
   const [state, dispatch] = useStoreContext();
   const { items } = state;
   const [tempItems, setTempItems] = useState(sampleItems);
+  // snackbar code
+  const { addToast } = useSnackbar();
 
   const handleAddToQueue = (event) => {
     const { id } = event.target;
-    dispatch({
-      type: ADD_TO_QUEUE,
-      id: id,
-    });
+    Database.updateQueue({
+      username: "default", //this will be pulled from state at some point?
+      $push: { queue: items[0][id].url },
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: ADD_TO_QUEUE,
+          id: id,
+        });
+      })
+      .then(
+        addToast("Added to your saved gems!", {
+          autoDismissTime: 3000,
+          className: "customToast",
+        })
+      )
+      .catch((err) => console.log(err));
   };
 
   const handlePass = (event) => {
@@ -31,6 +49,10 @@ function Gems() {
     dispatch({
       type: PASS,
       id: id,
+    });
+    addToast("Deleted!", {
+      autoDismissTime: 3000,
+      className: "customToast",
     });
   };
 
@@ -43,7 +65,7 @@ function Gems() {
   if (items) {
     return (
       <Fragment>
-        <Row className="mosaic">
+        <Row className="mosaic animated fadeInUp delay-2s">
           {items[0].map((result, index) => (
             <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card

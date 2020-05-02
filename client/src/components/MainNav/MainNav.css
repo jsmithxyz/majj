@@ -1,27 +1,18 @@
 .majj {
+  margin: 0px !important;
+  padding: 0px !important;
   background-color: #7e7e7e;
   box-shadow: 4px 4px 4px 4px #00000080;
 }
 
 .majj-text {
   color: white;
-  font-size: 70px;
+  font-size: 60px;
   text-shadow: 1px 1px 17px white;
 }
 
-.slogan-mainnav {
+.slogan-mainnav2 {
+  font-weight: normal;
   font-size: 20px;
-}
-
-.rotate {
-  animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(0deg);
-  }
+  margin: 0px !important;
 }
