@@ -8,17 +8,15 @@ export default {
       if (filter[key]) {
         filterNotEmpty = true;
       }
+      return;
     });
 
     if (filterNotEmpty) {
       let resArr = await Promise.all(
         Object.keys(filter).map(async (key) => {
-          if (filter[key] === true) {
-            let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
-
         if (filter[key] === true) {
 
-          let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
+          let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=50&sortby=dat`;
 
           let config = {
             method: "get",
@@ -38,7 +36,7 @@ export default {
     } else {
       let resArr = await Promise.all(
         Object.keys(filter).map(async (key) => {
-          let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=9&sortby=dat`;
+          let queryURL = `https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?q=${key}&count=50&sortby=dat`;
 
           let config = {
             method: "get",

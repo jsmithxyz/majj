@@ -63,6 +63,7 @@ const initialState = {
   },
   queue: [],
   items: [],
+  backupItems: [],
   user: {
     username: "",
     email: "",
@@ -75,8 +76,9 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  let { queue, filter, mutateFilter, items } = state;
+  let { queue, filter, mutateFilter, items, backupItems } = state;
   let { id } = action;
+  let replacementItem;
 
   switch (action.type) {
     case SIGN_IN:
@@ -112,6 +114,9 @@ const reducer = (state, action) => {
     case ADD_TO_QUEUE:
       let item = items[0][action.id];
       items[0].splice(id, 1);
+      replacementItem = backupItems[0][0];
+      items[0].push(replacementItem);
+      backupItems[0].splice(0, 1);
       return {
         ...state,
         queue: [...queue, item],
@@ -120,6 +125,9 @@ const reducer = (state, action) => {
 
     case PASS:
       items[0].splice(id, 1);
+      replacementItem = backupItems[0][0];
+      items[0].push(replacementItem);
+      backupItems[0].splice(0, 1);
       return {
         ...state,
         items: items,
@@ -142,9 +150,15 @@ const reducer = (state, action) => {
       };
 
     case NEW_ITEMS:
+      let top15 = [];
+      for (var i = 0; i < 15; i++) {
+        top15.push(action.items[i]);
+        action.items.splice(i, 1);
+      }
       return {
         ...state,
-        items: [action.items],
+        items: [top15],
+        backupItems: [action.items]
       };
 
     default:
