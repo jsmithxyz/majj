@@ -7,7 +7,6 @@ module.exports = validateRegisterInput = (data) => {
   // instantiate errors object
   let errors = {};
   
-
   // convert empty fields to an empty string to use validator functions
   data.name = !isEmpty(data.name) ? data.name : "";
   data.email = !isEmpty(data.email) ? data.email : "";
@@ -42,6 +41,7 @@ module.exports = validateRegisterInput = (data) => {
   if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
+
 
   return {
     errors,

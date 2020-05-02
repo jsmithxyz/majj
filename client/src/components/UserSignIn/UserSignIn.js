@@ -13,6 +13,7 @@ function UserSignIn() {
   const [show, setShow] = useState(false);
   // use this for user info?
   const [formObject, setFormObject] = useState({});
+  const [errorState, setErrorState] = useState({ error: "" });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,29 +28,26 @@ function UserSignIn() {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  // validating object
-  // function showInfo() {
-  //   console.log(formObject);
-  // }
-
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-
-  // !TODO - come back to this - not sure we're going to need it
-  function handleFormSubmit(event) {
+  async function handleRegisterSubmit(event) {
     event.preventDefault();
     console.log(formObject);
-    API.registerUser(formObject);
-   
+    let result = await API.registerUser(formObject);
+    console.log("result from API.js: " + result);
+    // !TODO if error, then do this
+    if (result.status === 400) {
+      console.log("before setFormObject call");
+      console.log('error: ' + result.data.email)
+      setErrorState({ errors: result.data.email }); // ! <-- why won't this update? 
+      console.log(JSON.stringify(errorState));
+      // console.log("from the front end!" + result.data.email);
+    }
+  }
 
-    // if (userObject.email && userObject.password) {
-    //   // some user login action here
-    //   // api call to grab user from DB
-    //   dispatch({
-    //     type: SIGN_IN,
-    //     user: formObject,
-    //   });
-    // }
+  function handleLoginSubmit(event) {
+    event.preventDefault();
+    console.log(formObject);
+    let result = API.loginUser(formObject);
+    console.log("login result: " + JSON.stringify(result));
   }
 
   // can this conditional be dried up somehow?
@@ -107,7 +105,7 @@ function UserSignIn() {
                 <Form.Control
                   onChange={handleInputChange}
                   name="password2"
-                  type="password2"
+                  type="password"
                   placeholder="Confirm password"
                 />
               </Form.Group>
@@ -115,11 +113,9 @@ function UserSignIn() {
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className="mod-btn" onClick={handleFormSubmit}>
+            <Button className="mod-btn" onClick={handleRegisterSubmit}>
               Register!
             </Button>
-            {/* currently links to new page - will handle with router? */}
-            {/* <Link to="/register">Register</Link> */}
             <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
@@ -149,11 +145,11 @@ function UserSignIn() {
           <Modal.Body>
             <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name="username"
-                  type="username"
+                  name="email"
+                  type="email"
                   placeholder="Enter Username"
                 />
               </Form.Group>
@@ -172,7 +168,7 @@ function UserSignIn() {
           <Modal.Footer>
             <Button
               className="mod-btn"
-              onClick={(handleClose, handleFormSubmit)}
+              onClick={(handleClose, handleLoginSubmit)}
             >
               Login
             </Button>

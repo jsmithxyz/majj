@@ -57,9 +57,34 @@ export default {
     }
   },
 
-  registerUser: async function (userObject) {
-    let userReturn = axios.post("/api/users/register", userObject);
+  registerUser: async (userObject) => {
+    let myReturn = {};
+    await axios
+      .post("/api/users/register", userObject)
+      .then((response) => {
+        console.log("response from users.js: " + JSON.stringify(response));
+        myReturn = response.data;
+        console.log("within axios: " + myReturn);
+      })
+      .catch((err ) => {
+        console.log("in the catch");
+        console.log(err);
+        myReturn = err.response
+      });
+    console.log("API.js myReturn: " + JSON.stringify(myReturn));
+    return myReturn;
+  },
 
-    return userReturn;
+  loginUser: (userObject) => {
+    axios
+      .post("/api/users/login", userObject)
+      .then((response) => {
+        console.log("login response: " + JSON.stringify(response));
+        return response;
+      })
+      .catch((err) => {
+        console.log("in the catch");
+        console.log(err);
+      });
   },
 };

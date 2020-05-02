@@ -15,17 +15,19 @@ const User = require("../../models/User");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-  
   // form validation
   const { errors, isValid } = validateRegisterInput(req.body);
-  console.log(errors);
+  console.log("errors: " + JSON.stringify(errors));
   // check validation
   if (!isValid) {
+    debugger
+    console.log('400 error incoming!')
     return res.status(400).json(errors);
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
+      console.log('user already exists');
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
@@ -45,6 +47,7 @@ router.post("/register", (req, res) => {
             .catch((err) => console.log(err));
         });
       });
+      // ! do we need something here to return upon successful creation? 
     }
   });
 });
@@ -53,6 +56,7 @@ router.post("/register", (req, res) => {
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
+  console.log("login hit");
   // form validation
   const { errors, isValid } = validateLoginInput(req.body);
 
@@ -68,33 +72,14 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then((user) => {
     // check if user exists
     if (!user) {
-      return res.status(404).json({ emailnotfound: "Email not found" });
+      return res.json({ emailnotfound: "Email not found" });
     }
 
     // check password
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        // user matched
-        // create JWT payload
-        const payload = {
-          id: user.id,
-          name: user.name,
-        };
-
-        // sign token
-        jwt.sign(
-          payload,
-          keys.secretOrKey,
-          {
-            expiresIn: 31556926, // 1 year in seconds
-          },
-          (err, token) => {
-            res.json({
-              success: true,
-              token: "Bearer " + token,
-            });
-          }
-        );
+        console.log("yea you good come on in");
+        // ! set authenticated state here
       } else {
         return res
           .status(400)
