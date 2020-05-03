@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { NEW_ITEMS } from "../utils/actions";
+import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
-import sampleItems from "../utils/sample-items";
 import Gems from "../components/Gems/Gems";
-import UserSignIn from "../components/UserSignIn/UserSignIn";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -15,7 +13,8 @@ function Mine() {
   const [state, dispatch] = useStoreContext();
   const { filter, queue, items } = state;
 
-  const [tempItems, setTempItems] = useState(sampleItems);
+  let newGems = itemizer(items);
+  const [gems, setGems] = useState(newGems);
 
   let flexbox = {
     display: "flex",
@@ -23,8 +22,26 @@ function Mine() {
   };
 
   useEffect(() => {
+    // console.log(filter);
     loadItems();
   }, [filter]);
+
+  useEffect(() => {
+    // console.log(queue);
+  }, [queue]);
+
+  useEffect(() => {
+    let newGems = itemizer(items);
+    setGems(newGems);
+  }, [items[0]]);
+
+  function createQueue() {
+    const newQueue = [];
+    dispatch({
+      type: CREATE_QUEUE,
+      queue: newQueue,
+    });
+  }
 
   async function loadItems() {
     let arr = [];
@@ -62,32 +79,23 @@ function Mine() {
     return array;
   }
 
-  //would like to dry this up
-  if (items) {
-    return (
-      <div>
-        <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
-          <LeftNav />
-          {Object.keys(items).map((key) => (
-            <Gems key={key} details={items[key]} />
-          ))}
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <MainNav />
-        <div className='flexbox-containter' style={flexbox}>
-          <LeftNav />
-          {Object.keys(tempItems).map((key) => (
-            <Gems key={key} details={tempItems[key]} />
-          ))}
-        </div>
-      </div>
-    );
+  function itemizer(items) {
+    let newGems = Object.keys(items).map((key) => (
+      <Gems key={key} details={items[key]} />
+    ));
+    return newGems;
   }
+
+  return (
+    <div>
+      <MainNav />
+      <div className="flexbox-containter" style={flexbox}>
+        <LeftNav />
+
+        {gems}
+      </div>
+    </div>
+  );
 }
 
 export default Mine;

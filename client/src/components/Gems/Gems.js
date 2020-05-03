@@ -1,31 +1,58 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_QUEUE, PASS, NEW_ITEMS } from "../../utils/actions";
-import { Row, Col, Card } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Card,
+  Image,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import "./Gems.css";
 import sampleItems from "../../utils/sample-items";
 import Moment from "react-moment";
+import Database from "../../utils/Database";
+import useSnackbar from "react-snackbar-toast";
 
 function Gems() {
   const [state, dispatch] = useStoreContext();
-  const { items } = state;
+  const { items, user } = state;
   const [tempItems, setTempItems] = useState(sampleItems);
+  // snackbar code
+  const { addToast } = useSnackbar();
 
   const handleAddToQueue = (event) => {
-    // event.preventDefault();
     const { id } = event.target;
-    dispatch({
-      type: ADD_TO_QUEUE,
-      id: id,
-    });
+    Database.updateQueue({
+      username: "default", //this will be pulled from state at some point?
+      $push: { queue: items[0][id].url },
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: ADD_TO_QUEUE,
+          id: id,
+        });
+      })
+      .then(
+        addToast("Added to your saved gems!", {
+          autoDismissTime: 3000,
+          className: "customToast",
+        })
+      )
+      .catch((err) => console.log(err));
   };
 
   const handlePass = (event) => {
-    // event.preventDefault();
     const { id } = event.target;
     dispatch({
       type: PASS,
       id: id,
+    });
+    addToast("Deleted!", {
+      autoDismissTime: 3000,
+      className: "customToast",
     });
   };
 
@@ -38,15 +65,15 @@ function Gems() {
   if (items) {
     return (
       <Fragment>
-        <Row className='mosaic'>
+        <Row className='mosaic animated fadeInUp delay-2s'>
           {items[0].map((result, index) => (
-            <Col key={`col${index}`} cxs={12} md={5} lg={4}>
+            <Col key={`col${index}`} xs={12} md={5} lg={4}>
               <Card
                 className='card'
                 key={`gem${index}`}
-                style={{ width: "18rem" }}
+                style={{ width: "20em" }}
               >
-                <img
+                <Image
                   className='picture'
                   alt='thumbnail, where art thou?'
                   src={
@@ -55,6 +82,7 @@ function Gems() {
                   }
                   height='150'
                   width='150'
+                  roundedCircle
                 />
                 <Card.Body>
                   <Card.Title className='title'>
@@ -68,25 +96,55 @@ function Gems() {
                   </Card.Text>
                   <Card.Text className='icons'>
                     <button>
-                      <i
-                        className='far fa-gem'
-                        id={index}
-                        onClick={handleAddToQueue}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            add to your saved gems
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-gem'
+                          id={index}
+                          onClick={handleAddToQueue}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                     <button>
-                      <i
-                        className='far fa-eye'
-                        id={index}
-                        onClick={handleOpen}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            view article now
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-eye'
+                          id={index}
+                          onClick={handleOpen}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                     <button>
-                      <i
-                        className='far fa-trash-alt'
-                        id={index}
-                        onClick={handlePass}
-                      ></i>
+                      <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                          <Tooltip id={`tooltip-bottom`}>
+                            delete this article
+                          </Tooltip>
+                        }
+                      >
+                        <i
+                          className='far fa-trash-alt'
+                          id={index}
+                          onClick={handlePass}
+                        ></i>
+                      </OverlayTrigger>
                     </button>
                   </Card.Text>
                 </Card.Body>

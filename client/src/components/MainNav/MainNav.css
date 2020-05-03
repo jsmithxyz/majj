@@ -1,21 +1,26 @@
 .majj {
+<<<<<<< HEAD
   background-color: #056766;
   /* font-family: "luckiest guy", sans-serif; */
   font-family: 'Gotu', sans-serif;
+=======
+  margin: 0px !important;
+  padding: 0px !important;
+  background-color: #7e7e7e;
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
   box-shadow: 4px 4px 4px 4px #00000080;
-  overflow: hidden;
 }
 
 .majj-text {
   color: white;
-  letter-spacing: 3px;
-  padding-top: 20px;
-  font-size: 70px;
-  text-shadow: 1px 1px 2px black, 0 0 25px goldenrod, 0 0 25px #dd9932;
+  font-size: 60px;
+  text-shadow: 1px 1px 17px white;
 }
 
-.slogan-mainnav {
+.slogan-mainnav2 {
+  font-weight: normal;
   font-size: 20px;
+<<<<<<< HEAD
   letter-spacing: 2px;
   /* font-family: "Special Elite", cursive; */
   font-family: 'Gotu', sans-serif;
@@ -32,4 +37,7 @@
   to {
     transform: rotateY(0deg);
   }
+=======
+  margin: 0px !important;
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
 }

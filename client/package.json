@@ -4,23 +4,33 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@rehooks/window-scroll-position": "^1.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "classnames": "^2.2.6",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-iframe": "^1.8.0",
     "react-moment": "^0.9.7",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "serve": "^11.3.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "react-scripts start",
+=======
+    "start": "npm run build && react-scripts start",
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

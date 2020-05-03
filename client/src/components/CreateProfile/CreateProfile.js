@@ -7,17 +7,9 @@ function CreateProfile() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  let style = {
-    backgroundColor: "#461767",
-    color: "#675682",
-    border: "0px",
-    borderRadius: "10px",
-  };
-
   return (
     <>
-      <Button className="mod-btn" style={style} onClick={handleShow}>
+      <Button className="mod-btn" onClick={handleShow}>
         CreateProfile
       </Button>
 

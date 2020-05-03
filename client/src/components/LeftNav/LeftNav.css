@@ -1,24 +1,28 @@
-.rad-row {
-  margin-bottom: 10px;
-  margin-left: 5px;
+.create-heading {
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 22px;
+  margin-top: 20px;
 }
 
-.apply-btn,
-.sign-out {
-  box-shadow: 1px 2px 4px #00000080;
-  margin: 20px 10px;
+.prof-signout {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: thin solid#51279B;
 }
 
-.apply-btn:hover,
-.sign-out:hover {
-  background-color: #f0b429 !important;
-  color: #fff3c4 !important;
+.side-nav {
+  padding-top: 30px;
+  overflow-x: hidden;
+  z-index: 1;
+  background-color: #e1e1e1;
+  height: 100vh;
+  box-shadow: 6px 6px 6px #00000080;
+  /* marginRight: "30px", */
 }
 
-.choices-col {
-  margin-right: 10px;
-}
-
+<<<<<<< HEAD
 .create-heading {
   /* font-family: luckiest guy; */
   font-family: 'Gotu', sans-serif;
@@ -28,4 +32,10 @@
   padding-bottom: 10px;
   font-size: 20px;
   text-shadow: 1px 1px 2px black, 0 0 25px goldenrod, 0 0 25px #dd9932;
+=======
+@media only screen and (max-width: 600px) {
+  .side-nav {
+    font-size: 15px;
+  }
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
 }
