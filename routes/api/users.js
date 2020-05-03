@@ -9,7 +9,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // load user model
-const User = require("../../models/user");
+const User = require("../../models/User");
 
 // @route POST api/users/register
 // @desc Register user
@@ -74,19 +74,20 @@ router.post("/login", (req, res) => {
     if (!user) {
       return res.json({ emailnotfound: "Email not found" });
     }
+    console.log("from db: " + user);
 
     // check password
-    bcrypt.compare(password, user.password).then((isMatch) => {
-      if (isMatch) {
-        console.log("yea you good come on in");
-        return res.status(200).json("Welcome!");
-        // ! set authenticated state here
-      } else {
-        return res
-          .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
-      }
-    });
+    if (
+      bcrypt.compare(password, user.password).then((isMatch) => {
+        console.log(isMatch);
+        return isMatch;
+      }) 
+    ) {
+      res.json(user);
+    } else {
+      console.log("wrong password idiot");
+      res.status(400).json({ passwordincorrect: "Password incorrect" });
+    }
   });
 });
 

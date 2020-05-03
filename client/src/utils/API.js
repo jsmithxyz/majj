@@ -74,21 +74,19 @@ export default {
   },
 
   loginUser: (userObject) => {
-    let myReturn = {};
-    axios
+    // let myReturn = "";
+    return axios
       .post("/api/users/login", userObject)
       .then((response) => {
-        console.log("response from login.js: " + JSON.stringify(response));
-        myReturn = response.data;
-        console.log("within axios: " + myReturn);
-        // return response;
+        console.log(response);
+        return response;
       })
       .catch((err) => {
         console.log("in the catch");
         console.log(err.response);
-        myReturn = err.response;
+        return err;
       });
-    console.log("API.js myReturn (login): " + JSON.stringify(myReturn));
-    return myReturn;
+    // ! this should be full object sending back up to UserSignIn
+    // return myReturn;
   },
 };

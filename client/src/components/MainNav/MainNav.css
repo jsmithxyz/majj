@@ -1,13 +1,7 @@
 .majj {
-<<<<<<< HEAD
-  background-color: #056766;
-  /* font-family: "luckiest guy", sans-serif; */
-  font-family: 'Gotu', sans-serif;
-=======
   margin: 0px !important;
   padding: 0px !important;
   background-color: #7e7e7e;
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
   box-shadow: 4px 4px 4px 4px #00000080;
 }
 
@@ -20,24 +14,5 @@
 .slogan-mainnav2 {
   font-weight: normal;
   font-size: 20px;
-<<<<<<< HEAD
-  letter-spacing: 2px;
-  /* font-family: "Special Elite", cursive; */
-  font-family: 'Gotu', sans-serif;
-}
-
-.rotate {
-  animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(0deg);
-  }
-=======
   margin: 0px !important;
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
 }

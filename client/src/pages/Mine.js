@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
+import { NEW_ITEMS } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import Gems from "../components/Gems/Gems";
@@ -37,10 +37,10 @@ function Mine() {
 
   function createQueue() {
     const newQueue = [];
-    dispatch({
-      type: CREATE_QUEUE,
-      queue: newQueue,
-    });
+    // dispatch({
+    //   type: CREATE_QUEUE,
+    //   queue: newQueue,
+    // });
   }
 
   async function loadItems() {

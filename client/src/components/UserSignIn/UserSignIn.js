@@ -3,7 +3,7 @@ import "./UserSignIn.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import { SIGN_IN, SIGN_OUT } from "../../utils/actions";
+import { SIGN_IN, SIGN_OUT, ADD_USER } from "../../utils/actions";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
@@ -31,28 +31,40 @@ function UserSignIn() {
   async function handleRegisterSubmit(event) {
     event.preventDefault();
     let result = await API.registerUser(formObject);
-    // !TODO if error, then do this
+
     if (result.status === 400) {
+      // if register fails
       let error = result.data.email;
-      console.log("before setFormObject call");
-      console.log("error: " + result.data.email);
-      setErrorState({ error: error }); 
-    } else{
+      // set a local error state to use to display to user
+      setErrorState({ error: error });
+    } else {
+      // if register succeeds
       // ! welcome message here. prompt user to login
     }
   }
 
   async function handleLoginSubmit(event) {
     event.preventDefault();
-    console.log(formObject);
-    let result = await API.loginUser(formObject);
-    // ! the above is returning correctly, some async funkiness going on here
-    if (result.status === 400) {
-      let error = result.data;
-      console.log("login error: " + error);
-    } else {
-      console.log("login result: " + JSON.stringify(result));
-    }
+
+    API.loginUser(formObject).then(result => 
+      dispatch({
+        type: SIGN_IN,
+        user: result.data,
+      })
+    );
+
+    // if (result.status === 400) {
+    //   // if login fails for some reason
+    //   let error = result.data;
+    //   // set a local error state to use to display to user why login failed
+    //   setErrorState({ error: error });
+    // } else {
+    //   // if login is successful
+    //   dispatch({
+    //     type: SIGN_IN,
+    //     user: result.data
+    //   });
+    // }
   }
 
   // can this conditional be dried up somehow?
@@ -94,7 +106,6 @@ function UserSignIn() {
                   type="email"
                   placeholder="Enter Email Address"
                 />
-                
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
