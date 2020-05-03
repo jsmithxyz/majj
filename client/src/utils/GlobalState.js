@@ -2,7 +2,6 @@ import React, { createContext, useReducer, useContext } from "react";
 import API from "../utils/API";
 
 import {
-  CREATE_QUEUE,
   ADD_TO_QUEUE,
   PASS,
   APPLY_FILTER,
@@ -10,6 +9,7 @@ import {
   NEW_ITEMS,
   SIGN_IN,
   SIGN_OUT,
+  ADD_USER,
 } from "./actions";
 
 export const StoreContext = createContext();
@@ -69,8 +69,6 @@ const initialState = {
   user: {
     username: "",
     email: "",
-    password: "",
-    password2: "",
     queue: [],
     filter: {},
     loggedIn: false,
@@ -84,12 +82,16 @@ const reducer = (state, action) => {
 
   switch (action.type) {
     case SIGN_IN:
-      // let register = API.registerUser(user)
+      console.log(action);
       return {
         ...state,
-        user: [...action.user],
-        //some api call here
-        // queue: [action.queue]
+        user: {
+          username: action.user.name,
+          email: action.user.email,
+          queue: action.user.queue,
+          filter: action.user.filter,
+          loggedIn: true
+        },
       };
 
     case SIGN_OUT:
@@ -98,8 +100,6 @@ const reducer = (state, action) => {
         user: {
           username: "",
           email: "",
-          password: "",
-          password2: "",
           queue: [],
           filter: {},
           loggedIn: false,
@@ -108,11 +108,11 @@ const reducer = (state, action) => {
         // queue: [action.queue]
       };
 
-    case CREATE_QUEUE:
-      return {
-        ...state,
-        queue: [action.queue],
-      };
+    // case CREATE_QUEUE:
+    //   return {
+    //     ...state,
+    //     queue: [action.queue],
+    //   };
 
     case ADD_TO_QUEUE:
       let item = items[0][action.id];
@@ -161,7 +161,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         items: [top15],
-        backupItems: [action.items]
+        backupItems: [action.items],
       };
 
     default:

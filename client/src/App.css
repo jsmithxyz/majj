@@ -1,12 +1,5 @@
 body,
 html {
-<<<<<<< HEAD
-  /* font-family: "Special Elite", cursive; */
-  font-family: 'Gotu', sans-serif;
-  color: white;
-  background-image: url("./img/gembackground.jpg");
-  background-size: 350px;
-=======
   font-family: "Gotu", sans-serif;
   background-color: #f7f7f7;
   /* #F7F7F7 */
@@ -39,5 +32,4 @@ a {
 a:hover {
   text-decoration: none;
   color: #54d1db;
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
 }

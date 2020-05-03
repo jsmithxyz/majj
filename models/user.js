@@ -16,6 +16,7 @@ const UserSchema = new Schema({
     },
   ],
   filter: [],
+  loggedIn: false,
 });
 
 const User = mongoose.model("User", UserSchema);
