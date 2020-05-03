@@ -27,7 +27,7 @@ mongoose
   .connect(db, {
     useNewUrlParser: true,
     useFindAndModify: false,
-    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
@@ -35,9 +35,7 @@ mongoose
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("/*", function (req, res) {
-  res.sendFile(
-    path.join(__dirname, "https://salty-ocean-88914.herokuapp.com/")
-  );
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, function () {
