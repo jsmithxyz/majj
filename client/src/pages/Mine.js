@@ -33,7 +33,7 @@ function Mine() {
   useEffect(() => {
     let newGems = itemizer(items);
     setGems(newGems);
-  }, [items]);
+  }, [items[0]]);
 
   function createQueue() {
     const newQueue = [];
