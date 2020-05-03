@@ -3,7 +3,7 @@ import "./UserSignIn.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import { SIGN_IN, SIGN_OUT } from "../../utils/actions";
+import { SIGN_IN, SIGN_OUT, ADD_USER } from "../../utils/actions";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
@@ -13,6 +13,7 @@ function UserSignIn() {
   const [show, setShow] = useState(false);
   // use this for user info?
   const [formObject, setFormObject] = useState({});
+  const [errorState, setErrorState] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,27 +28,41 @@ function UserSignIn() {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  // validating object
-  // function showInfo() {
-  //   console.log(formObject);
-  // }
-
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-
-  // !TODO - come back to this - not sure we're going to need it
-  function handleFormSubmit(event) {
+  async function handleRegisterSubmit(event) {
     event.preventDefault();
-    console.log(formObject);
-    API.registerUser(formObject);
-   
+    let result = await API.registerUser(formObject);
 
-    // if (userObject.email && userObject.password) {
-    //   // some user login action here
-    //   // api call to grab user from DB
+    if (result.status === 400) {
+      // if register fails
+      let error = result.data.email;
+      // set a local error state to use to display to user
+      setErrorState({ error: error });
+    } else {
+      // if register succeeds
+      // ! welcome message here. prompt user to login
+    }
+  }
+
+  async function handleLoginSubmit(event) {
+    event.preventDefault();
+
+    API.loginUser(formObject).then(result => 
+      dispatch({
+        type: SIGN_IN,
+        user: result.data,
+      })
+    );
+
+    // if (result.status === 400) {
+    //   // if login fails for some reason
+    //   let error = result.data;
+    //   // set a local error state to use to display to user why login failed
+    //   setErrorState({ error: error });
+    // } else {
+    //   // if login is successful
     //   dispatch({
     //     type: SIGN_IN,
-    //     user: formObject,
+    //     user: result.data
     //   });
     // }
   }
@@ -107,7 +122,7 @@ function UserSignIn() {
                 <Form.Control
                   onChange={handleInputChange}
                   name="password2"
-                  type="password2"
+                  type="password"
                   placeholder="Confirm password"
                 />
               </Form.Group>
@@ -115,11 +130,9 @@ function UserSignIn() {
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className="mod-btn" onClick={handleFormSubmit}>
+            <Button className="mod-btn" onClick={handleRegisterSubmit}>
               Register!
             </Button>
-            {/* currently links to new page - will handle with router? */}
-            {/* <Link to="/register">Register</Link> */}
             <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
@@ -149,11 +162,11 @@ function UserSignIn() {
           <Modal.Body>
             <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name="username"
-                  type="username"
+                  name="email"
+                  type="email"
                   placeholder="Enter Username"
                 />
               </Form.Group>
@@ -172,7 +185,7 @@ function UserSignIn() {
           <Modal.Footer>
             <Button
               className="mod-btn"
-              onClick={(handleClose, handleFormSubmit)}
+              onClick={(handleClose, handleLoginSubmit)}
             >
               Login
             </Button>
