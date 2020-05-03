@@ -5,13 +5,14 @@ import { NEW_ITEMS, CREATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import Gems from "../components/Gems/Gems";
+import Database from "../utils/Database";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
 
 function Mine() {
   const [state, dispatch] = useStoreContext();
-  const { filter, queue, items } = state;
+  const { filter, queue, items, user } = state;
 
   let newGems = itemizer(items);
   const [gems, setGems] = useState(newGems);
@@ -28,6 +29,9 @@ function Mine() {
 
   useEffect(() => {
     // console.log(queue);
+    // Database.getUserQueue(user.name).then((res) => {
+    //   console.log(res);
+    // });
   }, [queue]);
 
   useEffect(() => {
@@ -89,7 +93,7 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <div className="flexbox-containter" style={flexbox}>
+      <div className='flexbox-containter' style={flexbox}>
         <LeftNav />
 
         {gems}

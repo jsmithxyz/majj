@@ -67,7 +67,7 @@ const initialState = {
   items: [],
   backupItems: [],
   user: {
-    username: "",
+    name: "Max",
     email: "",
     password: "",
     password2: "",
@@ -161,7 +161,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         items: [top15],
-        backupItems: [action.items]
+        backupItems: [action.items],
       };
 
     default:
