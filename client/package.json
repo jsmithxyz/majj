@@ -26,11 +26,7 @@
     "serve": "^11.3.0"
   },
   "scripts": {
-<<<<<<< HEAD
-    "start": "react-scripts start",
-=======
     "start": "npm run build && react-scripts start",
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
