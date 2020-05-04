@@ -30,13 +30,13 @@ function LeftNav() {
   const handleApplyFilter = (event) => {
     dispatch({
       type: APPLY_FILTER,
-      filter: { ...mutateFilter }
+      filter: { ...mutateFilter },
     });
   };
 
   const checkboxMaker = (key, value) => {
     return (
-      <Col md={4} className="choices-col">
+      <Col md={4} className='choices-col'>
         <Form.Check
           label={key}
           name={key}
@@ -47,7 +47,7 @@ function LeftNav() {
         />
       </Col>
     );
-  }
+  };
 
   const checkboxArrayMaker = () => {
     let topics = Object.keys(mutateFilter);
@@ -57,38 +57,46 @@ function LeftNav() {
     });
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
-      let checkboxRow =
-        <Row className="rad-row">
+      let checkboxRow = (
+        <Row className='rad-row'>
           {checkboxes[i]}
           {checkboxes[i + 1]}
         </Row>
+      );
       newRows.push(checkboxRow);
       i++;
     }
     return newRows;
-  }
+  };
 
-  const applyFilter= (filter) => {
+  const applyFilter = (filter) => {
     Object.keys(filter).map((key) => {
       if (document.getElementById(key)) {
         document.getElementById(key).checked = filter[key];
       }
     });
-  }
+  };
+
+  useEffect(() => {
+    applyFilter(user.filter);
+    // dispatch({
+    //   type: APPLY_FILTER,
+    //   filter: user.filter,
+    // });
+  }, [user.filter]);
 
   useEffect(() => {
     let newRows = checkboxArrayMaker();
-    setRows(newRows)
+    setRows(newRows);
   }, [mutateFilter]);
 
   useEffect(() => {
-      applyFilter(filter);
-    }, [filter]);
-
+    applyFilter(filter);
+  }, [filter]);
 
   return (
-    <Col xs={4} md={3} lg={3} className="animated fadeIn delay-2s side-nav">
-      <div className="prof-signout">
+    <Col xs={4} md={3} lg={3} className='animated fadeIn delay-2s side-nav'>
+      <div className='prof-signout'>
         <UserSignIn />
         <Button className='sign-out'>
           <OverlayTrigger
@@ -102,7 +110,7 @@ function LeftNav() {
       </div>
       <div className='create-heading'>choose your topics below:</div>
       <Form>
-        <div key={`default-checkbox`} className="choices">
+        <div key={`default-checkbox`} className='choices'>
           {rows}
         </div>
         <br />
