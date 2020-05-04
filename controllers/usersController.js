@@ -7,8 +7,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   getQueue: function (req, res) {
-    console.log(req.body);
-    db.User.findOne({ name: req.body.name })
+    db.User.findOne({ name: req.params.user })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  getFilter: function (req, res) {
+    db.User.findOne({ name: req.params.user })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

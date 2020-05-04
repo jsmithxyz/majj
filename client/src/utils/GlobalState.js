@@ -3,6 +3,7 @@ import API from "../utils/API";
 
 import {
   ADD_TO_QUEUE,
+  UPDATE_QUEUE,
   PASS,
   APPLY_FILTER,
   FILTER_CHANGE,
@@ -63,11 +64,11 @@ const initialState = {
     astrology: false,
     crafts: false,
   },
-  queue: [],
+  // queue: [],
   items: [],
   backupItems: [],
   user: {
-    name: "Max",
+    username: "default",
     email: "",
     queue: [],
     filter: {},
@@ -76,7 +77,7 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  let { queue, filter, mutateFilter, items, backupItems, user } = state;
+  let { filter, mutateFilter, items, backupItems, user } = state;
   let { id } = action;
   let replacementItem;
 
@@ -90,8 +91,9 @@ const reducer = (state, action) => {
           email: action.user.email,
           queue: action.user.queue,
           filter: action.user.filter,
-          loggedIn: true
+          loggedIn: true,
         },
+        // filter: action.user.filter,
       };
 
     case SIGN_OUT:
@@ -108,11 +110,11 @@ const reducer = (state, action) => {
         // queue: [action.queue]
       };
 
-    // case CREATE_QUEUE:
-    //   return {
-    //     ...state,
-    //     queue: [action.queue],
-    //   };
+    case UPDATE_QUEUE:
+      return {
+        ...state,
+        queue: [action.queue],
+      };
 
     case ADD_TO_QUEUE:
       let item = items[0][action.id];
@@ -120,9 +122,10 @@ const reducer = (state, action) => {
       replacementItem = backupItems[0][0];
       items[0].push(replacementItem);
       backupItems[0].splice(0, 1);
+      user.queue.push(item.url);
       return {
         ...state,
-        queue: [...queue, item],
+        user: user,
         items: items,
       };
 

@@ -24,9 +24,9 @@ function Gems() {
 
   const handleAddToQueue = (event) => {
     const { id } = event.target;
-    console.log(user.name);
+    console.log(user);
     Database.updateQueue({
-      name: user.name,
+      name: user.username,
       $push: { queue: items[0][id].url },
     })
       .then((res) => {

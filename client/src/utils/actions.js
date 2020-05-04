@@ -7,6 +7,7 @@ export const SIGN_OUT = "SIGN_OUT";
 // export const LOADING = "LOADING"; // while item is switching
 // family of CARD actions
 export const ADD_TO_QUEUE = "ADD_TO_QUEUE"; // add item to queue
+export const UPDATE_QUEUE = "UPDATE_QUEUE";
 export const PASS = "PASS"; // get rid of item from presentation,
 export const APPLY_FILTER = "APPLY_FILTER"; // changes filter settings, will re call
 export const FILTER_CHANGE = "FILTER_CHANGE"; // reflects state of the left nav

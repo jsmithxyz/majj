@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { NEW_ITEMS } from "../utils/actions";
+import { NEW_ITEMS, UPDATE_QUEUE } from "../utils/actions";
 import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import Gems from "../components/Gems/Gems";
@@ -28,24 +28,19 @@ function Mine() {
   }, [filter]);
 
   useEffect(() => {
-    // console.log(queue);
-    // Database.getUserQueue(user.name).then((res) => {
-    //   console.log(res);
-    // });
-  }, [queue]);
+    Database.getUserQueue(user.username).then((res) => {
+      console.log(res.data.queue);
+      dispatch({
+        type: UPDATE_QUEUE,
+        queue: res.data.queue,
+      });
+    });
+  }, []);
 
   useEffect(() => {
     let newGems = itemizer(items);
     setGems(newGems);
   }, [items[0]]);
-
-  function createQueue() {
-    const newQueue = [];
-    // dispatch({
-    //   type: CREATE_QUEUE,
-    //   queue: newQueue,
-    // });
-  }
 
   async function loadItems() {
     let arr = [];
