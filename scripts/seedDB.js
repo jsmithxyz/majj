@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-const herokuDB = require("./config/keys").mongoURI;
+const herokuDB = require("../config/keys").mongoURI;
 
 mongoose.connect(herokuDB);
 
 const userSeed = [
   {
-    username: "default",
+    name: "default",
+    email: "default@default.com",
     password: "noUser",
     queue: [],
     filter: {},

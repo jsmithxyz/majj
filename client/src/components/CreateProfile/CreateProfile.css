@@ -1,0 +1,43 @@
+.mod-head,
+.modal-body,
+.modal-footer {
+  background-color: #075c56;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
+}
+.choices {
+  /* font-family: "Special Elite", cursive; */
+<<<<<<< HEAD
+  font-family: 'Gotu', sans-serif;
+=======
+  font-family: "Gotu", sans-serif;
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
+}
+
+.rad-row {
+  margin: 10px;
+}
+
+.create-heading {
+  text-align: center;
+  /* font-family: luckiest guy; */
+<<<<<<< HEAD
+  font-family: 'Gotu', sans-serif;
+=======
+  font-family: "Gotu", sans-serif;
+>>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
+  color: white;
+  letter-spacing: 0px;
+  padding: 15px;
+  font-size: 25px;
+}
