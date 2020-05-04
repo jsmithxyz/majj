@@ -17,7 +17,7 @@ function UserProfile() {
         <Col md="auto" className="align-self-center userheading">
           hello, username!
         </Col>
-        <Col xxs={12} lg={2}></Col>
+        <Col xs={12} lg={2}></Col>
       </Row>
       <Row className="justify-content-md-center">
         <Col xs={12} lg={2}></Col>

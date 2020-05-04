@@ -1,5 +1,4 @@
 .usercontainer {
-  background-color: #034169;
   box-shadow: 4px 4px 4px 4px #00000080;
   padding: 20px;
   margin-top: 50px;
@@ -7,21 +6,13 @@
 
 .userheading {
   margin-top: 20px;
-<<<<<<< HEAD
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
-=======
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
+  font-family: "Gotu", sans-serif;
   color: white;
   font-size: 30px;
   text-align: center;
 }
 .next {
-<<<<<<< HEAD
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
-=======
->>>>>>> 70493780fa7509a3fdde71326773a0da948751dc
+  font-family: "Gotu", sans-serif;
   color: white;
 }
 
