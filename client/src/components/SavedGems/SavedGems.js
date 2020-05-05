@@ -17,10 +17,15 @@ import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
+    backgroundColor: "#653cad",
   },
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
+    fontFamily: "Gotu",
+  },
+  dialog: {
+    backgroundColor: "#e1e0e5",
   },
 }));
 
@@ -43,11 +48,28 @@ export default function SavedGems() {
     setOpen(false);
   };
 
+  const handleUrlOpen = (item) => {
+    window.open(item.url, "_blank");
+  };
+
   const listItemMaker = (item) => {
     return (
       <>
-        <ListItem button>
-          {/* <Image */}
+        <ListItem
+          button
+          onClick={() => {
+            window.open(item.url, "_blank");
+          }}
+        >
+          <Image
+            src={
+              item.image?.thumbnail.contentUrl ||
+              "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
+            }
+            roundedCircle
+            height='80px'
+            width='80px'
+          />
           <ListItemText primary={item.name} />
         </ListItem>
         <Divider />
@@ -83,6 +105,7 @@ export default function SavedGems() {
       <Dialog
         fullScreen
         open={open}
+        className={classes.dialog}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
