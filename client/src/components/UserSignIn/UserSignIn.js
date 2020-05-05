@@ -31,6 +31,7 @@ function UserSignIn() {
     setUserFilter({ ...userFilter, [name]: checked });
     let filterString = JSON.stringify(userFilter);
     setFormObject({ ...formObject, userFilter: filterString });
+    console.log(formObject);
   };
 
   const handleClose = () => setShow(false);
@@ -48,6 +49,7 @@ function UserSignIn() {
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
+    console.log(formObject);
     let result = await API.registerUser(formObject);
 
     if (result.status === 400) {
