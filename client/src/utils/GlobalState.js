@@ -79,7 +79,7 @@ const initialState = {
 const reducer = (state, action) => {
   let { filter, mutateFilter, items, backupItems, user } = state;
   let { id } = action;
-  let { queue } = user;
+  // let { queue } = user;
   let replacementItem;
 
   switch (action.type) {
@@ -123,10 +123,10 @@ const reducer = (state, action) => {
       replacementItem = backupItems[0][0];
       items[0].push(replacementItem);
       backupItems[0].splice(0, 1);
-      user.queue.push(item.url);
+      user.queue.push(JSON.stringify(item));
       return {
         ...state,
-        queue: queue,
+        user: user,
         items: items,
       };
 

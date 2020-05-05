@@ -33,7 +33,6 @@ export default function SavedGems() {
   const [open, setOpen] = useState(false);
   const [state, dispatch] = useStoreContext();
   const { user } = state;
-  const { queue } = user;
   const [listItems, setListItems] = useState();
 
   const handleClickOpen = () => {
@@ -65,10 +64,10 @@ export default function SavedGems() {
   };
 
   useEffect(() => {
-    let itemQueue = user.queue;
-    let listItems = listMaker(itemQueue);
-    setListItems(listItems);
-  }, [user.queue]);
+    let newListItems = listMaker(user.queue);
+    setListItems(newListItems);
+  }, [user.queue.length]);
+
 
   return (
     <>
