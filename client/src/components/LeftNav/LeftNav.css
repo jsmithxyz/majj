@@ -21,6 +21,9 @@
   box-shadow: 6px 6px 6px #00000080;
   /* marginRight: "30px", */
 }
+i {
+  color: white;
+}
 
 @media only screen and (max-width: 600px) {
   .side-nav {

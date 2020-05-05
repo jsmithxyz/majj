@@ -7,6 +7,7 @@ import Mine from "./pages/Mine";
 import { StoreProvider } from "../src/utils/GlobalState";
 import Splash from "./pages/Splash";
 import { SnackbarProvider } from "react-snackbar-toast";
+import Profile from "./pages/Profile";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/" component={Splash} />
                 <Route exact path="/mine" component={Mine} />
+                <Route exact path="/profile" component={Profile} />
                 <Route path="*" component={NoMatch} />
               </Switch>
             </div>
