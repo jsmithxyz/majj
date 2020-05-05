@@ -34,6 +34,7 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        filter: req.body.userFilter,
       });
 
       // hash password before saving it into db
@@ -81,7 +82,7 @@ router.post("/login", (req, res) => {
       bcrypt.compare(password, user.password).then((isMatch) => {
         console.log(isMatch);
         return isMatch;
-      }) 
+      })
     ) {
       res.json(user);
     } else {

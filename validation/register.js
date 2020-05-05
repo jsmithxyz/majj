@@ -6,12 +6,13 @@ const isEmpty = require("is-empty"); // global funcion used in conjunction with 
 module.exports = validateRegisterInput = (data) => {
   // instantiate errors object
   let errors = {};
-  
+
   // convert empty fields to an empty string to use validator functions
   data.name = !isEmpty(data.name) ? data.name : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+  data.filter = !isEmpty(data.filter) ? data.filter : "";
 
   // name checks
   if (Validator.isEmpty(data.name)) {
@@ -41,7 +42,6 @@ module.exports = validateRegisterInput = (data) => {
   if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
-
 
   return {
     errors,
