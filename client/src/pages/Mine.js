@@ -6,6 +6,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import Gems from "../components/Gems/Gems";
 import Database from "../utils/Database";
+import SavedGems from "../components/SavedGems/SavedGems";
 
 // queue = user's list of saved items (DB)
 // item = individual Bing return, displayed on card (local)
@@ -29,7 +30,6 @@ function Mine() {
 
   useEffect(() => {
     Database.getUserQueue(user.username).then((res) => {
-      console.log(res.data.queue);
       dispatch({
         type: UPDATE_QUEUE,
         queue: res.data.queue,
@@ -89,7 +89,9 @@ function Mine() {
     <div>
       <MainNav />
       <div className='flexbox-containter' style={flexbox}>
-        <LeftNav />
+        <LeftNav>
+          <SavedGems />
+        </LeftNav>
 
         {gems}
       </div>
