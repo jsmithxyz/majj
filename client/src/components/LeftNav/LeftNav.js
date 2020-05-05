@@ -114,9 +114,7 @@ function LeftNav() {
             placement="bottom"
             overlay={<Tooltip id={`tooltip-bottom`}>go to your gems</Tooltip>}
           >
-            <Link to="/profile">
-              <i className="far fa-gem fa-2x"></i>
-            </Link>
+            <i className="far fa-gem fa-2x"></i>
           </OverlayTrigger>
         </Button>
       </div>
