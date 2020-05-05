@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./UserSignIn.css";
-import {useStoreContext} from "../../utils/GlobalState";
-import {Modal, Button, Form} from "react-bootstrap";
+import { useStoreContext } from "../../utils/GlobalState";
+import { Modal, Button, Form } from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import {SIGN_IN, SIGN_OUT, ADD_USER} from "../../utils/actions";
-import {Link} from "react-router-dom";
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  ADD_USER,
+  FILTER_CHANGE,
+} from "../../utils/actions";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
+import { Col, Row } from "react-bootstrap";
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
@@ -14,6 +20,18 @@ function UserSignIn() {
   // use this for user info?
   const [formObject, setFormObject] = useState({});
   const [errorState, setErrorState] = useState({});
+  const { filter, mutateFilter, user } = state;
+  const [rows, setRows] = useState();
+
+  const handleRadioChange = (event) => {
+    const { name, checked } = event.target;
+    // console.log(name + ": " + checked);
+    dispatch({
+      type: FILTER_CHANGE,
+      topic: name,
+      value: checked,
+    });
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,8 +42,8 @@ function UserSignIn() {
   // const handleSignIn = setSignUp(false);
 
   function handleInputChange(event) {
-    const {name, value} = event.target;
-    setFormObject({...formObject, [name]: value});
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
   }
 
   async function handleRegisterSubmit(event) {
@@ -36,7 +54,7 @@ function UserSignIn() {
       // if register fails
       let error = result.data.email;
       // set a local error state to use to display to user
-      setErrorState({error: error});
+      setErrorState({ error: error });
     } else {
       // if register succeeds
       // ! welcome message here. prompt user to login
@@ -46,13 +64,55 @@ function UserSignIn() {
   async function handleLoginSubmit(event) {
     event.preventDefault();
 
-    API.loginUser(formObject).then((result) =>
+    API.loginUser(formObject).then((result) => {
+      console.log(result);
       dispatch({
         type: SIGN_IN,
         user: result.data,
-      })
-    );
+      });
+    });
   }
+
+  const checkboxMaker = (key, value) => {
+    return (
+      <Col md={4} className="choices-col">
+        <Form.Check
+          label={key}
+          name={key}
+          id={key}
+          type={"checkbox"}
+          className={`default-checkbox`}
+          onChange={handleRadioChange}
+        />
+      </Col>
+    );
+  };
+
+  const checkboxArrayMaker = () => {
+    let topics = Object.keys(mutateFilter);
+    let checkboxes = topics.map((key) => {
+      let checkedValue = mutateFilter[key];
+      return checkboxMaker(key, checkedValue);
+    });
+    let newRows = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      let checkboxRow = (
+        <Row className="rad-row">
+          {checkboxes[i]}
+          {checkboxes[i + 1]}
+          {checkboxes[i + 2]}
+        </Row>
+      );
+      newRows.push(checkboxRow);
+      i = i + 2;
+    }
+    return newRows;
+  };
+
+  useEffect(() => {
+    let newRows = checkboxArrayMaker();
+    setRows(newRows);
+  }, [mutateFilter]);
 
   // can this conditional be dried up somehow?
   if (signUp === "signup") {
@@ -60,7 +120,7 @@ function UserSignIn() {
     return (
       <>
         <Button className="mod-btn" onClick={handleShow}>
-          <i className="fas fa-user fa-2x"></i>
+          <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
@@ -114,7 +174,11 @@ function UserSignIn() {
                 />
               </Form.Group>
             </Form>
-            Sign up here to start digging!
+            <b>
+              Pick a few topics below to add to your profile & start your
+              diggin'
+            </b>
+            <div>{rows}</div>
           </Modal.Body>
           <Modal.Footer>
             <Button className="mod-btn" onClick={handleRegisterSubmit}>
@@ -132,7 +196,7 @@ function UserSignIn() {
     return (
       <>
         <Button className="mod-btn" onClick={handleShow}>
-          <i className="fas fa-user fa-2x"></i>
+          <i class="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>

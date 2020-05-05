@@ -22,8 +22,7 @@ export default {
               method: "get",
               url: queryURL,
               headers: {
-                "X-RapidAPI-Key":
-                  "6b005aadfdmsh8b0d601b9ae3214p1323bdjsnc75770b4a207",
+                "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
               },
             };
             let axiosReturn = await axios(config);
@@ -43,8 +42,7 @@ export default {
             method: "get",
             url: queryURL,
             headers: {
-              "X-RapidAPI-Key":
-                "6b005aadfdmsh8b0d601b9ae3214p1323bdjsnc75770b4a207",
+              "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
             },
           };
           let axiosReturn = await axios(config);
