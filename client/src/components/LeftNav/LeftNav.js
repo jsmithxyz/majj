@@ -112,7 +112,9 @@ function LeftNav() {
           <OverlayTrigger
             key="bottom"
             placement="bottom"
-            overlay={<Tooltip id={`tooltip-bottom`}>go to your gems</Tooltip>}
+            overlay={
+              <Tooltip id={`tooltip-bottom`}>see your saved gems</Tooltip>
+            }
           >
             <i className="far fa-gem fa-2x"></i>
           </OverlayTrigger>
