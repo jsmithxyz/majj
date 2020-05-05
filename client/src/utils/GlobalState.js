@@ -79,6 +79,7 @@ const initialState = {
 const reducer = (state, action) => {
   let { filter, mutateFilter, items, backupItems, user } = state;
   let { id } = action;
+  let { queue } = user;
   let replacementItem;
 
   switch (action.type) {
@@ -125,7 +126,7 @@ const reducer = (state, action) => {
       user.queue.push(item.url);
       return {
         ...state,
-        user: user,
+        queue: queue,
         items: items,
       };
 
