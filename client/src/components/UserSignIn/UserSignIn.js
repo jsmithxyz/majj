@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./UserSignIn.css";
-import { useStoreContext } from "../../utils/GlobalState";
-import { Modal, Button, Form } from "react-bootstrap";
+import {useStoreContext} from "../../utils/GlobalState";
+import {Modal, Button, Form} from "react-bootstrap";
 import purplegem from "../../img/purplegem.png";
-import { SIGN_IN, SIGN_OUT, ADD_USER } from "../../utils/actions";
-import { Link } from "react-router-dom";
+import {SIGN_IN, SIGN_OUT, ADD_USER} from "../../utils/actions";
+import {Link} from "react-router-dom";
 import API from "../../utils/API";
 
 function UserSignIn() {
@@ -24,8 +24,8 @@ function UserSignIn() {
   // const handleSignIn = setSignUp(false);
 
   function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
+    const {name, value} = event.target;
+    setFormObject({...formObject, [name]: value});
   }
 
   async function handleRegisterSubmit(event) {
@@ -36,7 +36,7 @@ function UserSignIn() {
       // if register fails
       let error = result.data.email;
       // set a local error state to use to display to user
-      setErrorState({ error: error });
+      setErrorState({error: error});
     } else {
       // if register succeeds
       // ! welcome message here. prompt user to login
@@ -59,68 +59,68 @@ function UserSignIn() {
     // ! load this if the user wants to sign up
     return (
       <>
-        <Button className='mod-btn' onClick={handleShow}>
-          <i class='fas fa-user fa-2x'></i>
+        <Button className="mod-btn" onClick={handleShow}>
+          <i className="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Title className='mod-heading mod-head'>
+          <Modal.Title className="mod-heading mod-head">
             <img
               src={purplegem}
-              height='40px'
-              width='40px'
-              alt='gem'
-              className='yellowgem'
+              height="40px"
+              width="40px"
+              alt="gem"
+              className="yellowgem"
             />
             MAJJ
           </Modal.Title>
           <Modal.Body>
             <Form>
-              <Form.Group controlId='formBasicName'>
+              <Form.Group controlId="formBasicName">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='name'
-                  type='name'
-                  placeholder='Enter Full Name'
+                  name="name"
+                  type="name"
+                  placeholder="Enter Full Name"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='email'
-                  type='email'
-                  placeholder='Enter Email Address'
+                  name="email"
+                  type="email"
+                  placeholder="Enter Email Address"
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='password'
-                  type='password'
-                  placeholder='Password'
+                  name="password"
+                  type="password"
+                  placeholder="Password"
                 />
               </Form.Group>
-              <Form.Group controlId='formPasswordConfirm'>
+              <Form.Group controlId="formPasswordConfirm">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='password2'
-                  type='password'
-                  placeholder='Confirm password'
+                  name="password2"
+                  type="password"
+                  placeholder="Confirm password"
                 />
               </Form.Group>
             </Form>
             Sign up here to start digging!
           </Modal.Body>
           <Modal.Footer>
-            <Button className='mod-btn' onClick={handleRegisterSubmit}>
+            <Button className="mod-btn" onClick={handleRegisterSubmit}>
               Register!
             </Button>
-            <Button className='mod-btn' onClick={handleSetLogin}>
+            <Button className="mod-btn" onClick={handleSetLogin}>
               Return to Login
             </Button>
           </Modal.Footer>
@@ -131,39 +131,39 @@ function UserSignIn() {
     // ! return this if user wants to log in or hasn't clicked 'sign up'
     return (
       <>
-        <Button className='mod-btn' onClick={handleShow}>
-          <i class='fas fa-user fa-2x'></i>
+        <Button className="mod-btn" onClick={handleShow}>
+          <i className="fas fa-user fa-2x"></i>
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Title className='mod-heading mod-head'>
+          <Modal.Title className="mod-heading mod-head">
             <img
               src={purplegem}
-              height='40px'
-              width='40px'
-              alt='gem'
-              className='yellowgem'
+              height="40px"
+              width="40px"
+              alt="gem"
+              className="yellowgem"
             />
             MAJJ
           </Modal.Title>
           <Modal.Body>
             <Form>
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='email'
-                  type='email'
-                  placeholder='Enter Username'
+                  name="email"
+                  type="email"
+                  placeholder="Enter Username"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={handleInputChange}
-                  name='password'
-                  type='password'
-                  placeholder='Password'
+                  name="password"
+                  type="password"
+                  placeholder="Password"
                 />
               </Form.Group>
             </Form>
@@ -171,12 +171,12 @@ function UserSignIn() {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              className='mod-btn'
+              className="mod-btn"
               onClick={(handleClose, handleLoginSubmit)}
             >
               Login
             </Button>
-            <Button className='mod-btn' onClick={handleSetSignUp}>
+            <Button className="mod-btn" onClick={handleSetSignUp}>
               SignUp
             </Button>
           </Modal.Footer>
