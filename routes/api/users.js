@@ -9,14 +9,14 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // load user model
-const User = require("../../models/User");
+const User = require("../../models/user");
 
 // @route POST api/users/register
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
   // form validation
-  const { errors, isValid } = validateRegisterInput(req.body);
+  const {errors, isValid} = validateRegisterInput(req.body);
   console.log("errors: " + JSON.stringify(errors));
   // check validation
   if (!isValid) {
@@ -25,10 +25,10 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then((user) => {
+  User.findOne({email: req.body.email}).then((user) => {
     if (user) {
       console.log("user already exists");
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({email: "Email already exists"});
     } else {
       const newUser = new User({
         name: req.body.name,
@@ -58,7 +58,7 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
   console.log("login hit");
   // form validation
-  const { errors, isValid } = validateLoginInput(req.body);
+  const {errors, isValid} = validateLoginInput(req.body);
 
   // check validation
   if (!isValid) {
@@ -69,10 +69,10 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   // find user by email
-  User.findOne({ email }).then((user) => {
+  User.findOne({email}).then((user) => {
     // check if user exists
     if (!user) {
-      return res.json({ emailnotfound: "Email not found" });
+      return res.json({emailnotfound: "Email not found"});
     }
     console.log("from db: " + user);
 
@@ -81,12 +81,12 @@ router.post("/login", (req, res) => {
       bcrypt.compare(password, user.password).then((isMatch) => {
         console.log(isMatch);
         return isMatch;
-      }) 
+      })
     ) {
       res.json(user);
     } else {
       console.log("wrong password idiot");
-      res.status(400).json({ passwordincorrect: "Password incorrect" });
+      res.status(400).json({passwordincorrect: "Password incorrect"});
     }
   });
 });
