@@ -20,17 +20,18 @@ function UserSignIn() {
   // use this for user info?
   const [formObject, setFormObject] = useState({});
   const [errorState, setErrorState] = useState({});
-  const { filter, mutateFilter, user } = state;
+  const { mutateFilter } = state;
   const [rows, setRows] = useState();
+
+  const [userFilter, setUserFilter] = useState(mutateFilter);
 
   const handleRadioChange = (event) => {
     const { name, checked } = event.target;
     // console.log(name + ": " + checked);
-    dispatch({
-      type: FILTER_CHANGE,
-      topic: name,
-      value: checked,
-    });
+    setUserFilter({ ...userFilter, [name]: checked });
+    let filterString = JSON.stringify(userFilter);
+    setFormObject({ ...formObject, userFilter: filterString });
+    console.log(formObject);
   };
 
   const handleClose = () => setShow(false);
@@ -48,6 +49,7 @@ function UserSignIn() {
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
+    console.log(formObject);
     let result = await API.registerUser(formObject);
 
     if (result.status === 400) {
@@ -58,6 +60,7 @@ function UserSignIn() {
     } else {
       // if register succeeds
       // ! welcome message here. prompt user to login
+      console.log("it worked!");
     }
   }
 

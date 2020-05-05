@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import "./SavedGems.css";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function SavedGems() {
@@ -56,6 +57,7 @@ export default function SavedGems() {
     return (
       <>
         <ListItem
+          className={classes.dialog}
           button
           onClick={() => {
             window.open(item.url, "_blank");
@@ -67,10 +69,10 @@ export default function SavedGems() {
               "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
             }
             roundedCircle
-            height='80px'
-            width='80px'
+            height="80px"
+            width="80px"
           />
-          <ListItemText primary={item.name} />
+          <ListItemText className="headerText"> {item.name} </ListItemText>
         </ListItem>
         <Divider />
       </>
@@ -90,40 +92,38 @@ export default function SavedGems() {
     setListItems(newListItems);
   }, [user.queue.length]);
 
-
   return (
     <>
       <Button onClick={handleClickOpen}>
         <OverlayTrigger
-          key='bottom'
-          placement='bottom'
+          key="bottom"
+          placement="bottom"
           overlay={<Tooltip id={`tooltip-bottom`}>see your saved gems</Tooltip>}
         >
-          <i className='far fa-gem fa-2x'></i>
+          <i className="far fa-gem fa-2x"></i>
         </OverlayTrigger>
       </Button>
       <Dialog
         fullScreen
         open={open}
-        className={classes.dialog}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton
-              edge='start'
-              color='inherit'
+              edge="start"
+              color="inherit"
               onClick={handleClose}
-              aria-label='close'
+              aria-label="close"
             >
               <CloseIcon />
             </IconButton>
-            <Typography variant='h6' className={classes.title}>
+            <Typography variant="h6" className={classes.title}>
               Saved Gems
             </Typography>
-            <Button autoFocus color='inherit' onClick={handleClose}>
-              save
+            <Button autoFocus color="inherit" onClick={handleClose}>
+              clear all
             </Button>
           </Toolbar>
         </AppBar>
