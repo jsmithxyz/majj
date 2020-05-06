@@ -44,7 +44,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SavedGems() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [state, dispatch] = useStoreContext();
+  const [state] = useStoreContext();
   const { user } = state;
   const [listItems, setListItems] = useState();
 
@@ -54,10 +54,6 @@ export default function SavedGems() {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleUrlOpen = (item) => {
-    window.open(item.url, "_blank");
   };
 
   const listItemMaker = (item) => {

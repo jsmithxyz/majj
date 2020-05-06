@@ -13,7 +13,7 @@ import SavedGems from "../components/SavedGems/SavedGems";
 
 function Mine() {
   const [state, dispatch] = useStoreContext();
-  const { filter, queue, items, user } = state;
+  const { filter, items, user } = state;
 
   let newGems = itemizer(items);
   const [gems, setGems] = useState(newGems);
@@ -88,7 +88,7 @@ function Mine() {
   return (
     <div>
       <MainNav />
-      <div className='flexbox-containter' style={flexbox}>
+      <div className="flexbox-containter" style={flexbox}>
         <LeftNav>
           <SavedGems />
         </LeftNav>
