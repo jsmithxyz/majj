@@ -26,7 +26,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Gotu",
   },
   dialog: {
-    backgroundColor: "#e1e0e5",
+    backgroundColor: "white",
+    "&:hover": {
+      backgroundColor: "#e1e0e5",
+    },
+  },
+  headerText: {
+    marginLeft: "20px",
+    fontWeight: "bold",
   },
 }));
 
@@ -72,7 +79,9 @@ export default function SavedGems() {
             height="80px"
             width="80px"
           />
-          <ListItemText className="headerText"> {item.name} </ListItemText>
+          <ListItemText className={classes.headerText}>
+            {item.name}
+          </ListItemText>
         </ListItem>
         <Divider />
       </>
@@ -98,7 +107,9 @@ export default function SavedGems() {
         <OverlayTrigger
           key="bottom"
           placement="bottom"
-          overlay={<Tooltip id={`tooltip-bottom`}>see your saved gems</Tooltip>}
+          overlay={
+            <Tooltip id={`tooltip-bottom`}>view your saved gems</Tooltip>
+          }
         >
           <i className="far fa-gem fa-2x"></i>
         </OverlayTrigger>
