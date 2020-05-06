@@ -13,8 +13,12 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+
 import Database from "../../utils/Database";
 import { CLEAR_QUEUE } from "../../utils/actions";
+
+import "./SavedGems.css";
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -27,12 +31,19 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Gotu",
   },
   dialog: {
-    backgroundColor: "#e1e0e5",
+    backgroundColor: "white",
+    "&:hover": {
+      backgroundColor: "#e1e0e5",
+    },
+  },
+  headerText: {
+    marginLeft: "20px",
+    fontWeight: "bold",
   },
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function SavedGems() {
@@ -70,6 +81,7 @@ export default function SavedGems() {
     return (
       <>
         <ListItem
+          className={classes.dialog}
           button
           onClick={() => {
             window.open(item.url, "_blank");
@@ -81,10 +93,12 @@ export default function SavedGems() {
               "https://media.giphy.com/media/PdfNwG98g6Sxq/source.gif"
             }
             roundedCircle
-            height='80px'
-            width='80px'
+            height="80px"
+            width="80px"
           />
-          <ListItemText primary={item.name} />
+          <ListItemText className={classes.headerText}>
+            {item.name}
+          </ListItemText>
         </ListItem>
         <Divider />
       </>
@@ -108,34 +122,37 @@ export default function SavedGems() {
     <>
       <Button onClick={handleClickOpen}>
         <OverlayTrigger
-          key='bottom'
-          placement='bottom'
-          overlay={<Tooltip id={`tooltip-bottom`}>see your saved gems</Tooltip>}
+          key="bottom"
+          placement="bottom"
+          overlay={
+            <Tooltip id={`tooltip-bottom`}>view your saved gems</Tooltip>
+          }
         >
-          <i className='far fa-gem fa-2x'></i>
+          <i className="far fa-gem fa-2x"></i>
         </OverlayTrigger>
       </Button>
       <Dialog
         fullScreen
         open={open}
-        className={classes.dialog}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton
-              edge='start'
-              color='inherit'
+              edge="start"
+              color="inherit"
               onClick={handleClose}
-              aria-label='close'
+              aria-label="close"
             >
               <CloseIcon />
             </IconButton>
-            <Typography variant='h6' className={classes.title}>
+            <Typography variant="h6" className={classes.title}>
               Saved Gems
             </Typography>
+
             <Button autoFocus color='inherit' onClick={handleClear}>
+
               clear all
             </Button>
           </Toolbar>

@@ -15,7 +15,7 @@ const UserSchema = new Schema({
       type: String,
     },
   ],
-  filter: [],
+  filter: { type: String },
   loggedIn: false,
 });
 

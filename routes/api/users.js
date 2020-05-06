@@ -9,7 +9,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // load user model
-const User = require("../../models/User");
+const User = require("../../models/user");
 
 // @route POST api/users/register
 // @desc Register user
@@ -34,6 +34,7 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        filter: req.body.userFilter,
       });
 
       // hash password before saving it into db
