@@ -121,11 +121,15 @@ function UserSignIn() {
       //   className: "customToast",
       // });
     } else {
-      handleClose();
-      addToast("Welcome to Majj!", {
-        autoDismissTime: 3000,
-        className: "customToast",
-      });
+      // handleClose();
+      let loginEvent = {
+        preventDefault() {return}
+      };
+      handleLoginSubmit(loginEvent);
+      // addToast("Welcome to Majj!", {
+      //   autoDismissTime: 3000,
+      //   className: "customToast",
+      // });
     }
   }
 
