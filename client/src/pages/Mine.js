@@ -90,7 +90,7 @@ function Mine() {
       <MainNav />
       <div className="flexbox-containter" style={flexbox}>
         <LeftNav>
-          <SavedGems />
+          {/* <SavedGems /> */}
         </LeftNav>
 
         {gems}
