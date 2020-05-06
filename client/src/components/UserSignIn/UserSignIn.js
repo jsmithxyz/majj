@@ -93,7 +93,7 @@ function UserSignIn() {
         });
       } else {
         console.log(JSON.stringify(result));
-        addToast("Username or password incorrect. Please try again.", {
+        addToast("Email or password incorrect. Please try again.", {
           autoDismissTime: 3000,
           className: "customToast",
         });

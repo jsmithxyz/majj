@@ -74,15 +74,14 @@ router.post("/login", (req, res) => {
     // check if user exists
     if (!user) {
       return res.status(400).json({ emailnotfound: "Email not found" });
-    } else if (
-      bcrypt.compare(password, user.password).then((isMatch) => {
-        return isMatch;
-      })
-    ) {
-      // console.log("is match: " + isMatch);
-      res.status(200).json(user);
     } else {
-      res.status(400).json({ passwordincorrect: "Password incorrect" });
+      bcrypt.compare(password, user.password).then((isMatch) => {
+        if (isMatch) {
+          res.status(200).json(user);
+        } else {
+          res.status(400).json({ passwordincorrect: "Password incorrect" });
+        }
+      });
     }
   });
 });
