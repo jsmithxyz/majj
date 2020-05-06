@@ -4,8 +4,8 @@ export const UPDATE_PROFILE = "UPDATE_PROFILE"; //
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
 // family of QUEUE actions (item actions)
-// export const LOADING = "LOADING"; // while item is switching
-// family of CARD actions
+
+// family of CARD/QUEUE actions
 export const ADD_TO_QUEUE = "ADD_TO_QUEUE"; // add item to queue
 export const UPDATE_QUEUE = "UPDATE_QUEUE";
 export const CLEAR_QUEUE = "CLEAR_QUEUE";

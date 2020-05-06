@@ -10,7 +10,6 @@ import {
   NEW_ITEMS,
   SIGN_IN,
   SIGN_OUT,
-  ADD_USER,
 } from "./actions";
 
 export const StoreContext = createContext();
@@ -64,7 +63,6 @@ const initialState = {
     astrology: false,
     crafts: false,
   },
-  // queue: [],
   items: [],
   backupItems: [],
   user: {
@@ -84,7 +82,8 @@ const reducer = (state, action) => {
 
   switch (action.type) {
     case SIGN_IN:
-      console.log(action);
+      let filterObj = JSON.parse(action.user.filter)
+      filter = filterObj;
       return {
         ...state,
         user: {
@@ -94,11 +93,10 @@ const reducer = (state, action) => {
           filter: action.user.filter,
           loggedIn: true,
         },
-        // filter: action.user.filter,
+        filter: filter
       };
 
     case SIGN_OUT:
-      console.log("yo!");
       return {
         ...state,
         user: {
@@ -108,6 +106,7 @@ const reducer = (state, action) => {
           filter: {},
           loggedIn: false,
         },
+        filter: initialState.filter
       };
 
     case UPDATE_QUEUE:
