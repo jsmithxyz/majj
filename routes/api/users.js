@@ -73,20 +73,15 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then((user) => {
     // check if user exists
     if (!user) {
-      return res.json({ emailnotfound: "Email not found" });
-    }
-    console.log("from db: " + user);
-
-    // check password
-    if (
+      return res.status(400).json({ emailnotfound: "Email not found" });
+    } else if (
       bcrypt.compare(password, user.password).then((isMatch) => {
-        console.log(isMatch);
         return isMatch;
-      }) 
+      })
     ) {
-      res.json(user);
+      // console.log("is match: " + isMatch);
+      res.status(200).json(user);
     } else {
-      console.log("wrong password idiot");
       res.status(400).json({ passwordincorrect: "Password incorrect" });
     }
   });
