@@ -13,6 +13,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import Database from "../../utils/Database";
+import { CLEAR_QUEUE } from "../../utils/actions";
+
 import "./SavedGems.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +30,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Gotu",
   },
   dialog: {
-    backgroundColor: "#e1e0e5",
+    backgroundColor: "white",
+    "&:hover": {
+      backgroundColor: "#e1e0e5",
+    },
+  },
+  headerText: {
+    marginLeft: "20px",
+    fontWeight: "bold",
   },
 }));
 
@@ -39,6 +50,7 @@ export default function SavedGems() {
   const [open, setOpen] = useState(false);
   const [state, dispatch] = useStoreContext();
   const { user } = state;
+
   const [listItems, setListItems] = useState();
 
   const handleClickOpen = () => {
@@ -49,8 +61,15 @@ export default function SavedGems() {
     setOpen(false);
   };
 
-  const handleUrlOpen = (item) => {
-    window.open(item.url, "_blank");
+  const handleClear = () => {
+    Database.updateQueue({
+      name: user.username,
+      queue: [],
+    }).then((res) => {
+      dispatch({
+        type: CLEAR_QUEUE,
+      });
+    });
   };
 
   const listItemMaker = (item) => {
@@ -72,7 +91,9 @@ export default function SavedGems() {
             height="80px"
             width="80px"
           />
-          <ListItemText className="headerText"> {item.name} </ListItemText>
+          <ListItemText className={classes.headerText}>
+            {item.name}
+          </ListItemText>
         </ListItem>
         <Divider />
       </>
@@ -98,7 +119,9 @@ export default function SavedGems() {
         <OverlayTrigger
           key="bottom"
           placement="bottom"
-          overlay={<Tooltip id={`tooltip-bottom`}>see your saved gems</Tooltip>}
+          overlay={
+            <Tooltip id={`tooltip-bottom`}>view your saved gems</Tooltip>
+          }
         >
           <i className="far fa-gem fa-2x"></i>
         </OverlayTrigger>
@@ -122,7 +145,8 @@ export default function SavedGems() {
             <Typography variant="h6" className={classes.title}>
               Saved Gems
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+
+            <Button autoFocus color="inherit" onClick={handleClear}>
               clear all
             </Button>
           </Toolbar>

@@ -1,9 +1,9 @@
 import React, { createContext, useReducer, useContext } from "react";
-import API from "../utils/API";
 
 import {
   ADD_TO_QUEUE,
   UPDATE_QUEUE,
+  CLEAR_QUEUE,
   PASS,
   APPLY_FILTER,
   FILTER_CHANGE,
@@ -98,17 +98,16 @@ const reducer = (state, action) => {
       };
 
     case SIGN_OUT:
+      console.log("yo!");
       return {
         ...state,
         user: {
-          username: "",
+          username: "default",
           email: "",
           queue: [],
           filter: {},
           loggedIn: false,
         },
-        //some api call here
-        // queue: [action.queue]
       };
 
     case UPDATE_QUEUE:
@@ -128,6 +127,13 @@ const reducer = (state, action) => {
         ...state,
         user: user,
         items: items,
+      };
+
+    case CLEAR_QUEUE:
+      user.queue = [];
+      return {
+        ...state,
+        user: user,
       };
 
     case PASS:

@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { Col, Row } from "react-bootstrap";
+import useSnackbar from "react-snackbar-toast";
 
 function UserSignIn() {
   const [state, dispatch] = useStoreContext();
@@ -22,6 +23,7 @@ function UserSignIn() {
   const [errorState, setErrorState] = useState({});
   const { mutateFilter } = state;
   const [rows, setRows] = useState();
+  const { addToast } = useSnackbar();
 
   let filterTemplate = { ...mutateFilter };
 
@@ -105,13 +107,25 @@ function UserSignIn() {
 
     if (result.status === 400) {
       // if register fails
-      let error = result.data.email;
+      // ! this is super gross how do i fix it?
+      let error =
+        result.data.email ||
+        result.data.password ||
+        result.data.password2 ||
+        result.data.name;
       // set a local error state to use to display to user
       setErrorState({ error: error });
+      document.getElementById("error-message").innerHTML = error;
+      // addToast(error, {
+      //   autoDismissTime: 3000,
+      //   className: "customToast",
+      // });
     } else {
-      // if register succeeds
-      // ! welcome message here. prompt user to login
-      console.log("it worked!");
+      handleClose();
+      addToast("Welcome to Majj!", {
+        autoDismissTime: 3000,
+        className: "customToast",
+      });
     }
   }
 
@@ -119,11 +133,25 @@ function UserSignIn() {
     event.preventDefault();
 
     API.loginUser(formObject).then((result) => {
-      console.log(result);
-      dispatch({
-        type: SIGN_IN,
-        user: result.data,
-      });
+      if (result.status === 200) {
+        handleClose();
+        addToast(`Welcome, ${result.data.name}!`, {
+          autoDismissTime: 3000,
+          className: "customToast",
+        });
+        dispatch({
+          type: SIGN_IN,
+          user: result.data,
+        });
+      } else {
+        console.log(JSON.stringify(result));
+        document.getElementById("error-message").innerHTML =
+          "Email or password incorrect. Please try again.";
+        // addToast("Email or password incorrect. Please try again.", {
+        //   autoDismissTime: 3000,
+        //   className: "customToast",
+        // });
+      }
     });
   }
 
@@ -235,6 +263,7 @@ function UserSignIn() {
 
             <div>{rows}</div>
 
+            <div id="error-message"></div>
           </Modal.Body>
           <Modal.Footer>
             <Button className="mod-btn" onClick={handleRegisterSubmit}>
@@ -274,7 +303,7 @@ function UserSignIn() {
                   onChange={handleInputChange}
                   name="email"
                   type="email"
-                  placeholder="Enter Username"
+                  placeholder="Enter Email Address"
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
@@ -287,6 +316,7 @@ function UserSignIn() {
                 />
               </Form.Group>
             </Form>
+            <div id="error-message"></div>
             Never been here before? Click Sign Up to get started!
           </Modal.Body>
           <Modal.Footer>

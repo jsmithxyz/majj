@@ -9,14 +9,13 @@ import {
 } from "react-bootstrap";
 import "./LeftNav.css";
 import { useStoreContext } from "../../utils/GlobalState";
-import { APPLY_FILTER, FILTER_CHANGE } from "../../utils/actions";
+import { APPLY_FILTER, FILTER_CHANGE, SIGN_OUT } from "../../utils/actions";
 import UserSignIn from "../UserSignIn/UserSignIn";
-import { Link } from "react-router-dom";
 import SavedGems from "../SavedGems/SavedGems";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const { filter, mutateFilter, user } = state;
+  const { filter, mutateFilter } = state;
   const [rows, setRows] = useState();
 
   const handleRadioChange = (event) => {
@@ -79,15 +78,19 @@ function LeftNav() {
     });
   };
 
-  useEffect(() => {
-    // let parsedUserFilter = JSON.parse(user.filter)
-    // console.log(parsedUserFilter)
-    // applyFilter(parsedUserFilter);
-    // dispatch({
-    //   type: APPLY_FILTER,
-    //   filter: parsedUserFilter,
-    // });
-  }, []);
+  // useEffect(() => {
+  //   applyFilter(user.filter);
+  //   // dispatch({
+  //   //   type: APPLY_FILTER,
+  //   //   filter: user.filter,
+  //   // });
+  // }, [user.filter]);
+
+  const signOut = () => {
+    dispatch({
+      type: SIGN_OUT,
+    });
+  };
 
   useEffect(() => {
     let newRows = checkboxArrayMaker();
@@ -102,7 +105,7 @@ function LeftNav() {
     <Col xs={4} md={3} lg={3} className='animated fadeIn delay-2s side-nav'>
       <div className='prof-signout'>
         <UserSignIn />
-        <Button className='sign-out'>
+        <Button className='sign-out' onClick={signOut}>
           <OverlayTrigger
             key='bottom'
             placement='bottom'
