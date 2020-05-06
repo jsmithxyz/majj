@@ -1,5 +1,4 @@
 import React, { createContext, useReducer, useContext } from "react";
-import API from "../utils/API";
 
 import {
   ADD_TO_QUEUE,

@@ -19,7 +19,6 @@ import { CLEAR_QUEUE } from "../../utils/actions";
 
 import "./SavedGems.css";
 
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -71,10 +70,6 @@ export default function SavedGems() {
         type: CLEAR_QUEUE,
       });
     });
-  };
-
-  const handleUrlOpen = (item) => {
-    window.open(item.url, "_blank");
   };
 
   const listItemMaker = (item) => {
@@ -151,8 +146,7 @@ export default function SavedGems() {
               Saved Gems
             </Typography>
 
-            <Button autoFocus color='inherit' onClick={handleClear}>
-
+            <Button autoFocus color="inherit" onClick={handleClear}>
               clear all
             </Button>
           </Toolbar>

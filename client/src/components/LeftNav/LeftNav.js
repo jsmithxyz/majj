@@ -11,12 +11,11 @@ import "./LeftNav.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { APPLY_FILTER, FILTER_CHANGE } from "../../utils/actions";
 import UserSignIn from "../UserSignIn/UserSignIn";
-import { Link } from "react-router-dom";
 import SavedGems from "../SavedGems/SavedGems";
 
 function LeftNav() {
   const [state, dispatch] = useStoreContext();
-  const { filter, mutateFilter, user } = state;
+  const { filter, mutateFilter } = state;
   const [rows, setRows] = useState();
 
   const handleRadioChange = (event) => {
