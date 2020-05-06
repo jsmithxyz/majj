@@ -13,6 +13,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Database from "../../utils/Database";
+import { CLEAR_QUEUE } from "../../utils/actions";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -38,6 +40,7 @@ export default function SavedGems() {
   const [open, setOpen] = useState(false);
   const [state, dispatch] = useStoreContext();
   const { user } = state;
+
   const [listItems, setListItems] = useState();
 
   const handleClickOpen = () => {
@@ -46,6 +49,17 @@ export default function SavedGems() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleClear = () => {
+    Database.updateQueue({
+      name: user.username,
+      queue: [],
+    }).then((res) => {
+      dispatch({
+        type: CLEAR_QUEUE,
+      });
+    });
   };
 
   const handleUrlOpen = (item) => {
@@ -90,7 +104,6 @@ export default function SavedGems() {
     setListItems(newListItems);
   }, [user.queue.length]);
 
-
   return (
     <>
       <Button onClick={handleClickOpen}>
@@ -122,8 +135,8 @@ export default function SavedGems() {
             <Typography variant='h6' className={classes.title}>
               Saved Gems
             </Typography>
-            <Button autoFocus color='inherit' onClick={handleClose}>
-              save
+            <Button autoFocus color='inherit' onClick={handleClear}>
+              clear all
             </Button>
           </Toolbar>
         </AppBar>

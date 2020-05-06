@@ -79,13 +79,13 @@ function LeftNav() {
     });
   };
 
-  useEffect(() => {
-    applyFilter(user.filter);
-    // dispatch({
-    //   type: APPLY_FILTER,
-    //   filter: user.filter,
-    // });
-  }, [user.filter]);
+  // useEffect(() => {
+  //   applyFilter(user.filter);
+  //   // dispatch({
+  //   //   type: APPLY_FILTER,
+  //   //   filter: user.filter,
+  //   // });
+  // }, [user.filter]);
 
   useEffect(() => {
     let newRows = checkboxArrayMaker();
