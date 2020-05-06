@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./UserSignIn.css";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Modal, Button, Form } from "react-bootstrap";
@@ -23,16 +23,64 @@ function UserSignIn() {
   const { mutateFilter } = state;
   const [rows, setRows] = useState();
 
-  const [userFilter, setUserFilter] = useState(mutateFilter);
+  let filterTemplate = { ...mutateFilter };
 
-  const handleRadioChange = (event) => {
-    const { name, checked } = event.target;
-    // console.log(name + ": " + checked);
-    setUserFilter({ ...userFilter, [name]: checked });
-    let filterString = JSON.stringify(userFilter);
-    setFormObject({ ...formObject, userFilter: filterString });
-    console.log(formObject);
-  };
+  //WTF do i seriously need to do this
+  const refs = []
+  const ref0 = useRef(null);
+  refs.push(ref0)
+  const ref1 = useRef(null);
+  refs.push(ref1)
+  const ref2 = useRef(null);
+  refs.push(ref2)
+  const ref3 = useRef(null);
+  refs.push(ref3)
+  const ref4 = useRef(null);
+  refs.push(ref4)
+  const ref5 = useRef(null);
+  refs.push(ref5)
+  const ref6 = useRef(null);
+  refs.push(ref6)
+  const ref7 = useRef(null);
+  refs.push(ref7)
+  const ref8 = useRef(null);
+  refs.push(ref8)
+  const ref9 = useRef(null);
+  refs.push(ref9)
+  const ref10 = useRef(null);
+  refs.push(ref10)
+  const ref11 = useRef(null);
+  refs.push(ref11)
+  const ref12 = useRef(null);
+  refs.push(ref12)
+  const ref13 = useRef(null);
+  refs.push(ref13)
+  const ref14 = useRef(null);
+  refs.push(ref14)
+  const ref15 = useRef(null);
+  refs.push(ref15)
+  const ref16 = useRef(null);
+  refs.push(ref16)
+  const ref17 = useRef(null);
+  refs.push(ref17)
+  const ref18 = useRef(null);
+  refs.push(ref18)
+  const ref19 = useRef(null);
+  refs.push(ref19)
+  const ref20 = useRef(null);
+  refs.push(ref20)
+  const ref21 = useRef(null);
+  refs.push(ref21)
+
+  // function handleRadioChange(event) {
+  //   const { name, checked } = event.target;
+  //   // console.log(event.target);
+  // }
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,14 +90,17 @@ function UserSignIn() {
   const handleSetLogin = () => setSignUp("login");
   // const handleSignIn = setSignUp(false);
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
-  }
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
-    console.log(formObject);
+        for (const ref of refs) {
+      let { name, checked } = ref.current;
+      filterTemplate[name] = checked;
+    }
+    console.log(filterTemplate)
+    let filterString = JSON.stringify(filterTemplate)
+    // setFormObject({ ...formObject, filter: filterString }); // this should work wtf
+    formObject.filter = filterString;
     let result = await API.registerUser(formObject);
 
     if (result.status === 400) {
@@ -76,26 +127,26 @@ function UserSignIn() {
     });
   }
 
-  const checkboxMaker = (key, value) => {
+  const checkboxMaker = (key, index) => {
     return (
       <Col md={4} className="choices-col">
         <Form.Check
           label={key}
           name={key}
+          ref={refs[index]}
           id={key}
           type={"checkbox"}
           className={`default-checkbox`}
-          onChange={handleRadioChange}
+          // onChange={handleRadioChange}
         />
       </Col>
-    );
+    )
   };
 
   const checkboxArrayMaker = () => {
     let topics = Object.keys(mutateFilter);
-    let checkboxes = topics.map((key) => {
-      let checkedValue = mutateFilter[key];
-      return checkboxMaker(key, checkedValue);
+    let checkboxes = topics.map((key, index) => {
+      return checkboxMaker(key, index);
     });
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
@@ -115,7 +166,7 @@ function UserSignIn() {
   useEffect(() => {
     let newRows = checkboxArrayMaker();
     setRows(newRows);
-  }, [mutateFilter]);
+  }, []);
 
   // can this conditional be dried up somehow?
   if (signUp === "signup") {
@@ -181,7 +232,9 @@ function UserSignIn() {
               Pick a few topics below to add to your profile & start your
               diggin'
             </b>
+
             <div>{rows}</div>
+
           </Modal.Body>
           <Modal.Footer>
             <Button className="mod-btn" onClick={handleRegisterSubmit}>

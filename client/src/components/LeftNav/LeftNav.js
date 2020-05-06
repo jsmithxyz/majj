@@ -80,12 +80,14 @@ function LeftNav() {
   };
 
   useEffect(() => {
-    applyFilter(user.filter);
+    // let parsedUserFilter = JSON.parse(user.filter)
+    // console.log(parsedUserFilter)
+    // applyFilter(parsedUserFilter);
     // dispatch({
     //   type: APPLY_FILTER,
-    //   filter: user.filter,
+    //   filter: parsedUserFilter,
     // });
-  }, [user.filter]);
+  }, []);
 
   useEffect(() => {
     let newRows = checkboxArrayMaker();
