@@ -38,7 +38,7 @@ function LeftNav() {
 
   const checkboxMaker = (key, value) => {
     return (
-      <Col md={4} className='choices-col'>
+      <Col md={4} className="choices-col">
         <Form.Check
           label={key}
           name={key}
@@ -60,7 +60,7 @@ function LeftNav() {
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
       let checkboxRow = (
-        <Row className='rad-row'>
+        <Row className="rad-row">
           {checkboxes[i]}
           {checkboxes[i + 1]}
         </Row>
@@ -79,13 +79,13 @@ function LeftNav() {
     });
   };
 
-  useEffect(() => {
-    applyFilter(user.filter);
-    // dispatch({
-    //   type: APPLY_FILTER,
-    //   filter: user.filter,
-    // });
-  }, [user.filter]);
+  // useEffect(() => {
+  //   applyFilter(user.filter);
+  //   // dispatch({
+  //   //   type: APPLY_FILTER,
+  //   //   filter: user.filter,
+  //   // });
+  // }, [user.filter]);
 
   useEffect(() => {
     let newRows = checkboxArrayMaker();
@@ -97,27 +97,27 @@ function LeftNav() {
   }, [filter]);
 
   return (
-    <Col xs={4} md={3} lg={3} className='animated fadeIn delay-2s side-nav'>
-      <div className='prof-signout'>
+    <Col xs={4} md={3} lg={3} className="animated fadeIn delay-2s side-nav">
+      <div className="prof-signout">
         <UserSignIn />
-        <Button className='sign-out'>
+        <Button className="sign-out">
           <OverlayTrigger
-            key='bottom'
-            placement='bottom'
+            key="bottom"
+            placement="bottom"
             overlay={<Tooltip id={`tooltip-bottom`}>sign out</Tooltip>}
           >
-            <i class='fas fa-sign-out-alt fa-2x'></i>
+            <i class="fas fa-sign-out-alt fa-2x"></i>
           </OverlayTrigger>
         </Button>
         <SavedGems />
       </div>
-      <div className='create-heading'>choose your topics below:</div>
+      <div className="create-heading">choose your topics below:</div>
       <Form>
-        <div key={`default-checkbox`} className='choices'>
+        <div key={`default-checkbox`} className="choices">
           {rows}
         </div>
         <br />
-        <Button className='apply-btn' onClick={handleApplyFilter}>
+        <Button className="apply-btn" onClick={handleApplyFilter}>
           Apply
         </Button>
       </Form>

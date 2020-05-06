@@ -8,6 +8,7 @@ import { StoreProvider } from "../src/utils/GlobalState";
 import Splash from "./pages/Splash";
 import { SnackbarProvider } from "react-snackbar-toast";
 import Profile from "./pages/Profile";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,20 +21,29 @@ class App extends React.Component {
   };
 
   render() {
+    // material ui theme
+    let theme = createMuiTheme({
+      typography: {
+        fontFamily: "Gotu",
+      },
+    });
+
     return (
       <StoreProvider>
-        <SnackbarProvider>
-          <Router>
-            <div style={{ background: this.state.color }}>
-              <Switch>
-                <Route exact path="/" component={Splash} />
-                <Route exact path="/mine" component={Mine} />
-                <Route exact path="/profile" component={Profile} />
-                <Route path="*" component={NoMatch} />
-              </Switch>
-            </div>
-          </Router>
-        </SnackbarProvider>
+        <MuiThemeProvider theme={theme}>
+          <SnackbarProvider>
+            <Router>
+              <div style={{ background: this.state.color }}>
+                <Switch>
+                  <Route exact path="/" component={Splash} />
+                  <Route exact path="/mine" component={Mine} />
+                  <Route exact path="/profile" component={Profile} />
+                  <Route path="*" component={NoMatch} />
+                </Switch>
+              </div>
+            </Router>
+          </SnackbarProvider>
+        </MuiThemeProvider>
       </StoreProvider>
     );
   }
