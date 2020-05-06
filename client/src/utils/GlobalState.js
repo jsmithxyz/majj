@@ -88,7 +88,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          name: action.user.name,
+          username: action.user.name,
           email: action.user.email,
           queue: action.user.queue,
           filter: action.user.filter,
@@ -98,17 +98,16 @@ const reducer = (state, action) => {
       };
 
     case SIGN_OUT:
+      console.log("yo!");
       return {
         ...state,
         user: {
-          username: "",
+          username: "default",
           email: "",
           queue: [],
           filter: {},
           loggedIn: false,
         },
-        //some api call here
-        // queue: [action.queue]
       };
 
     case UPDATE_QUEUE:
@@ -131,10 +130,10 @@ const reducer = (state, action) => {
       };
 
     case CLEAR_QUEUE:
-      console.log(user);
+      user.queue = [];
       return {
         ...state,
-        user: { queue: [] },
+        user: user,
       };
 
     case PASS:
