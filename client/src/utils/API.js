@@ -78,7 +78,7 @@ export default {
     return axios
       .post("/api/users/login", userObject)
       .then((response) => {
-        console.log(response);
+        console.log('axios response:' + JSON.stringify(response));
         return response;
       })
       .catch((err) => {

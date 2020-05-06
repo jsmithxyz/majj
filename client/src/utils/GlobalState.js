@@ -89,7 +89,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          username: action.user.name,
+          name: action.user.name,
           email: action.user.email,
           queue: action.user.queue,
           filter: action.user.filter,
