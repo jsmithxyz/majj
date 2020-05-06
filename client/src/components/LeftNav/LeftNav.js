@@ -23,7 +23,6 @@ function LeftNav() {
 
   const handleRadioChange = (event) => {
     const { name, checked } = event.target;
-    // console.log(name + ": " + checked);
     dispatch({
       type: FILTER_CHANGE,
       topic: name,
@@ -38,7 +37,7 @@ function LeftNav() {
     });
   };
 
-  const checkboxMaker = (key, value) => {
+  const checkboxMaker = (key) => {
     return (
       <Col md={4} className="choices-col">
         <Form.Check
@@ -80,14 +79,6 @@ function LeftNav() {
       }
     });
   };
-
-  // useEffect(() => {
-  //   applyFilter(user.filter);
-  //   // dispatch({
-  //   //   type: APPLY_FILTER,
-  //   //   filter: user.filter,
-  //   // });
-  // }, [user.filter]);
 
   const signOut = () => {
     dispatch({

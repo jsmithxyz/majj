@@ -101,7 +101,7 @@ function UserSignIn() {
     }
     console.log(filterTemplate)
     let filterString = JSON.stringify(filterTemplate)
-    // setFormObject({ ...formObject, filter: filterString }); // this should work wtf
+    // setFormObject({ ...formObject, filter: filterString }); // this should work WTF
     formObject.filter = filterString;
     let result = await API.registerUser(formObject);
 
