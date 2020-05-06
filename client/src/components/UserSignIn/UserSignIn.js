@@ -121,11 +121,15 @@ function UserSignIn() {
       //   className: "customToast",
       // });
     } else {
-      handleClose();
-      addToast("Welcome to Majj!", {
-        autoDismissTime: 3000,
-        className: "customToast",
-      });
+      // handleClose();
+      let loginEvent = {
+        preventDefault() {return}
+      };
+      handleLoginSubmit(loginEvent);
+      // addToast("Welcome to Majj!", {
+      //   autoDismissTime: 3000,
+      //   className: "customToast",
+      // });
     }
   }
 
@@ -179,7 +183,10 @@ function UserSignIn() {
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
       let checkboxRow = (
-        <Row className="rad-row">
+        <Row 
+        className="rad-row"
+        key={i}
+        >
           {checkboxes[i]}
           {checkboxes[i + 1]}
           {checkboxes[i + 2]}
