@@ -1,34 +1,57 @@
 .usercontainer {
-  background-color: #034169;
-  box-shadow: 4px 4px 4px 4px #00000080;
-  padding: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
-.userheading {
-  margin-top: 20px;
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
-  color: white;
-  font-size: 30px;
+.prof-page {
+  margin-top: 150px;
+}
+
+.prof-heading {
   text-align: center;
 }
-.next {
-  /* font-family: Luckiest Guy; */
-  font-family: 'Gotu', sans-serif;
-  color: white;
-}
-.nav-btns {
-  margin: 20px;
-  box-shadow: 1px 2px 4px #00000080;
+
+.saved-gem {
+  margin: 30px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
 }
 
-.nav-btns:hover {
-  background-color: #f0b429 !important;
-  color: #fff3c4 !important;
+.saved-gem .gem-image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
 }
 
-.links {
-  font-size: 20px;
+.saved-gem .gem-image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.saved-gem:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+.saved-gem .gem-title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: -70px;
+  height: 40px;
+}
+
+.gem-title-white {
   color: white;
+}
+
+.gem-title-black {
+  color: black;
 }
