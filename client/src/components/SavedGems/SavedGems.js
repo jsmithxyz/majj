@@ -13,6 +13,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Image, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import Database from "../../utils/Database";
+import { CLEAR_QUEUE } from "../../utils/actions";
+
 import "./SavedGems.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,8 +48,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SavedGems() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [state] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
   const { user } = state;
+
   const [listItems, setListItems] = useState();
 
   const handleClickOpen = () => {
@@ -54,6 +59,17 @@ export default function SavedGems() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleClear = () => {
+    Database.updateQueue({
+      name: user.username,
+      queue: [],
+    }).then((res) => {
+      dispatch({
+        type: CLEAR_QUEUE,
+      });
+    });
   };
 
   const listItemMaker = (item) => {
@@ -129,7 +145,8 @@ export default function SavedGems() {
             <Typography variant="h6" className={classes.title}>
               Saved Gems
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+
+            <Button autoFocus color="inherit" onClick={handleClear}>
               clear all
             </Button>
           </Toolbar>

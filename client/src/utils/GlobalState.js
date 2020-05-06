@@ -3,6 +3,7 @@ import React, { createContext, useReducer, useContext } from "react";
 import {
   ADD_TO_QUEUE,
   UPDATE_QUEUE,
+  CLEAR_QUEUE,
   PASS,
   APPLY_FILTER,
   FILTER_CHANGE,
@@ -87,7 +88,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          username: action.user.name,
+          name: action.user.name,
           email: action.user.email,
           queue: action.user.queue,
           filter: action.user.filter,
@@ -127,6 +128,13 @@ const reducer = (state, action) => {
         ...state,
         user: user,
         items: items,
+      };
+
+    case CLEAR_QUEUE:
+      console.log(user);
+      return {
+        ...state,
+        user: { queue: [] },
       };
 
     case PASS:

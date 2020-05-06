@@ -33,3 +33,8 @@ a:hover {
   text-decoration: none;
   color: #54d1db;
 }
+
+#error-message {
+  color: red !important;
+  font-weight: bold !important;
+}
