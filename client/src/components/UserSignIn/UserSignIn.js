@@ -18,7 +18,7 @@ function UserSignIn() {
   const [state, dispatch] = useStoreContext();
   const [signUp, setSignUp] = useState("");
   const [show, setShow] = useState(false);
-  // use this for user info?
+
   const [formObject, setFormObject] = useState({});
   const [errorState, setErrorState] = useState({});
   const { mutateFilter } = state;
@@ -27,57 +27,52 @@ function UserSignIn() {
 
   let filterTemplate = { ...mutateFilter };
 
-  //WTF do i seriously need to do this
-  const refs = []
+  // How can I DRY this up?
+  const refs = [];
   const ref0 = useRef(null);
-  refs.push(ref0)
+  refs.push(ref0);
   const ref1 = useRef(null);
-  refs.push(ref1)
+  refs.push(ref1);
   const ref2 = useRef(null);
-  refs.push(ref2)
+  refs.push(ref2);
   const ref3 = useRef(null);
-  refs.push(ref3)
+  refs.push(ref3);
   const ref4 = useRef(null);
-  refs.push(ref4)
+  refs.push(ref4);
   const ref5 = useRef(null);
-  refs.push(ref5)
+  refs.push(ref5);
   const ref6 = useRef(null);
-  refs.push(ref6)
+  refs.push(ref6);
   const ref7 = useRef(null);
-  refs.push(ref7)
+  refs.push(ref7);
   const ref8 = useRef(null);
-  refs.push(ref8)
+  refs.push(ref8);
   const ref9 = useRef(null);
-  refs.push(ref9)
+  refs.push(ref9);
   const ref10 = useRef(null);
-  refs.push(ref10)
+  refs.push(ref10);
   const ref11 = useRef(null);
-  refs.push(ref11)
+  refs.push(ref11);
   const ref12 = useRef(null);
-  refs.push(ref12)
+  refs.push(ref12);
   const ref13 = useRef(null);
-  refs.push(ref13)
+  refs.push(ref13);
   const ref14 = useRef(null);
-  refs.push(ref14)
+  refs.push(ref14);
   const ref15 = useRef(null);
-  refs.push(ref15)
+  refs.push(ref15);
   const ref16 = useRef(null);
-  refs.push(ref16)
+  refs.push(ref16);
   const ref17 = useRef(null);
-  refs.push(ref17)
+  refs.push(ref17);
   const ref18 = useRef(null);
-  refs.push(ref18)
+  refs.push(ref18);
   const ref19 = useRef(null);
-  refs.push(ref19)
+  refs.push(ref19);
   const ref20 = useRef(null);
-  refs.push(ref20)
+  refs.push(ref20);
   const ref21 = useRef(null);
-  refs.push(ref21)
-
-  // function handleRadioChange(event) {
-  //   const { name, checked } = event.target;
-  //   // console.log(event.target);
-  // }
+  refs.push(ref21);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -90,24 +85,22 @@ function UserSignIn() {
   // If they want to sign in, this controls sign in form.
   const handleSetSignUp = () => setSignUp("signup");
   const handleSetLogin = () => setSignUp("login");
-  // const handleSignIn = setSignUp(false);
-
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
-        for (const ref of refs) {
+    for (const ref of refs) {
       let { name, checked } = ref.current;
       filterTemplate[name] = checked;
     }
-    console.log(filterTemplate)
-    let filterString = JSON.stringify(filterTemplate)
-    // setFormObject({ ...formObject, filter: filterString }); // this should work WTF
+
+    let filterString = JSON.stringify(filterTemplate);
+
     formObject.filter = filterString;
     let result = await API.registerUser(formObject);
 
     if (result.status === 400) {
       // if register fails
-      // ! this is super gross how do i fix it?
+      // Can this error handling be dried up?
       let error =
         result.data.email ||
         result.data.password ||
@@ -116,20 +109,13 @@ function UserSignIn() {
       // set a local error state to use to display to user
       setErrorState({ error: error });
       document.getElementById("error-message").innerHTML = error;
-      // addToast(error, {
-      //   autoDismissTime: 3000,
-      //   className: "customToast",
-      // });
     } else {
-      // handleClose();
       let loginEvent = {
-        preventDefault() {return}
+        preventDefault() {
+          return;
+        },
       };
       handleLoginSubmit(loginEvent);
-      // addToast("Welcome to Majj!", {
-      //   autoDismissTime: 3000,
-      //   className: "customToast",
-      // });
     }
   }
 
@@ -148,13 +134,8 @@ function UserSignIn() {
           user: result.data,
         });
       } else {
-        console.log(JSON.stringify(result));
         document.getElementById("error-message").innerHTML =
           "Email or password incorrect. Please try again.";
-        // addToast("Email or password incorrect. Please try again.", {
-        //   autoDismissTime: 3000,
-        //   className: "customToast",
-        // });
       }
     });
   }
@@ -169,10 +150,9 @@ function UserSignIn() {
           id={key}
           type={"checkbox"}
           className={`default-checkbox`}
-          // onChange={handleRadioChange}
         />
       </Col>
-    )
+    );
   };
 
   const checkboxArrayMaker = () => {
@@ -183,10 +163,7 @@ function UserSignIn() {
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
       let checkboxRow = (
-        <Row 
-        className="rad-row"
-        key={i}
-        >
+        <Row className="rad-row" key={i}>
           {checkboxes[i]}
           {checkboxes[i + 1]}
           {checkboxes[i + 2]}

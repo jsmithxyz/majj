@@ -2,7 +2,6 @@ body,
 html {
   font-family: "Gotu", sans-serif;
   background-color: #f7f7f7;
-  /* #F7F7F7 */
   background: url("./img/geode.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;

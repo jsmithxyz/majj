@@ -17,17 +17,16 @@ const User = require("../../models/user");
 router.post("/register", (req, res) => {
   // form validation
   const { errors, isValid } = validateRegisterInput(req.body);
-  console.log("errors: " + JSON.stringify(errors));
+
   // check validation
   if (!isValid) {
     debugger;
-    console.log("400 error incoming!");
+
     return res.status(400).json(errors);
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      console.log("user already exists");
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
@@ -48,7 +47,6 @@ router.post("/register", (req, res) => {
             .catch((err) => console.log(err));
         });
       });
-      // ! do we need something here to return upon successful creation?
     }
   });
 });
@@ -57,7 +55,6 @@ router.post("/register", (req, res) => {
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
-  console.log("login hit");
   // form validation
   const { errors, isValid } = validateLoginInput(req.body);
 

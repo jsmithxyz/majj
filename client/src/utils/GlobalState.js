@@ -14,7 +14,7 @@ import {
 
 export const StoreContext = createContext();
 const initialState = {
-  // would love to DRY this up somehow
+  // How can we DRY this up?
   filter: {
     sports: false,
     art: false,
@@ -77,12 +77,11 @@ const initialState = {
 const reducer = (state, action) => {
   let { filter, mutateFilter, items, backupItems, user } = state;
   let { id } = action;
-  // let { queue } = user;
   let replacementItem;
 
   switch (action.type) {
     case SIGN_IN:
-      let filterObj = JSON.parse(action.user.filter)
+      let filterObj = JSON.parse(action.user.filter);
       filter = filterObj;
       return {
         ...state,
@@ -93,7 +92,7 @@ const reducer = (state, action) => {
           filter: action.user.filter,
           loggedIn: true,
         },
-        filter: filter
+        filter: filter,
       };
 
     case SIGN_OUT:
@@ -106,7 +105,7 @@ const reducer = (state, action) => {
           filter: {},
           loggedIn: false,
         },
-        filter: initialState.filter
+        filter: initialState.filter,
       };
 
     case UPDATE_QUEUE:
