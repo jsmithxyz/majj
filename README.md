@@ -10,7 +10,7 @@ A React-based Web Application
 
 ## Overview
 
-MAJJ is a web application that serves the user fresh content from thousands of providers, presenting the ability to conveniently view and save articles for your reading pleasure. In the event that you’re unable to view content in the moment or find content but want to save it for later use, MAJJ allows you to create your own profile, filter through content based on your interests and save this content and your interests all in a single location for you to re-visit whenever you please. MAJJ is making it easier for the user; creating one place to save and view articles from thousands of providers.
+MAJJ is a web application that serves the user fresh content from thousands of providers, presenting the ability to conveniently view and save articles for your reading pleasure. In the event that you’re unable to view content in the moment or find content but want to save it for later use, MAJJ allows you to create your own profile, filter through content based on your interests and save this content and your interests all in a single location for you to re-visit whenever you please. MAJJ is creating a more convenient user experience; producing one place to save and view articles from thousands of providers, stripping the burden of scouring the web yourself!
 
 It utilizes a MonogoDB to store users profile along with their saved content, Reactjs to render, dynamically respond and adjust content based on filter and user, axios for AJAX calls to get, pull and push data from the Bing News Search API and our database, Node.js for back-end, Express.js for routing and React-Bootstrap along with MaterialUI for an easy to use modern, and clean user interface.
 
