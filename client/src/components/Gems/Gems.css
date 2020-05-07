@@ -66,4 +66,7 @@ button {
     margin: 0px !important;
     margin-bottom: 10px !important;
   }
+  .title {
+    font-size: 15px;
+  }
 }
