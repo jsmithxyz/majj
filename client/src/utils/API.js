@@ -1,9 +1,7 @@
 import axios from "axios";
-// import router from "../../../routes/api/users";
 
 export default {
   getItems: async function (filter) {
-    console.log("call!");
     let filterNotEmpty = false;
     Object.keys(filter).map((key) => {
       if (filter[key]) {
@@ -60,33 +58,22 @@ export default {
     await axios
       .post("/api/users/register", userObject)
       .then((response) => {
-        console.log("response from users.js: " + JSON.stringify(response));
         myReturn = response.data;
-        console.log("within axios: " + myReturn);
       })
       .catch((err) => {
-        console.log("in the catch");
-        console.log(err);
         myReturn = err.response;
       });
-    console.log("API.js myReturn (register): " + JSON.stringify(myReturn));
     return myReturn;
   },
 
   loginUser: (userObject) => {
-    // let myReturn = "";
     return axios
       .post("/api/users/login", userObject)
       .then((response) => {
-        console.log('axios response:' + JSON.stringify(response));
         return response;
       })
       .catch((err) => {
-        console.log("in the catch");
-        console.log(err.response);
         return err;
       });
-    // ! this should be full object sending back up to UserSignIn
-    // return myReturn;
   },
 };

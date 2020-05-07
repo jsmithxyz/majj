@@ -1,4 +1,4 @@
-const Validator = require("validator"); // usedd to validate inputs & check formats/password match
+const Validator = require("validator"); // used to validate inputs & check formats/password match
 const isEmpty = require("is-empty"); // global funcion used in conjunction with validator
 
 // this function will accept data from front end user input

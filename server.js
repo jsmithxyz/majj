@@ -22,7 +22,7 @@ require("./config/passport")(passport);
 // routes
 app.use(routes);
 app.use("/api/users", users);
-// temp mongoose connection for authentication test
+// Mongoose connection
 mongoose
   .connect(db, {
     useNewUrlParser: true,

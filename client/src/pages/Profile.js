@@ -1,9 +1,7 @@
 import React from "react";
 import UserProfile from "../components/UserProfile/UserProfile";
-// import LeftNav from "../components/LeftNav/LeftNav";
 import MainNav from "../components/MainNav/MainNav";
 import { Col, Button, OverlayTrigger, Tooltip, Row } from "react-bootstrap";
-// import UserSignIn from "../components/UserSignIn/UserSignIn";
 import { Link } from "react-router-dom";
 
 function Profile() {

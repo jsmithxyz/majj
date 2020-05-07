@@ -18,7 +18,7 @@ function UserSignIn() {
   const [state, dispatch] = useStoreContext();
   const [signUp, setSignUp] = useState("");
   const [show, setShow] = useState(false);
-  // use this for user info?
+
   const [formObject, setFormObject] = useState({});
   const [errorState, setErrorState] = useState({});
   const { mutateFilter } = state;
@@ -27,7 +27,8 @@ function UserSignIn() {
 
   let filterTemplate = { ...mutateFilter };
 
-  //WTF do i seriously need to do this
+
+  // How can I DRY this up?
   const refs = [];
   const ref0 = useRef(null);
   refs.push(ref0);
@@ -74,10 +75,7 @@ function UserSignIn() {
   const ref21 = useRef(null);
   refs.push(ref21);
 
-  // function handleRadioChange(event) {
-  //   const { name, checked } = event.target;
-  //   // console.log(event.target);
-  // }
+
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -90,7 +88,8 @@ function UserSignIn() {
   // If they want to sign in, this controls sign in form.
   const handleSetSignUp = () => setSignUp("signup");
   const handleSetLogin = () => setSignUp("login");
-  // const handleSignIn = setSignUp(false);
+
+
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
@@ -98,15 +97,16 @@ function UserSignIn() {
       let { name, checked } = ref.current;
       filterTemplate[name] = checked;
     }
-    console.log(filterTemplate);
+
+
     let filterString = JSON.stringify(filterTemplate);
-    // setFormObject({ ...formObject, filter: filterString }); // this should work WTF
+
     formObject.filter = filterString;
     let result = await API.registerUser(formObject);
 
     if (result.status === 400) {
       // if register fails
-      // ! this is super gross how do i fix it?
+      // Can this error handling be dried up?
       let error =
         result.data.email ||
         result.data.password ||
@@ -115,16 +115,13 @@ function UserSignIn() {
       // set a local error state to use to display to user
       setErrorState({ error: error });
       document.getElementById("error-message").innerHTML = error;
-      // addToast(error, {
-      //   autoDismissTime: 3000,
-      //   className: "customToast",
-      // });
     } else {
-      handleClose();
-      addToast("Welcome to Majj!", {
-        autoDismissTime: 3000,
-        className: "customToast",
-      });
+      let loginEvent = {
+        preventDefault() {
+          return;
+        },
+      };
+      handleLoginSubmit(loginEvent);
     }
   }
 
@@ -143,13 +140,8 @@ function UserSignIn() {
           user: result.data,
         });
       } else {
-        console.log(JSON.stringify(result));
         document.getElementById("error-message").innerHTML =
           "Email or password incorrect. Please try again.";
-        // addToast("Email or password incorrect. Please try again.", {
-        //   autoDismissTime: 3000,
-        //   className: "customToast",
-        // });
       }
     });
   }
@@ -164,7 +156,6 @@ function UserSignIn() {
           id={key}
           type={"checkbox"}
           className={`default-checkbox`}
-          // onChange={handleRadioChange}
         />
       </Col>
     );
@@ -178,7 +169,9 @@ function UserSignIn() {
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
       let checkboxRow = (
-        <Row className='rad-row'>
+
+        <Row className="rad-row" key={i}>
+
           {checkboxes[i]}
           {checkboxes[i + 1]}
           {checkboxes[i + 2]}

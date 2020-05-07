@@ -61,7 +61,12 @@ function LeftNav() {
     let newRows = [];
     for (var i = 0; i < checkboxes.length; i++) {
       let checkboxRow = (
-        <Row key={i} className='rad-row'>
+
+        <Row 
+        className="rad-row"
+        key={i}
+        >
+
           {checkboxes[i]}
           {checkboxes[i + 1]}
         </Row>

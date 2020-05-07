@@ -6,7 +6,7 @@ import MainNav from "../components/MainNav/MainNav";
 import LeftNav from "../components/LeftNav/LeftNav";
 import Gems from "../components/Gems/Gems";
 import Database from "../utils/Database";
-// import SavedGems from "../components/SavedGems/SavedGems";
+
 
 
 function Mine() {
