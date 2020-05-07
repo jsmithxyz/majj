@@ -33,10 +33,6 @@ It utilizes a MonogoDB to store users profile along with their saved content, Re
 
 ![splash](img/splashpage.png "splash")
 
-## New User Registration Sign Up:
-
-![register](img/register.png "register")
-
 ## Mine for Gems:
 
 ![mine](img/minepage.png "mine")
@@ -45,9 +41,13 @@ It utilizes a MonogoDB to store users profile along with their saved content, Re
 
 ![filter](img/filter.gif "filter")
 
+## Log In, Show Saved Filter, and Saved Gems:
+
+![login](img/login.gif "login")
+
 ## Tech used
 
-- Reactjs/Redux
+- Reactjs
 - HTML/CSS
 - Reactjs Bootstrap
 - MaterialUI
