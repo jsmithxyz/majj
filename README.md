@@ -41,9 +41,9 @@ It utilizes a MonogoDB to store users profile along with their saved content, Re
 
 ![filter](img/filter.gif "filter")
 
-## New User Registration Sign Up:
+## Log In, Show Saved Filter, and Saved Gems:
 
-![register](img/register.png "register")
+![login](img/login.gif "login")
 
 ## Tech used
 
