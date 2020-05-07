@@ -62,7 +62,7 @@ button {
 
 @media only screen and (max-width: 600px) {
   .card {
-    font-size: 13px;
+    font-size: 11px;
     margin: 0px !important;
     margin-bottom: 10px !important;
   }
